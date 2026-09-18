@@ -13,7 +13,7 @@ export function Movement() {
   const Forward = dir === "rtl" ? MoveLeft : MoveRight;
 
   return (
-    <section aria-labelledby="movement-heading" className="border-y border-sandline/80 bg-white">
+    <section data-animate aria-labelledby="movement-heading" className="border-y border-sandline/80 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <Reveal className="flex flex-col gap-3">
           <span className="flex items-center gap-2.5 text-sm font-semibold text-ink/60">

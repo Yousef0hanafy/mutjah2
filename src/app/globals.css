@@ -187,3 +187,29 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Fail-open visibility guard — animated content must never stay hidden.
+ * Sections reveal via framer-motion, which server-renders inline styles
+ * like `opacity: 0`. Two failure modes would otherwise leave entire
+ * sections invisible forever:
+ *   1. JavaScript disabled entirely → the pre-paint flag never sets.
+ *   2. JS enabled but hydration never completes (blocked/failed chunks,
+ *      stale cached HTML after a redeploy, aggressive extensions) → the
+ *      watchdog timer in layout.tsx flips `data-js-failed` after 4s.
+ * Stylesheet `!important` beats framer-motion's inline styles, so the
+ * page degrades to a fully readable, static document.
+ */
+html:not([data-js="1"]) [data-animate],
+html[data-js-failed="1"] [data-animate],
+html:not([data-js="1"]) [data-animate] *,
+html[data-js-failed="1"] [data-animate] * {
+  opacity: 1 !important;
+  transform: none !important;
+  translate: none !important;
+  scale: none !important;
+  rotate: none !important;
+  clip-path: none !important;
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+}

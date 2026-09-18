@@ -16,6 +16,7 @@ export function Testimonials({ testimonials }: { testimonials?: TestimonialData[
   return (
     <section
       id="testimonials"
+      data-animate
       aria-labelledby="testimonials-heading"
       className="bg-mist-50"
     >

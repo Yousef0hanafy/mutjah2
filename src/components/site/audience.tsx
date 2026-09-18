@@ -15,7 +15,7 @@ export function Audience() {
   const setPrefill = useLeadPrefill((s) => s.setPrefill);
 
   return (
-    <section id="audience" aria-labelledby="audience-heading" className="border-y border-sandline/70 bg-white">
+    <section id="audience" data-animate aria-labelledby="audience-heading" className="border-y border-sandline/70 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
           label={t.audience.label}

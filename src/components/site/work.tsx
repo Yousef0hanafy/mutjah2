@@ -164,7 +164,7 @@ export function Work({ projects }: { projects?: WorkProjectData[] }) {
   const items = projects && projects.length > 0 ? projects : projectsFromDictionary();
 
   return (
-    <section id="work" aria-labelledby="work-heading" className="bg-canvas">
+    <section id="work" data-animate aria-labelledby="work-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading label={t.work.label} heading={t.work.heading} sub={t.work.sub} />
 

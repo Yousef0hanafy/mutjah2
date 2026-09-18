@@ -34,7 +34,7 @@ const ar = {
     closeMenu: "إغلاق القائمة",
   },
   hero: {
-    eyebrow: "شركة حلول رقمية تنفيذية — مصر",
+    eyebrow: "شركة حلول رقمية تنفيذية — العالم العربي",
     titleA: "لكل عمل اتجاه.",
     titleB: "نبني ما يحرّكه.",
     subtitle:
@@ -394,7 +394,7 @@ const ar = {
     servicesTitle: "الأبواب الأربعة",
     contactTitle: "تواصل",
     contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من احتياجك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
-    location: "القاهرة، مصر — ونعمل عن بُعد مع من يحتاجنا.",
+    location: "نعمل عن بُعد مع فرق وأعمال في كل العالم العربي.",
     rights: "جميع الحقوق محفوظة.",
     crafted: "هذا الموقع صُمّم وبُني داخليًا بواسطة مُتَّجَه — عيّنة مباشرة من مستوى تنفيذنا.",
   },
@@ -426,7 +426,7 @@ const en: Dictionary = {
     closeMenu: "Close menu",
   },
   hero: {
-    eyebrow: "Execution-led digital solutions — Egypt",
+    eyebrow: "Execution-led digital solutions — Arab world",
     titleA: "Every business has a direction.",
     titleB: "We build what moves it forward.",
     subtitle:
@@ -787,7 +787,7 @@ const en: Dictionary = {
     servicesTitle: "The four doors",
     contactTitle: "Contact",
     contactMsg: "The fastest way to reach us is the 'Start from your need' form — your request arrives organized and ready to discuss.",
-    location: "Cairo, Egypt — working remotely with anyone who needs us.",
+    location: "Remote-first — working with teams across the Arab world.",
     rights: "All rights reserved.",
     crafted: "This website was designed and built in-house by MUTJAH — a direct sample of our execution level.",
   },

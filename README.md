@@ -1,6 +1,6 @@
 # MUTJAH — مُتَّجَه
 
-Official website for **MUTJAH (مُتَّجَه)** — an execution-led digital solutions company (Egypt-first).  
+Official website for **MUTJAH (مُتَّجَه)** — an execution-led digital solutions company for the Arab world.  
 Bilingual (Arabic RTL default / English), SEO-optimized, single-page experience with a lead-capture wizard and a full self-hosted admin panel.
 
 > لكل عمل اتجاه. نبني ما يحرّكه.  

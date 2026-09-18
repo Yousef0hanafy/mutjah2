@@ -16,6 +16,7 @@ export function Process() {
   return (
     <section
       id="process"
+      data-animate
       aria-labelledby="process-heading"
       className="relative overflow-hidden bg-ink text-canvas"
     >

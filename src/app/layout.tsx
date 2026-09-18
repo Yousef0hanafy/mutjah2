@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Alexandria, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { JsMounted } from "@/components/site/js-mounted";
 import { siteConfig } from "@/lib/site-config";
 
 const alexandria = Alexandria({
@@ -17,14 +18,14 @@ const manrope = Manrope({
 });
 
 const descriptionAr =
-  "مُتَّجَه شركة حلول رقمية تنفيذية في مصر: نبني مواقع ومنتجات رقمية وأنظمة أعمال وأتمتة وحلول ذكاء اصطناعي تطبيقية حول ما يحتاجه عملك فعلًا — من الاحتياج إلى شيء يعمل.";
+  "مُتَّجَه شركة حلول رقمية تنفيذية للعالم العربي: نبني مواقع ومنتجات رقمية وأنظمة أعمال وأتمتة وحلول ذكاء اصطناعي تطبيقية حول ما يحتاجه عملك فعلًا — من الاحتياج إلى شيء يعمل.";
 const descriptionEn =
-  "MUTJAH is an execution-led digital solutions company in Egypt. Websites, digital products, business systems, automation and applied AI — built around real business needs.";
+  "MUTJAH is an execution-led digital solutions company for the Arab world. Websites, digital products, business systems, automation and applied AI — built around real business needs.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "MUTJAH | مُتَّجَه — شركة حلول رقمية تنفيذية في مصر",
+    default: "MUTJAH | مُتَّجَه — شركة حلول رقمية تنفيذية للعالم العربي",
     template: "%s | MUTJAH مُتَّجَه",
   },
   description: `${descriptionAr}\n${descriptionEn}`,
@@ -33,18 +34,18 @@ export const metadata: Metadata = {
     "مُتَّجَه",
     "متجة",
     "شركة حلول رقمية",
-    "شركة برمجيات في مصر",
+    "شركة برمجيات في الوطن العربي",
     "تصميم وتطوير مواقع",
-    "تصميم مواقع مصر",
+    "تصميم مواقع للشركات العربية",
     "منصات رقمية",
     "أنظمة إدارة داخلية",
     "أتمتة العمليات",
     "ذكاء اصطناعي للشركات",
     "تطوير MVP",
-    "digital solutions company Egypt",
-    "web development Egypt",
-    "business automation Cairo",
-    "applied AI Egypt",
+    "digital solutions company MENA",
+    "web development MENA",
+    "business automation MENA",
+    "applied AI MENA",
     "bilingual websites RTL",
     "Arabic web design",
   ],
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "ar_EG",
+    locale: "ar_AR",
     alternateLocale: ["en_US"],
     url: siteConfig.url,
     siteName: "MUTJAH | مُتَّجَه",
@@ -108,15 +109,19 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
-        {/* Apply saved language before first paint to avoid direction flash */}
+        {/* Pre-paint: flag that inline JS runs, arm a hydration watchdog
+            (if the app never hydrates — blocked/failed chunks — the CSS
+            fail-open guard reveals all animated content after 4s), and
+            apply saved language before first paint to avoid direction flash */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var l=localStorage.getItem('mutjah-locale');if(l==='en'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}}catch(e){}})();`,
+            __html: `document.documentElement.setAttribute('data-js','1');setTimeout(function(){if(!window.__mutjahMounted){document.documentElement.setAttribute('data-js-failed','1');}},4000);(function(){try{var l=localStorage.getItem('mutjah-locale');if(l==='en'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}}catch(e){}})();`,
           }}
         />
       </head>
       <body className={`${alexandria.variable} ${manrope.variable} antialiased bg-background text-foreground`}>
         {children}
+        <JsMounted />
         <Toaster />
       </body>
     </html>

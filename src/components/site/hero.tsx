@@ -204,7 +204,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section id="top" data-animate className="relative overflow-hidden">
       {/* restrained dotted grid */}
       <div
         aria-hidden

@@ -18,6 +18,29 @@ import { ContactWizard } from "@/components/site/contact-wizard";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 
+/** Markets served — remote-first across the Arab world. */
+const AREA_SERVED = [
+  "Saudi Arabia",
+  "United Arab Emirates",
+  "Qatar",
+  "Kuwait",
+  "Bahrain",
+  "Oman",
+  "Jordan",
+  "Lebanon",
+  "Iraq",
+  "Palestine",
+  "Yemen",
+  "Morocco",
+  "Algeria",
+  "Tunisia",
+  "Libya",
+  "Sudan",
+  "Mauritania",
+  "Somalia",
+  "Djibouti",
+].map((name) => ({ "@type": "Country", name }));
+
 /** Structured data — Organization, WebSite, ProfessionalService, FAQPage (+ reviews when published) */
 function JsonLd({
   reviews,
@@ -45,7 +68,7 @@ function JsonLd({
         image: `${url}${siteConfig.ogImage}`,
         description: en.footer.descriptor,
         slogan: ar.hero.titleA + " " + ar.hero.titleB,
-        areaServed: { "@type": "Country", name: "Egypt" },
+        areaServed: AREA_SERVED,
         knowsAbout: [
           "Web development",
           "Digital product design",
@@ -70,12 +93,7 @@ function JsonLd({
         url,
         image: `${url}${siteConfig.ogImage}`,
         description: ar.footer.descriptor,
-        areaServed: { "@type": "Country", name: "Egypt" },
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Cairo",
-          addressCountry: "EG",
-        },
+        areaServed: AREA_SERVED,
         parentOrganization: { "@id": `${url}/#organization` },
         ...(reviews.length > 0 && {
           review: reviews.map((r) => ({
@@ -93,7 +111,7 @@ function JsonLd({
               "@type": "Service",
               name: s.title,
               description: s.desc,
-              areaServed: { "@type": "Country", name: "Egypt" },
+              areaServed: AREA_SERVED,
             },
           })),
         },

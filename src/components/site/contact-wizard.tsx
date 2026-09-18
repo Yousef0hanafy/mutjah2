@@ -165,7 +165,7 @@ export function ContactWizard({ contact }: { contact?: ContactInfo }) {
   const Back = dir === "rtl" ? ArrowRight : ArrowLeft;
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="bg-canvas-soft">
+    <section id="contact" data-animate aria-labelledby="contact-heading" className="bg-canvas-soft">
       <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-8 lg:py-28">
         {/* Left: pitch */}
         <div className="lg:col-span-5">

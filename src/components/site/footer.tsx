@@ -14,7 +14,7 @@ export function Footer({ contact }: { contact?: ContactInfo }) {
   const whatsapp = contact?.whatsapp ?? siteConfig.whatsapp;
 
   return (
-    <footer className="mt-auto bg-ink text-canvas">
+    <footer data-animate className="mt-auto bg-ink text-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-10 md:grid-cols-12">
           {/* Brand */}

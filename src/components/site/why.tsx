@@ -7,7 +7,7 @@ export function Why() {
   const { t } = useLanguage();
 
   return (
-    <section id="why" aria-labelledby="why-heading" className="bg-canvas">
+    <section id="why" data-animate aria-labelledby="why-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading label={t.why.label} heading={t.why.heading} />
 

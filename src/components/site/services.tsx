@@ -43,7 +43,7 @@ export function Services({ services }: { services?: ServiceItemData[] }) {
   const items = services && services.length > 0 ? services : servicesFromDictionary();
 
   return (
-    <section id="services" aria-labelledby="services-heading" className="bg-canvas">
+    <section id="services" data-animate aria-labelledby="services-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
           label={t.services.label}
