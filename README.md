@@ -58,6 +58,7 @@ bun run build      # production build (standalone)
 | `ADMIN_SESSION_SECRET`  | ✅       | Random string (e.g. `openssl rand -hex 32`) for signing session cookies     |
 | `LEAD_WEBHOOK_URL`      | —        | Optional: POSTs every new lead as `{ text, lead }` (Make.com/n8n/Discord…)  |
 | `LEAD_WEBHOOK_SECRET`   | —        | Optional: sent as `x-lead-secret` header                                    |
+| `BLOB_READ_WRITE_TOKEN` | —        | Optional: Vercel Blob token — **required on Vercel** for admin image uploads (serverless FS is read-only). Connect a Blob store in the Vercel dashboard and it's added automatically |
 
 ## 🔐 Admin Panel
 
