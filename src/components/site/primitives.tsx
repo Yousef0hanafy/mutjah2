@@ -1,32 +1,88 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useInView, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-/** Scroll-reveal wrapper — reveals once, respects reduced motion */
+/**
+ * Scroll-reveal wrapper — visibility never depends on JavaScript.
+ *
+ * Invariant: the server renders every Reveal FULLY VISIBLE (no inline
+ * opacity/transform), so the page is complete and readable even if JS
+ * never runs. After mount, only elements lying completely below the
+ * viewport get armed (hidden client-side — invisible to the user anyway)
+ * and revealed on scroll via IntersectionObserver. Every failure mode
+ * degrades to visible content:
+ *   - JS disabled / hydration dead  → never armed → visible
+ *   - IntersectionObserver missing  → never armed → visible
+ *   - IO present but dead           → JsMounted probe flips the global
+ *                                     fail-open flag (globals.css)
+ */
 export function Reveal({
   children,
   className,
   delay = 0,
   y = 20,
+  x = 0,
+  as = "div",
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   y?: number;
+  x?: number;
+  as?: "div" | "li";
 }) {
   const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
+  const ref = useRef<Element | null>(null);
+  const [armed, setArmed] = useState(false);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  useEffect(() => {
+    if (reduce) return;
+    if (typeof IntersectionObserver === "undefined") return;
+    // Arm after the first paint (rAF) so the server-visible state always
+    // renders first. Only elements completely below the fold get hidden —
+    // zero flash risk, and if anything above fails, content stays visible.
+    const raf = requestAnimationFrame(() => {
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top >= window.innerHeight && rect.bottom > 0) {
+        setArmed(true);
+      }
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [reduce]);
+
+  if (reduce) {
+    const Plain = as;
+    return <Plain className={className}>{children}</Plain>;
+  }
+
+  const Tag = as;
+  const hidden = armed && !inView;
+  const style = hidden
+    ? { opacity: 0, transform: `translate3d(${x}px, ${y}px, 0)` }
+    : armed
+      ? {
+          opacity: 1,
+          transform: "translate3d(0, 0, 0)",
+          transition: `opacity 0.6s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.6s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+        }
+      : undefined;
+
   return (
-    <motion.div
+    <Tag
+      ref={(node: HTMLElement | null) => {
+        ref.current = node;
+      }}
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      style={style}
+      data-reveal={hidden ? "hidden" : armed ? "revealed" : "idle"}
     >
       {children}
-    </motion.div>
+    </Tag>
   );
 }
 

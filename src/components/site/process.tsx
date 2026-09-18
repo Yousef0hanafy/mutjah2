@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/language-provider";
-import { SectionHeading } from "./primitives";
+import { Reveal, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
 /**
@@ -47,12 +47,11 @@ export function Process() {
             {t.process.steps.map((step, i) => {
               const isLast = i === t.process.steps.length - 1;
               return (
-                <motion.li
+                <Reveal
+                  as="li"
                   key={step.title}
-                  initial={reduce ? {} : { opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: 0.25 + i * 0.18 }}
+                  y={18}
+                  delay={0.15 + i * 0.14}
                   className="flex flex-col"
                 >
                   <span
@@ -71,7 +70,7 @@ export function Process() {
                   </span>
                   <h3 className="mt-2 text-xl font-bold text-canvas">{step.title}</h3>
                   <p className="mt-2.5 text-sm leading-7 text-canvas/55">{step.desc}</p>
-                </motion.li>
+                </Reveal>
               );
             })}
           </ol>
@@ -86,12 +85,11 @@ export function Process() {
           {t.process.steps.map((step, i) => {
             const isLast = i === t.process.steps.length - 1;
             return (
-              <motion.li
+              <Reveal
+                as="li"
                 key={step.title}
-                initial={reduce ? {} : { opacity: 0, x: 14 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                x={14}
+                delay={i * 0.08}
                 className="relative pe-10"
               >
                 <span
@@ -110,7 +108,7 @@ export function Process() {
                 </span>
                 <h3 className="mt-1.5 text-lg font-bold text-canvas">{step.title}</h3>
                 <p className="mt-1.5 text-sm leading-7 text-canvas/55">{step.desc}</p>
-              </motion.li>
+              </Reveal>
             );
           })}
         </ol>

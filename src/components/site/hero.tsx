@@ -213,40 +213,32 @@ export function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 pb-16 pt-32 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:pb-24 lg:pt-40 lg:px-8">
         <div className="flex flex-col items-start">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2.5 text-[13px] font-semibold text-ink/55 sm:text-sm"
+          <p
+            className="hero-rise flex items-center gap-2.5 text-[13px] font-semibold text-ink/55 sm:text-sm"
+            style={{ animationDelay: "0.05s" }}
           >
             <span aria-hidden className="size-2 rounded-full bg-coral" />
             {t.hero.eyebrow}
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08 }}
-            className="mt-5 text-[2.45rem] font-extrabold leading-[1.22] tracking-tight text-ink sm:text-6xl lg:text-[3.9rem]"
+          <h1
+            className="hero-rise mt-5 text-[2.45rem] font-extrabold leading-[1.22] tracking-tight text-ink sm:text-6xl lg:text-[3.9rem]"
+            style={{ animationDelay: "0.12s" }}
           >
             <span className="block">{t.hero.titleA}</span>
             <span className="block text-vector">{t.hero.titleB}</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.16 }}
-            className="mt-6 max-w-xl text-base leading-8 text-ink/65 sm:text-lg sm:leading-9"
+          <p
+            className="hero-rise mt-6 max-w-xl text-base leading-8 text-ink/65 sm:text-lg sm:leading-9"
+            style={{ animationDelay: "0.2s" }}
           >
             {t.hero.subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.24 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+          <div
+            className="hero-rise mt-9 flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "0.28s" }}
           >
             <Button
               asChild
@@ -264,13 +256,11 @@ export function Hero() {
                 <ArrowDown className="size-4" aria-hidden />
               </a>
             </Button>
-          </motion.div>
+          </div>
 
-          <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-11 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-sm font-medium text-ink/55"
+          <ul
+            className="hero-rise mt-11 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-sm font-medium text-ink/55"
+            style={{ animationDelay: "0.4s" }}
             aria-label={t.hero.chips.join(" · ")}
           >
             {t.hero.chips.map((chip) => (
@@ -279,17 +269,15 @@ export function Hero() {
                 {chip}
               </li>
             ))}
-          </motion.ul>
+          </ul>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mx-auto w-full max-w-xl lg:max-w-none"
+        <div
+          className="hero-rise mx-auto w-full max-w-xl lg:max-w-none"
+          style={{ animationDelay: "0.25s" }}
         >
           <HeroRoute />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

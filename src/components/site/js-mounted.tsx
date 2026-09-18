@@ -3,42 +3,79 @@
 import { useEffect } from "react";
 
 /**
- * Hydration beacon — flips `window.__mutjahMounted` once React effects run.
- * The watchdog timer armed in layout.tsx checks this flag: if hydration
- * never completed (failed/blocked chunks, stale cached HTML), it sets
- * `data-js-failed` on <html> and the CSS fail-open guard forces all
- * animation-gated content visible.
+ * Hydration beacon + self-healing visibility guard.
  *
- * Also verifies IntersectionObserver is actually functional — some privacy
- * extensions stub or break it, which would leave `whileInView` reveals
- * hidden even after a healthy hydration. In that case we flip the same
- * fail-open flag ourselves.
+ * 1. Flips `window.__mutjahMounted` once React effects run — the watchdog
+ *    timer armed in layout.tsx checks it: if hydration never completed
+ *    (failed/blocked chunks, stale cached HTML), it sets `data-js-failed`
+ *    on <html> and the CSS fail-open guard forces all animation-gated
+ *    content visible.
+ *
+ * 2. Probes IntersectionObserver health — privacy extensions sometimes
+ *    stub or break it, which would leave scroll-reveals hidden. A dead IO
+ *    flips the same fail-open flag.
+ *
+ * 3. Runs a self-healing sweep — if ANY reveal-armed element is found
+ *    sitting hidden inside the viewport across two consecutive ticks
+ *    (a crashed/paused animation system), the fail-open flag flips and
+ *    everything becomes visible. Stuck-hidden content is structurally
+ *    impossible.
  */
 export function JsMounted() {
   useEffect(() => {
     (window as unknown as { __mutjahMounted?: boolean }).__mutjahMounted = true;
 
+    const root = document.documentElement;
+    const failOpen = () => root.setAttribute("data-js-failed", "1");
+
+    // — 2. IntersectionObserver health probe —
     if (typeof IntersectionObserver === "undefined") {
-      document.documentElement.setAttribute("data-js-failed", "1");
+      failOpen();
       return;
     }
-
-    let healthy = false;
-    const io = new IntersectionObserver(() => {
-      healthy = true;
-      io.disconnect();
+    let ioHealthy = false;
+    const probe = new IntersectionObserver(() => {
+      ioHealthy = true;
+      probe.disconnect();
     });
-    io.observe(document.documentElement);
-
-    const timer = window.setTimeout(() => {
-      if (!healthy) {
-        document.documentElement.setAttribute("data-js-failed", "1");
-      }
+    probe.observe(root);
+    const probeTimer = window.setTimeout(() => {
+      if (!ioHealthy) failOpen();
     }, 1200);
 
+    // — 3. Self-healing sweep (two consecutive ticks = genuinely stuck) —
+    const seen = new WeakSet<Element>();
+    const insideViewport = (el: Element) => {
+      const r = el.getBoundingClientRect();
+      return (
+        r.width > 0 &&
+        r.height > 0 &&
+        r.top < window.innerHeight - 60 &&
+        r.bottom > 60 &&
+        r.left < window.innerWidth - 60 &&
+        r.right > 60
+      );
+    };
+    const sweep = window.setInterval(() => {
+      if (root.getAttribute("data-js-failed") === "1") return;
+      const stuck = document.querySelectorAll('[data-reveal="hidden"]');
+      for (const el of Array.from(stuck)) {
+        if (insideViewport(el)) {
+          if (seen.has(el)) {
+            failOpen();
+            return;
+          }
+          seen.add(el);
+        } else {
+          seen.delete(el);
+        }
+      }
+    }, 1500);
+
     return () => {
-      io.disconnect();
-      window.clearTimeout(timer);
+      probe.disconnect();
+      window.clearTimeout(probeTimer);
+      window.clearInterval(sweep);
     };
   }, []);
 

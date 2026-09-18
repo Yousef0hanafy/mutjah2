@@ -175,6 +175,27 @@
   background: #a8a293;
 }
 
+/*
+ * Hero entrance — pure CSS so the first screen renders and animates with
+ * zero JavaScript dependency. `both` fill-mode keeps the staggered timing;
+ * if animations are unavailable the elements simply stay at their natural
+ * (visible) state — content can never be hidden by missing JS.
+ */
+@keyframes mutjah-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-rise {
+  animation: mutjah-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
