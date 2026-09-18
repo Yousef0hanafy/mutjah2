@@ -7,6 +7,7 @@ import { parseJsonArray, type ContactInfo, type FaqItemData, type ServiceItemDat
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
 import { Movement } from "@/components/site/movement";
+import { RouteLab } from "@/components/site/route-lab";
 import { Services } from "@/components/site/services";
 import { Process } from "@/components/site/process";
 import { Work } from "@/components/site/work";
@@ -278,6 +279,7 @@ export default async function Home({
       <main id="main" className="flex min-h-screen flex-col">
         <Hero />
         <Movement />
+        <RouteLab />
         <Services services={services} />
         <Process />
         <Work projects={workProjects} />
