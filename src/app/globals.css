@@ -159,22 +159,6 @@
   background-size: 26px 26px;
 }
 
-/* Thin elegant scrollbar for long lists */
-.scroll-slim::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.scroll-slim::-webkit-scrollbar-track {
-  background: transparent;
-}
-.scroll-slim::-webkit-scrollbar-thumb {
-  background: #c9c4b4;
-  border-radius: 999px;
-}
-.scroll-slim::-webkit-scrollbar-thumb:hover {
-  background: #a8a293;
-}
-
 /*
  * Hero entrance — pure CSS so the first screen renders and animates with
  * zero JavaScript dependency. `both` fill-mode keeps the staggered timing;

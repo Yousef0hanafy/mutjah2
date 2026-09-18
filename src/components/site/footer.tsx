@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Facebook, Linkedin } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-provider";
 import { sections } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
@@ -33,6 +34,32 @@ export function Footer({ contact }: { contact?: ContactInfo }) {
               <Point />
               {t.footer.tagline}
             </p>
+            {siteConfig.linkedin || siteConfig.facebook ? (
+              <div className="mt-7 flex items-center gap-2.5">
+                {siteConfig.linkedin && (
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="MUTJAH on LinkedIn"
+                    className="grid size-10 place-items-center rounded-full border border-canvas/15 text-canvas/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-canvas/90 hover:bg-canvas hover:text-ink"
+                  >
+                    <Linkedin className="size-[18px]" aria-hidden />
+                  </a>
+                )}
+                {siteConfig.facebook && (
+                  <a
+                    href={siteConfig.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="MUTJAH on Facebook"
+                    className="grid size-10 place-items-center rounded-full border border-canvas/15 text-canvas/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-canvas/90 hover:bg-canvas hover:text-ink"
+                  >
+                    <Facebook className="size-[18px]" aria-hidden />
+                  </a>
+                )}
+              </div>
+            ) : null}
           </div>
 
           {/* Links */}

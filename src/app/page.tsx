@@ -69,6 +69,11 @@ function JsonLd({
         description: en.footer.descriptor,
         slogan: ar.hero.titleA + " " + ar.hero.titleB,
         areaServed: AREA_SERVED,
+        ...(siteConfig.linkedin || siteConfig.facebook
+          ? {
+              sameAs: [siteConfig.linkedin, siteConfig.facebook].filter(Boolean),
+            }
+          : {}),
         knowsAbout: [
           "Web development",
           "Digital product design",

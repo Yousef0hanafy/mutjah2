@@ -14,5 +14,8 @@ export const siteConfig = {
   email: "youssefhanafy325@gmail.com",
   /** WhatsApp number in international format without "+", e.g. "201012345678" — leave "" to hide */
   whatsapp: "201100475722",
+  /** Social channels — leave "" to hide from footer & structured data */
+  linkedin: "https://www.linkedin.com/company/mutjah",
+  facebook: "https://www.facebook.com/profile.php?id=61594637333936",
   ogImage: "/og.png",
 } as const;
