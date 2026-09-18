@@ -1,0 +1,813 @@
+/**
+ * MUTJAH bilingual content dictionary.
+ * Arabic-first per verbal identity; English is an adaptation, not a translation.
+ * All copy respects the brand's honest-claims policy — no invented metrics, clients or testimonials.
+ */
+
+export type Locale = "ar" | "en";
+
+export const services = [
+  "website",
+  "product",
+  "system",
+  "automation",
+  "support",
+  "unsure",
+] as const;
+export type NeedType = (typeof services)[number];
+export type AudienceType = "business" | "founder";
+
+const ar = {
+  dir: "rtl" as const,
+  brand: { name: "MUTJAH", arabicName: "مُتَّجَه", category: "شركة حلول رقمية تنفيذية" },
+  nav: {
+    services: "الخدمات",
+    process: "طريقة العمل",
+    work: "أعمالنا",
+    why: "لماذا مُتَّجَه",
+    faq: "الأسئلة الشائعة",
+    contact: "تواصل",
+    cta: "ابدأ من احتياجك",
+    switchLabel: "EN",
+    switchAria: "التبديل إلى الإنجليزية",
+    openMenu: "فتح القائمة",
+    closeMenu: "إغلاق القائمة",
+  },
+  hero: {
+    eyebrow: "شركة حلول رقمية تنفيذية — مصر",
+    titleA: "لكل عمل اتجاه.",
+    titleB: "نبني ما يحرّكه.",
+    subtitle:
+      "من المواقع والمنصات إلى الأنظمة والأتمتة وحلول الذكاء الاصطناعي — نبني ما يحتاجه عملك لينتقل من الاحتياج إلى شيء يعمل.",
+    ctaPrimary: "ابدأ من احتياجك",
+    ctaSecondary: "شاهد ما بنيناه",
+    chips: ["مواقع", "منتجات رقمية", "أنظمة", "أتمتة", "ذكاء اصطناعي تطبيقي"],
+    route: {
+      point: "احتياج حقيقي",
+      gate: "قرار ونطاق واضح",
+      form: "شيء يعمل",
+    },
+    scrollHint: "اكتشف الطريقة",
+  },
+  movement: {
+    label: "الحركة التي نصنعها",
+    heading: "كل مشروع هو انتقال من حالة إلى حالة أفضل",
+    items: [
+      { from: "احتياج غامض", to: "مشكلة محددة" },
+      { from: "فكرة", to: "منتج قابل للاستخدام" },
+      { from: "عمل يدوي متكرر", to: "سير مُنظّم" },
+      { from: "معلومات مبعثرة", to: "معرفة قابلة للاستخدام" },
+      { from: "حضور رقمي", to: "أصل تشغيلي يعمل" },
+    ],
+  },
+  services: {
+    label: "الخدمات",
+    heading: "أربعة أبواب، تُشكَّل حول احتياجك",
+    sub: "خدمات مستقلة قابلة للدمج — لا باقات جاهزة تفرض شكلًا قبل فهم المشكلة. نجمع ما يحتاجه عملك فقط، ونبنيه ليُستخدم فعلًا.",
+    needLabel: "متى تحتاجها؟",
+    includesLabel: "ماذا تشمل؟",
+    items: [
+      {
+        id: "website",
+        title: "مواقع وحضور رقمي",
+        need: "عندما لا يشرح موقعك قيمة عملك، أو لا يحوّل الاهتمام إلى خطوة واضحة.",
+        desc: "نعيد بناء التجربة حول ما يحتاج عميلك أن يفهمه ويفعله — بالعربية أولًا، وبإنجليزية موثوقة عند الحاجة.",
+        deliverables: [
+          "مواقع شركات وخدمات",
+          "بورتفوليو وصفحات شخصية",
+          "صفحات هبوط وتجارب حملات",
+          "مواقع ثنائية اللغة (RTL/LTR)",
+          "قوائم وكاتالوجات ومحتويات رقمية",
+        ],
+      },
+      {
+        id: "product",
+        title: "منتجات ومنصات رقمية",
+        need: "عندما تحتاج رحلة مستخدم كاملة: تسجيل، تعلّم، حجز، عضوية، أو إدارة محتوى.",
+        desc: "نصمم وننفذ منتجًا يُستخدم فعلًا — من وضوح الفكرة إلى واجهات تعمل وتُدار بثقة.",
+        deliverables: [
+          "MVPs وتطبيقات ويب",
+          "منصات تعليم وعضوية وحجز",
+          "بوابات عملاء ولوحات تحكم",
+          "صلاحيات وأدوار وإدارة محتوى",
+          "تصميم UX/UI وتنفيذ Full-Stack",
+        ],
+      },
+      {
+        id: "system",
+        title: "أنظمة أعمال وأدوات داخلية",
+        need: "عندما يتباطأ شغلك بسبب جداول ومحادثات وملفات متفرقة لا يثق بها أحد.",
+        desc: "نبنِ نظامًا حول طريقة عملكم الفعلية — لا أداة عامة تُجبركم على تغيير طبيعتكم.",
+        deliverables: [
+          "لوحات تشغيل وبوابات داخلية",
+          "سير عمل للعملاء والمحتوى والموافقات",
+          "تنظيم معرفة وبحث داخلي",
+          "أدوات إدخال ومراجعة وتقارير",
+          "أنظمة خفيفة حول عملية محددة",
+        ],
+      },
+      {
+        id: "automation",
+        title: "أتمتة وذكاء اصطناعي تطبيقي",
+        need: "عندما يتكرر العمل اليدوي، أو يحتاج فريقك وصولًا أسرع للمعرفة والقرار.",
+        desc: "الذكاء الاصطناعي عنّا بوظيفة محددة ونقاط موافقة بشرية — لا ميزة ديكورية على الصفحة الرئيسية.",
+        deliverables: [
+          "أتمتة سير العمل عبر أدواتكم الحالية",
+          "مساعدات معرفة واسترجاع مستندات",
+          "مساعدات مبيعات وتسعير ومحتوى",
+          "روبوتات محادثة مربوطة بمعرفة معتمدة",
+          "تصميم نقاط تدخل بشري ومعالجة أخطاء",
+        ],
+      },
+    ],
+    support: {
+      title: "بعد الإطلاق: دعم وتطوير مستمر",
+      desc: "صيانة وتحديثات ومراقبة وتحسينات متكررة — بنطاق واتفاق واضحين. لا نَعِد بدعم غير محدود، ونحدد المسؤولية والاستجابة لكل engagement.",
+      cta: "اسأل عن الدعم",
+    },
+    note: "التقنية تُختار للوظيفة، لا للعرض.",
+  },
+  process: {
+    label: "طريقة العمل",
+    heading: "من الاحتياج إلى شيء يعمل",
+    sub: "خمس محطات تحكم كل مشروع — من صفحة إطلاق إلى نظام تشغيل كامل. تشعر في كل محطة بأنك واضح: ماذا يحدث الآن، وماذا بعده.",
+    steps: [
+      {
+        title: "وضّح",
+        desc: "نحدد احتياج العمل والمستخدم والحركة المطلوبة — قبل أي شاشة أو أداة.",
+      },
+      {
+        title: "شكّل",
+        desc: "أصغر حل مسؤول بنطاق مكتوب: ماذا نبني، وماذا لا نبني الآن.",
+      },
+      {
+        title: "ابنِ",
+        desc: "تصميم وتنفيذ واختبار — مع مسار المحتوى والبيانات الحقيقي، لا بيانات وهمية.",
+      },
+      {
+        title: "أطلق",
+        desc: "نشر وتسليم وتوثيق، والتحقق من الرحلات الحرجة واحدة واحدة.",
+      },
+      {
+        title: "ادعم",
+        desc: "عند الحاجة: صيانة وتحسين وتطوير باتفاق محدد النطاق والاستجابة.",
+      },
+    ],
+  },
+  work: {
+    label: "أعمالنا",
+    heading: "أدلة تنفيذ، لا وعود",
+    sub: "مشاريع حقيقية نعرضها بحالتها الفعلية — نسمّي كل مشروع كما هو: منصة حية، منتج منشور، أو نموذج وظيفي قيد التقوية.",
+    statuses: {
+      live: "منصة حية",
+      deployed: "منتج منشور",
+      mvp: "نموذج وظيفي MVP",
+    },
+    role: "استراتيجية المنتج · تصميم UX/UI · تطوير Full-Stack",
+    visit: "زيارة المشروع",
+    bilingual: "ثنائي اللغة",
+    arabic: "عربي",
+    english: "إنجليزي",
+    disclaimer:
+      "نعرض كل مشروع بحالته الفعلية. الأرقام والنتائج التجارية لا تُذكر إلا عند توفر دليل مُقاس ومُعتمد — هذا جزء من وعدنا بالصدق.",
+    projects: [
+      {
+        id: "infeworks",
+        name: "Infeworks",
+        status: "live" as const,
+        langs: ["ar", "en"],
+        headline: "مصداقية هندسية منظّمة للشراء الرقمي",
+        desc: "منصة أعمال ثنائية اللغة تحوّل سجل تنفيذ مقاول متخصص إلى قدرات فنية وملفات مشاريع بالأدلة وخريطة مشاريع تفاعلية ونظام نشر محمي.",
+        tags: ["منصة B2B/B2G", "تجربة ثنائية اللغة", "نظام إدارة محتوى"],
+        url: "https://infeworks.com",
+      },
+      {
+        id: "hemma",
+        name: "Hemma همّة",
+        status: "deployed" as const,
+        langs: ["ar"],
+        headline: "من ممارسة الأسئلة إلى حلقة تعلّم متكاملة",
+        desc: "منصة قُدرات عربية أولًا: دراسة موجهة وامتحانات موقوتة ومراجعة أخطاء وتكرار متباعد وتحليلات ومساعد ذكي، مع استوديو محتوى محمي بالأدوار.",
+        tags: ["تقنية تعليمية", "مساعد ذكي", "تجربة عربية RTL"],
+        url: "https://hemma-beta.vercel.app/",
+      },
+      {
+        id: "qidr",
+        name: "QIDR قِدر",
+        status: "deployed" as const,
+        langs: ["ar", "en"],
+        headline: "قائمة رقمية مبنية لتشغيل المطاعم، لا للاستعراض",
+        desc: "منصة مطاعم ثنائية اللغة واعية بالفروع: منتجات وأسعار وتوافر ومعلومات غذائية وعروض مجدولة ووصول عبر QR وإدارة محتوى محمية.",
+        tags: ["ضيافة", "تشغيل متعدد الفروع", "وصول QR"],
+        url: "https://qidr.vercel.app/",
+      },
+      {
+        id: "elmorabbi",
+        name: "El Morabbi المربي",
+        status: "mvp" as const,
+        langs: ["ar"],
+        headline: "من تتبّع فردي إلى مرافقة إنسانية موجَّهة",
+        desc: "منصة عربية للمصاحبة: الطلبة يتتبعون التزامهم اليومي، والمربّون يتابعون ويوجّهون، والإدارة تدير مجتمع التعلّم.",
+        tags: ["تعليم وإرشاد", "أدوار متعددة", "عربي RTL"],
+        url: "https://elmorabbi.vercel.app/",
+      },
+      {
+        id: "performance-gym",
+        name: "Performance Gym",
+        status: "mvp" as const,
+        langs: ["en"],
+        headline: "من موقع ترويجي إلى نظام عضوية متصل",
+        desc: "منصة لياقة تربط جذب العملاء بالاشتراكات وبوابة أعضاء وعمليات إدارة يومية، مع تسليم المبيعات عبر واتساب.",
+        tags: ["لياقة", "عضويات", "رحلة تحويل"],
+        url: "https://performance-web-ebon.vercel.app/",
+      },
+    ],
+  },
+  testimonials: {
+    label: "آراء العملاء",
+    heading: "كلمات ممن عمل معنا",
+    sub: "آراء حقيقية من عملاء ومؤسسين تعاملوا مع مُتَّجَه — تُنشر كما وردت وبإذن أصحابها.",
+  },
+  audience: {
+    label: "من نخدم",
+    heading: "مسار للشركات، ومسار مركّز للمؤسسين",
+    sub: "نُنظّم العملاء حسب حاجتهم ومرحلتهم — لا حسب تسميات السوق.",
+    business: {
+      title: "للشركات المتنامية والمتوسطة",
+      msg1: "بدل ما يظل حضورك وشغلك منفصلين، نبني تجربة تربط ما يراه عميلك بما يحتاجه عملك خلف الكواليس.",
+      msg2: "ونحوّل العمليات والمعلومات المتفرقة إلى نظام أو أتمتة أو أداة واضحة يمكن لفريقك الاعتماد عليها.",
+      offers: [
+        "موقع شركة أو منصة خدمة",
+        "نظام حجز أو عضوية أو كتالوج",
+        "لوحات داخلية وسير عمل تشغيلي",
+        "أتمتة ومساعدات ذكاء اصطناعي",
+        "دعم وتحسين بعد الإطلاق",
+      ],
+      cta: "ابدأ من احتياج عملك",
+    },
+    founder: {
+      title: "للمؤسسين والمحترفين",
+      msg: "نحوّل فكرتك أو خبرتك إلى حضور أو منتج رقمي واضح، قابل للاستخدام والتطوير لاحقًا.",
+      offers: [
+        "موقع شخصي أو بورتفوليو قوي",
+        "MVP وصفحة إطلاق",
+        "أتمتة أو أداة مركّزة",
+        "مسار توسّع دون إعادة بناء",
+      ],
+      cta: "ابدأ من فكرتك",
+    },
+  },
+  why: {
+    label: "لماذا مُتَّجَه",
+    heading: "مبادئ تتحكم في كل قرار",
+    quote: "نبدأ بالحركة المطلوبة، لا بالخدمة التي نريد بيعها.",
+    items: [
+      {
+        title: "الاتجاه قبل التنفيذ",
+        desc: "نوضّح النتيجة والمستخدم والحاجة التشغيلية قبل اختيار الأدوات أو تصميم الشاشات.",
+      },
+      {
+        title: "المفيد قبل المبهر",
+        desc: "الإبداع عندنا يزيد وضوحًا وثقة وسهولة استخدام — لا ضجيجًا بصريًا.",
+      },
+      {
+        title: "نبني ليُستخدم",
+        desc: "كل مخرَج يدعم رحلة حقيقية: اكتشاف، شراء، حجز، تشغيل، تعلّم، أو قرار.",
+      },
+      {
+        title: "الأدلة قبل الادعاء",
+        desc: "نصف العمل بحالته الفعلية ونحترم حدود الدليل — لا أرقام ولا شهادات غير موثقة.",
+      },
+      {
+        title: "نمطية لا باقات",
+        desc: "خدمة واحدة أو حل مركّب: تشتري ما يحتاجه عملك، دون باقات تفرضها عليك.",
+      },
+      {
+        title: "وضوح إنساني",
+        desc: "التقنية تقلل الالتباس والجهد. نبني لأناس يشغّلون العمل كل يوم.",
+      },
+    ],
+  },
+  faq: {
+    label: "الأسئلة الشائعة",
+    heading: "أسئلة تصلح بداية أي محادثة",
+    items: [
+      {
+        q: "كيف تبدأ العمل مع مُتَّجَه؟",
+        a: "تبدأ من احتياجك. في أول محادثة قصيرة نفهم السياق والمطلوب، ثم نحدد معًا الحركة المطلوبة قبل اقتراح أي شكل تنفيذي. بعد ذلك يصلك نطاق واضح مكتوب قبل بدء أي تنفيذ.",
+      },
+      {
+        q: "هل تبيعون باقات جاهزة؟",
+        a: "لا. خدماتنا مستقلة وقابلة للدمج: قد تحتاج موقعًا فقط، أو موقعًا مع لوحة إدارة وأتمتة متابعة عملاء. الشكل يتبع الاحتياج، لا العكس.",
+      },
+      {
+        q: "كم يستغرق المشروع، وكم تكلفته؟",
+        a: "يعتمد على النطاق: صفحة إطلاق تختلف عن منصة تعليمية أو نظام تشغيل داخلي. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود.",
+      },
+      {
+        q: "هل تعملون بالعربية والإنجليزية؟",
+        a: "نعم. نبني تجارب عربية أولًا بواجهات RTL أصلية، وبإنجليزية موثوقة عند الحاجة — مع معالجة منظمة للمحتوى ثنائي اللغة.",
+      },
+      {
+        q: "ماذا يحدث بعد الإطلاق؟",
+        a: "تستلم التسليم والتوثيق وملكية كاملة لما بُني. وعند الحاجة نواصل بصيانة وتحسينات باتفاق محدد النطاق — لا دعم «غير محدود» بلا حدود.",
+      },
+      {
+        q: "هل يمكنني طلب شيء صغير ومحدد؟",
+        a: "نعم. مسار المؤسسين والمحترفين مخصص لذلك: بورتفوليو، صفحة إطلاق، MVP، أو أتمتة مركّزة — بجودة التنفيذ نفسها دون تعقيد تعاقدي.",
+      },
+      {
+        q: "ما التقنيات التي تستخدمونها؟",
+        a: "نختار التقنية للوظيفة لا للعرض: حديثة وموثوقة ومجرّبة في مشاريع حية. التقنية تفصيل تنفيذي نشاركه بشفافية داخل كل مشروع.",
+      },
+    ],
+  },
+  contact: {
+    label: "ابدأ من احتياجك",
+    heading: "ما الذي يحتاج أن يتحرك في عملك؟",
+    sub: "أربع خطوات قصيرة تصل بك من الاحتياج إلى طلب واضح. نقرأ كل طلب بأنفسنا ونرد شخصيًا.",
+    steps: ["من أنت؟", "الاحتياج", "التواصل", "تم"],
+    step1: {
+      title: "أخبرنا: من أنت؟",
+      business: { title: "شركة أو نشاط تجاري", desc: "نشاط متنامٍ أو شركة قائمة تحتاج حضورًا أو نظامًا أو أتمتة." },
+      founder: { title: "مؤسس أو محترف", desc: "فكرة أو خبرة أو مشروع شخصي جاد يحتاج شكلًا رقميًا." },
+    },
+    step2: {
+      title: "ما الذي يحتاج أن يتحرك؟",
+      options: [
+        { id: "website", title: "موقع أو حضور رقمي", desc: "موقع شركة، بورتفوليو، صفحة هبوط، قائمة رقمية." },
+        { id: "product", title: "منتج أو منصة", desc: "MVP، منصة تعليم أو حجز أو عضوية، بوابة عملاء." },
+        { id: "system", title: "نظام داخلي", desc: "لوحات تشغيل، سير عمل، تنظيم معرفة وتقارير." },
+        { id: "automation", title: "أتمتة أو ذكاء اصطناعي", desc: "أتمتة عمليات، مساعد معرفة، مساعد مبيعات أو محتوى." },
+        { id: "support", title: "دعم أو تطوير قائم", desc: "تحسين أو إصلاح أو توسيع شيء موجود بالفعل." },
+        { id: "unsure", title: "لست متأكدًا بعد", desc: "لديّ احتياج أو فكرة — ساعدوني في تحديد الشكل المناسب." },
+      ],
+    },
+    step3: {
+      title: "كيف نصل إليك؟",
+      name: "الاسم",
+      namePh: "اسمك الكريم",
+      email: "البريد الإلكتروني",
+      emailPh: "name@company.com",
+      phone: "واتساب أو هاتف",
+      phonePh: "+20 1X XXX XXXX",
+      company: "الشركة أو النشاط (اختياري)",
+      companyPh: "اسم شركتك أو نشاطك",
+      scope: "حجم المشروع التقريبي (اختياري)",
+      scopes: [
+        { id: "focused", label: "نطاق مركّز — خدمة واحدة" },
+        { id: "medium", label: "مشروع متوسط — خدمات متصلة" },
+        { id: "full", label: "منتج أو نظام متكامل" },
+        { id: "undecided", label: "لم أحدد بعد" },
+      ],
+      message: "احكِ لنا عن الاحتياج",
+      messagePh: "ما الوضع الآن؟ وما الحركة التي تريدها؟ مثال: ندير الحجوزات على واتساب يدويًا ونفقد طلبات…",
+      optional: "اختياري",
+      orLabel: "أو",
+      contactHint: "بريد أو رقم — واحد على الأقل حتى نتمكن من الرد.",
+    },
+    back: "رجوع",
+    next: "متابعة",
+    submit: "أرسل الطلب",
+    sending: "جارٍ الإرسال…",
+    privacy: "بياناتك تُستخدم للتواصل بشأن طلبك فقط — لا رسائل تسويقية.",
+    success: {
+      title: "وصلتنا رسالتك",
+      desc: "سنتواصل معك لتحديد الخطوة التالية: محادثة قصيرة نفهم فيها السياق ونقترح الاتجاه المناسب — دون التزام مسبق.",
+      again: "إرسال طلب آخر",
+    },
+    errors: {
+      chooseOption: "اختر أحد الخيارين للمتابعة",
+      chooseNeed: "اختر ما يحتاج أن يتحرك — أو «لست متأكدًا بعد»",
+      name: "الاسم مطلوب",
+      contact: "أضف بريدًا إلكترونيًا أو رقم تواصل واحدًا على الأقل",
+      email: "صيغة البريد الإلكتروني غير صحيحة",
+      message: "اكتب سطرًا أو سطرين عن احتياجك (10 أحرف على الأقل)",
+      generic: "حدث خطأ في الإرسال. حاول مرة أخرى أو تواصل معنا مباشرة.",
+      rateLimited: "وصلتنا عدة رسائل من جهازك خلال وقت قصير. انتظر قليلًا ثم حاول مرة أخرى.",
+    },
+  },
+  footer: {
+    descriptor: "شركة حلول رقمية تنفيذية — نبني مواقع ومنتجات وأنظمة وأتمتة حول ما يحتاجه العمل فعلًا.",
+    tagline: "لكل عمل اتجاه. نبني ما يحرّكه.",
+    navTitle: "روابط",
+    servicesTitle: "الأبواب الأربعة",
+    contactTitle: "تواصل",
+    contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من احتياجك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
+    location: "القاهرة، مصر — ونعمل عن بُعد مع من يحتاجنا.",
+    rights: "جميع الحقوق محفوظة.",
+    crafted: "هذا الموقع صُمّم وبُني داخليًا بواسطة مُتَّجَه — عيّنة مباشرة من مستوى تنفيذنا.",
+  },
+  whatsapp: {
+    aria: "تحدث معنا عبر واتساب",
+    label: "واتساب",
+  },
+  misc: {
+    skipToContent: "تخطَّ إلى المحتوى",
+  },
+};
+
+export type Dictionary = Omit<typeof ar, "dir"> & { dir: "rtl" | "ltr" };
+
+const en: Dictionary = {
+  dir: "ltr",
+  brand: { name: "MUTJAH", arabicName: "مُتَّجَه", category: "Execution-led digital solutions company" },
+  nav: {
+    services: "Services",
+    process: "How we work",
+    work: "Work",
+    why: "Why MUTJAH",
+    faq: "FAQ",
+    contact: "Contact",
+    cta: "Start from your need",
+    switchLabel: "عربي",
+    switchAria: "Switch to Arabic",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
+  hero: {
+    eyebrow: "Execution-led digital solutions — Egypt",
+    titleA: "Every business has a direction.",
+    titleB: "We build what moves it forward.",
+    subtitle:
+      "From websites and platforms to systems, automation, and applied AI — we build what your business needs to move from intention to something that works.",
+    ctaPrimary: "Start from your need",
+    ctaSecondary: "See what we built",
+    chips: ["Websites", "Digital products", "Systems", "Automation", "Applied AI"],
+    route: {
+      point: "A real need",
+      gate: "Decision & clear scope",
+      form: "Something that works",
+    },
+    scrollHint: "Explore the way",
+  },
+  movement: {
+    label: "The movement we create",
+    heading: "Every project is a transition from one state to a better one",
+    items: [
+      { from: "An unclear need", to: "A defined problem" },
+      { from: "An idea", to: "A usable product" },
+      { from: "Repetitive manual work", to: "An organized workflow" },
+      { from: "Scattered information", to: "Accessible knowledge" },
+      { from: "A digital presence", to: "A working business asset" },
+    ],
+  },
+  services: {
+    label: "Services",
+    heading: "Four doors, shaped around your need",
+    sub: "Independent, combinable services — not ready-made packages that impose a shape before understanding the problem. We assemble only what your business needs, and build it to be actually used.",
+    needLabel: "When do you need it?",
+    includesLabel: "What it includes",
+    items: [
+      {
+        id: "website",
+        title: "Websites & digital presence",
+        need: "When your website doesn't explain your value or turn interest into a clear next step.",
+        desc: "We rebuild the experience around what your customer needs to understand and do — Arabic-first, with credible English when required.",
+        deliverables: [
+          "Corporate & service websites",
+          "Portfolios & personal websites",
+          "Landing pages & campaign experiences",
+          "Bilingual websites (RTL/LTR)",
+          "Digital menus, catalogs & content",
+        ],
+      },
+      {
+        id: "product",
+        title: "Digital products & platforms",
+        need: "When you need a complete user journey: sign-up, learning, booking, membership, or content management.",
+        desc: "We design and execute products that are actually used — from a clear idea to interfaces that work and can be administered with confidence.",
+        deliverables: [
+          "MVPs & web applications",
+          "Learning, membership & booking platforms",
+          "Customer portals & dashboards",
+          "Roles, permissions & content operations",
+          "UX/UI design & full-stack implementation",
+        ],
+      },
+      {
+        id: "system",
+        title: "Business systems & internal tools",
+        need: "When work slows down because of spreadsheets, chat threads, and files nobody trusts.",
+        desc: "We build a system around how your team actually works — not a generic tool that forces you to change your nature.",
+        deliverables: [
+          "Operational dashboards & internal portals",
+          "Lead, content & approval workflows",
+          "Knowledge organization & internal search",
+          "Data entry, review & reporting tools",
+          "Lightweight systems around one process",
+        ],
+      },
+      {
+        id: "automation",
+        title: "Automation & applied AI",
+        need: "When manual work repeats, or your team needs faster access to knowledge and decisions.",
+        desc: "AI here has a defined job and human approval points — not a decorative feature on a homepage.",
+        deliverables: [
+          "Workflow automation across your tools",
+          "Knowledge assistants & document retrieval",
+          "Sales, pricing & content assistants",
+          "Chatbots connected to approved knowledge",
+          "Human-approval & failure-handling design",
+        ],
+      },
+    ],
+    support: {
+      title: "After launch: support & continuous improvement",
+      desc: "Maintenance, updates, monitoring, and iterative improvements — with a clearly defined scope and agreement. We don't promise unlimited support; responsibility and response are defined per engagement.",
+      cta: "Ask about support",
+    },
+    note: "Technology chosen for the job, not for the pitch.",
+  },
+  process: {
+    label: "How we work",
+    heading: "From a need to something that works",
+    sub: "Five stations govern every project — from a launch page to a full operating system. At each one you know exactly what's happening now, and what comes next.",
+    steps: [
+      {
+        title: "Clarify",
+        desc: "We define the business need, the user, and the required movement — before any screen or tool.",
+      },
+      {
+        title: "Shape",
+        desc: "The smallest responsible solution with written scope: what we build, and what we don't build now.",
+      },
+      {
+        title: "Build",
+        desc: "Design, implementation, and testing — with the real content and data path, not placeholders.",
+      },
+      {
+        title: "Launch",
+        desc: "Deploy, hand over, document — and verify critical journeys one by one.",
+      },
+      {
+        title: "Support",
+        desc: "When needed: maintenance and improvement under a clearly scoped agreement.",
+      },
+    ],
+  },
+  work: {
+    label: "Work",
+    heading: "Execution evidence, not promises",
+    sub: "Real projects shown in their actual state — we name each one as it is: a live platform, a deployed product, or a functional MVP being hardened.",
+    statuses: {
+      live: "Live platform",
+      deployed: "Deployed product",
+      mvp: "Functional MVP",
+    },
+    role: "Product Strategy · UX/UI · Full-Stack Development",
+    visit: "Visit project",
+    bilingual: "Bilingual",
+    arabic: "Arabic",
+    english: "English",
+    disclaimer:
+      "Every project is shown in its actual state. Metrics and commercial results are only stated when measured and approved evidence exists — that's part of our honesty promise.",
+    projects: [
+      {
+        id: "infeworks",
+        name: "Infeworks",
+        status: "live" as const,
+        langs: ["en", "ar"],
+        headline: "Engineering credibility, structured for digital procurement",
+        desc: "A bilingual B2B/B2G platform that turns a specialist contractor's delivery record into technical capabilities, evidence-led project dossiers, an interactive map, and controlled publishing.",
+        tags: ["B2B/B2G platform", "Bilingual experience", "Content operations"],
+        url: "https://infeworks.com",
+      },
+      {
+        id: "hemma",
+        name: "Hemma همّة",
+        status: "deployed" as const,
+        langs: ["ar"],
+        headline: "From question practice to an adaptive learning loop",
+        desc: "An Arabic-first Qudurat platform: guided study, timed exams, mistake review, spaced repetition, analytics, and an AI assistant — with a role-protected Content Studio.",
+        tags: ["EdTech", "AI assistance", "Arabic RTL experience"],
+        url: "https://hemma-beta.vercel.app/",
+      },
+      {
+        id: "qidr",
+        name: "QIDR قِدر",
+        status: "deployed" as const,
+        langs: ["ar", "en"],
+        headline: "A digital menu built for restaurant operations, not just QR browsing",
+        desc: "A bilingual, branch-aware restaurant platform: products, pricing, availability, nutrition, scheduled promotions, QR access, and protected content administration.",
+        tags: ["Hospitality", "Multi-branch operations", "QR access"],
+        url: "https://qidr.vercel.app/",
+      },
+      {
+        id: "elmorabbi",
+        name: "El Morabbi المربي",
+        status: "mvp" as const,
+        langs: ["ar"],
+        headline: "Turning daily habits into guided accountability",
+        desc: "An Arabic-first mentorship platform: students track their daily practice, trusted teachers follow up and guide, and administrators manage the learning community.",
+        tags: ["Education & mentorship", "Multi-role workflows", "Arabic RTL"],
+        url: "https://elmorabbi.vercel.app/",
+      },
+      {
+        id: "performance-gym",
+        name: "Performance Gym",
+        status: "mvp" as const,
+        langs: ["en"],
+        headline: "From promotional website to connected membership system",
+        desc: "A fitness platform connecting lead capture with memberships, a member portal, and daily admin operations — with WhatsApp sales handoff.",
+        tags: ["Fitness", "Memberships", "Conversion flow"],
+        url: "https://performance-web-ebon.vercel.app/",
+      },
+    ],
+  },
+  testimonials: {
+    label: "Testimonials",
+    heading: "Words from those we worked with",
+    sub: "Real words from clients and founders who worked with MUTJAH — published as given, with their permission.",
+  },
+  audience: {
+    label: "Who we serve",
+    heading: "A path for businesses, and a focused path for founders",
+    sub: "We organize clients by their need and stage — not by market labels.",
+    business: {
+      title: "For growing & mid-sized businesses",
+      msg1: "Instead of leaving your presence and operations disconnected, we build an experience that links what your customer sees with what your business needs behind the scenes.",
+      msg2: "And we turn fragmented processes and information into a system, an automation, or a clear tool your team can rely on.",
+      offers: [
+        "Corporate or service website",
+        "Booking, membership or catalog system",
+        "Internal dashboards & operational workflows",
+        "Automation & AI assistants",
+        "Post-launch support & improvement",
+      ],
+      cta: "Start from your business need",
+    },
+    founder: {
+      title: "For founders & professionals",
+      msg: "We turn your idea or expertise into a clear digital presence or product — usable now, expandable later.",
+      offers: [
+        "A strong personal website or portfolio",
+        "MVP & launch page",
+        "Focused automation or lightweight tool",
+        "A growth path without rebuilding",
+      ],
+      cta: "Start from your idea",
+    },
+  },
+  why: {
+    label: "Why MUTJAH",
+    heading: "Principles that govern every decision",
+    quote: "We start with the movement that's required — not the service we want to sell.",
+    items: [
+      {
+        title: "Direction before production",
+        desc: "We clarify the outcome, user, and operating need before choosing tools or designing screens.",
+      },
+      {
+        title: "Useful over impressive",
+        desc: "Creativity must add clarity, trust, or usability — never visual noise.",
+      },
+      {
+        title: "Built to be used",
+        desc: "Every output supports a real journey: discovery, purchase, booking, operation, learning, or decision.",
+      },
+      {
+        title: "Evidence over hype",
+        desc: "We describe work in its actual state and respect the limits of evidence — no invented numbers or testimonials.",
+      },
+      {
+        title: "Modular, not packaged",
+        desc: "One service or a connected solution: you buy what your business needs, without forced bundles.",
+      },
+      {
+        title: "Human clarity",
+        desc: "Technology should reduce confusion and effort. We build for people who run the work every day.",
+      },
+    ],
+  },
+  faq: {
+    label: "FAQ",
+    heading: "Questions that start any conversation well",
+    items: [
+      {
+        q: "How does working with MUTJAH start?",
+        a: "It starts from your need. In a first short conversation we understand the context, then define together the movement required before proposing any deliverable. You then receive clear written scope before execution begins.",
+      },
+      {
+        q: "Do you sell ready-made packages?",
+        a: "No. Our services are independent and combinable: you may need a website only, or a website with an admin panel and lead-routing automation. The shape follows the need, not the other way around.",
+      },
+      {
+        q: "How long does a project take, and what does it cost?",
+        a: "It depends on scope: a launch page differs from a learning platform or an internal operating system. After a clarification session we come back with realistic scope and timeline — without inflated promises.",
+      },
+      {
+        q: "Do you work in Arabic and English?",
+        a: "Yes. We build Arabic-first experiences with native RTL layouts, and credible English when required — with structured handling of bilingual content.",
+      },
+      {
+        q: "What happens after launch?",
+        a: "You receive handover, documentation, and full ownership of what was built. When needed we continue with maintenance and improvements under a clearly scoped agreement — not 'unlimited' support.",
+      },
+      {
+        q: "Can I request something small and specific?",
+        a: "Yes. The founders & professionals path exists for exactly that: a portfolio, a launch page, an MVP, or focused automation — with the same execution quality and no contractual complexity.",
+      },
+      {
+        q: "What technologies do you use?",
+        a: "We choose technology for the job, not for the pitch: modern, reliable, and proven in live projects. Technology is an implementation detail we share transparently within each project.",
+      },
+    ],
+  },
+  contact: {
+    label: "Start from your need",
+    heading: "What needs to move in your business?",
+    sub: "Four short steps take you from a need to a clear request. Every request is read by us and answered personally.",
+    steps: ["Who you are", "The need", "Contact", "Done"],
+    step1: {
+      title: "Tell us: who are you?",
+      business: { title: "A business", desc: "A growing business or established company needing presence, a system, or automation." },
+      founder: { title: "Founder or professional", desc: "A serious idea, expertise, or personal project that needs a digital shape." },
+    },
+    step2: {
+      title: "What needs to move?",
+      options: [
+        { id: "website", title: "Website or presence", desc: "Corporate site, portfolio, landing page, digital menu." },
+        { id: "product", title: "Product or platform", desc: "MVP, learning/booking/membership platform, customer portal." },
+        { id: "system", title: "Internal system", desc: "Dashboards, workflows, knowledge organization, reporting." },
+        { id: "automation", title: "Automation or AI", desc: "Process automation, knowledge assistant, sales or content assistant." },
+        { id: "support", title: "Support or improvement", desc: "Improve, fix, or expand something that already exists." },
+        { id: "unsure", title: "Not sure yet", desc: "I have a need or an idea — help me define the right shape." },
+      ],
+    },
+    step3: {
+      title: "How do we reach you?",
+      name: "Name",
+      namePh: "Your full name",
+      email: "Email",
+      emailPh: "name@company.com",
+      phone: "WhatsApp or phone",
+      phonePh: "+20 1X XXX XXXX",
+      company: "Company or business (optional)",
+      companyPh: "Your company or business name",
+      scope: "Approximate project size (optional)",
+      scopes: [
+        { id: "focused", label: "Focused scope — one service" },
+        { id: "medium", label: "Medium project — connected services" },
+        { id: "full", label: "Full product or system" },
+        { id: "undecided", label: "Not decided yet" },
+      ],
+      message: "Tell us about the need",
+      messagePh: "What's the situation now, and what movement do you want? Example: we manage bookings manually on WhatsApp and lose requests…",
+      optional: "optional",
+      orLabel: "or",
+      contactHint: "An email or a phone number — at least one, so we can reply.",
+    },
+    back: "Back",
+    next: "Continue",
+    submit: "Send request",
+    sending: "Sending…",
+    privacy: "Your data is used only to contact you about this request — no marketing messages.",
+    success: {
+      title: "We received your request",
+      desc: "We'll contact you to define the next step: a short conversation to understand the context and suggest the right direction — with no obligation.",
+      again: "Send another request",
+    },
+    errors: {
+      chooseOption: "Choose one of the two options to continue",
+      chooseNeed: "Choose what needs to move — or 'Not sure yet'",
+      name: "Name is required",
+      contact: "Add at least one of email or phone so we can reply",
+      email: "Email format is not valid",
+      message: "Write a line or two about your need (at least 10 characters)",
+      generic: "Something went wrong sending your request. Try again or contact us directly.",
+      rateLimited: "Several requests arrived from your device in a short time. Wait a moment and try again.",
+    },
+  },
+  footer: {
+    descriptor:
+      "An execution-led digital solutions company — we build websites, products, systems, and automation around what the work actually needs.",
+    tagline: "Every business has a direction. We build what moves it forward.",
+    navTitle: "Links",
+    servicesTitle: "The four doors",
+    contactTitle: "Contact",
+    contactMsg: "The fastest way to reach us is the 'Start from your need' form — your request arrives organized and ready to discuss.",
+    location: "Cairo, Egypt — working remotely with anyone who needs us.",
+    rights: "All rights reserved.",
+    crafted: "This website was designed and built in-house by MUTJAH — a direct sample of our execution level.",
+  },
+  whatsapp: {
+    aria: "Chat with us on WhatsApp",
+    label: "WhatsApp",
+  },
+  misc: {
+    skipToContent: "Skip to content",
+  },
+};
+
+export const dictionaries: Record<Locale, Dictionary> = { ar, en };
+
+/** Section anchors for nav & footer */
+export const sections = [
+  { id: "services", key: "services" },
+  { id: "process", key: "process" },
+  { id: "work", key: "work" },
+  { id: "why", key: "why" },
+  { id: "faq", key: "faq" },
+  { id: "contact", key: "contact" },
+] as const;

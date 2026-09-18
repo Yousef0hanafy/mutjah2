@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")      // pooled (PgBouncer) — runtime queries
+  directUrl = env("DIRECT_DATABASE_URL") // direct endpoint — schema ops
+}
+
+// Inbound leads from the website contact wizard
+model Lead {
+  id           String   @id @default(cuid())
+  name         String
+  email        String?
+  phone        String?
+  company      String?
+  audienceType String // business | founder
+  needType     String // website | product | system | automation | support | unsure
+  scope        String? // focused | medium | full | undecided
+  message      String
+  locale       String   @default("ar") // ar | en
+  source       String   @default("homepage")
+  status       String   @default("new") // new | contacted | qualified | closed
+  createdAt    DateTime @default(now())
+
+  @@index([status, createdAt])
+}
+
+// ── Admin-managed site content ──────────────────────────────────────────────
+
+model Project {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  name      String
+  status    String   @default("deployed") // live | deployed | mvp
+  langs     String   @default("[]") // JSON array: ["ar","en"]
+  headlineAr String
+  headlineEn String
+  descAr    String
+  descEn    String
+  tagsAr    String   @default("[]") // JSON array of strings
+  tagsEn    String   @default("[]") // JSON array of strings
+  url       String?
+  coverPath String?
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  order      Int      @default(0)
+  name       String
+  company    String?
+  roleAr     String?
+  roleEn     String?
+  quoteAr    String
+  quoteEn    String
+  avatarPath String?
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model FaqItem {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  qAr       String
+  qEn       String
+  aAr       String
+  aEn       String
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ServiceItem {
+  id           String   @id @default(cuid())
+  order        Int      @default(0)
+  icon         String   @default("globe") // lucide icon key
+  titleAr      String
+  titleEn      String
+  needAr       String
+  needEn       String
+  descAr       String
+  descEn       String
+  deliverablesAr String @default("[]") // JSON array of strings
+  deliverablesEn String @default("[]") // JSON array of strings
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}

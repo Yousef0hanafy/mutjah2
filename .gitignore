@@ -1,0 +1,51 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env & secrets — never commit
+.env
+.env.*
+!.env.example
+
+# databases (local/dev)
+/db
+
+# runtime user uploads (served, not source-controlled)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# logs
+*.log
+dev.log
+server.log
+
+# OS / editor
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+
+# sandbox / workspace artifacts (not part of the app)
+/upload
+/download
+/tests
+/tool-results
+/examples
+/skills
+/mini-services
+/.zscripts
+/agent-ctx
+/Caddyfile
+/worklog.md
+/prompt
+/local-*
+.claude
+.z-ai-config
