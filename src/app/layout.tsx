@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Alexandria, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -22,6 +23,8 @@ const descriptionAr =
 const descriptionEn =
   "MUTJAH is an execution-led digital solutions company for the Arab world. Websites, digital products, business systems, automation and applied AI — built around real business needs.";
 
+const ogImageUrl = `${siteConfig.url}/og.png`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -31,8 +34,14 @@ export const metadata: Metadata = {
   description: `${descriptionAr}\n${descriptionEn}`,
   keywords: [
     "MUTJAH",
+    "Mutjah",
     "مُتَّجَه",
+    "متجه",
     "متجة",
+    "شركة متجه",
+    "شركة متجة",
+    "شركة مُتَّجَه",
+    "شركة MUTJAH",
     "شركة حلول رقمية",
     "شركة برمجيات في الوطن العربي",
     "تصميم وتطوير مواقع",
@@ -53,6 +62,12 @@ export const metadata: Metadata = {
   creator: "MUTJAH",
   publisher: "MUTJAH",
   category: "technology",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
+  },
   alternates: {
     canonical: siteConfig.url,
     languages: {
@@ -71,9 +86,11 @@ export const metadata: Metadata = {
     description: descriptionAr,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImageUrl,
+        secureUrl: ogImageUrl,
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "MUTJAH — لكل عمل اتجاه. نبني ما يحرّكه.",
       },
     ],
@@ -81,8 +98,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "MUTJAH | مُتَّجَه — لكل عمل اتجاه. نبني ما يحرّكه.",
-    description: descriptionEn,
-    images: [siteConfig.ogImage],
+    description: descriptionAr,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,
@@ -107,6 +124,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || "ykz3cr0nln";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-N0YPDK0ZFY";
+
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
@@ -124,6 +144,41 @@ export default function RootLayout({
         {children}
         <JsMounted />
         <Toaster />
+
+        {/* Microsoft Clarity */}
+        {clarityId && (
+          <Script
+            id="microsoft-clarity"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${clarityId}");`,
+            }}
+          />
+        )}
+
+        {/* Google Analytics 4 (GA4) */}
+        {gaId && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
       </body>
     </html>
   );
