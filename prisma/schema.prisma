@@ -25,6 +25,7 @@ model Lead {
   createdAt    DateTime @default(now())
 
   @@index([status, createdAt])
+  @@index([createdAt])
 }
 
 // ── Admin-managed site content ──────────────────────────────────────────────
@@ -46,6 +47,8 @@ model Project {
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([published, order])
 }
 
 model Testimonial {
@@ -61,6 +64,8 @@ model Testimonial {
   published  Boolean  @default(true)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+
+  @@index([published, order])
 }
 
 model FaqItem {
@@ -73,6 +78,8 @@ model FaqItem {
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([published, order])
 }
 
 model ServiceItem {
@@ -90,6 +97,8 @@ model ServiceItem {
   published    Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@index([published, order])
 }
 
 model SiteSetting {
@@ -104,3 +113,12 @@ model AdminUser {
   passwordHash String
   createdAt    DateTime @default(now())
 }
+
+model RateLimit {
+  key       String   @id
+  count     Int      @default(1)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}
+

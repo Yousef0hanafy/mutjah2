@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 
@@ -41,30 +41,38 @@ const leadSchema = z.object({
   website: z.string().optional().default(""),
 });
 
-/** Simple in-memory rate limiter: 5 requests per 10 minutes per IP */
-const WINDOW_MS = 10 * 60 * 1000;
-const MAX_REQS = 5;
-const hits = new Map<string, { count: number; reset: number }>();
+/** Database-backed persistent rate limiter for leads: 5 submissions per 15 minutes per IP */
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX_REQS = 5;
 
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = hits.get(ip);
-  if (!entry || now > entry.reset) {
-    hits.set(ip, { count: 1, reset: now + WINDOW_MS });
+async function leadRateLimited(ip: string): Promise<boolean> {
+  const key = `lead:${ip}`;
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + RATE_LIMIT_WINDOW_MS);
+
+  try {
+    const existing = await db.rateLimit.findUnique({
+      where: { key },
+    });
+
+    if (!existing || existing.expiresAt < now) {
+      await db.rateLimit.upsert({
+        where: { key },
+        create: { key, count: 1, expiresAt },
+        update: { count: 1, expiresAt },
+      });
+      return false;
+    }
+
+    const updated = await db.rateLimit.update({
+      where: { key },
+      data: { count: { increment: 1 } },
+    });
+
+    return updated.count > RATE_LIMIT_MAX_REQS;
+  } catch (err) {
+    console.error("[leadRateLimited] DB error:", err);
     return false;
-  }
-  entry.count += 1;
-  return entry.count > MAX_REQS;
-}
-
-// Periodically clean expired entries
-let lastSweep = Date.now();
-function sweep() {
-  const now = Date.now();
-  if (now - lastSweep < 60_000) return;
-  lastSweep = now;
-  for (const [ip, entry] of hits) {
-    if (now > entry.reset) hits.delete(ip);
   }
 }
 
@@ -138,13 +146,12 @@ async function notifyLead(lead: LeadPayload): Promise<void> {
 
 export async function POST(req: NextRequest) {
   try {
-    sweep();
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       req.headers.get("x-real-ip") ||
       "unknown";
 
-    if (rateLimited(ip)) {
+    if (await leadRateLimited(ip)) {
       return NextResponse.json(
         { ok: false, error: "rate_limited" },
         { status: 429 }
@@ -188,17 +195,19 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Fire-and-forget notification — a slow/failing webhook must never delay the lead
-    void notifyLead({
-      name: data.name,
-      email: data.email ?? null,
-      phone: data.phone ?? null,
-      company: data.company ?? null,
-      audienceType: data.audienceType,
-      needType: data.needType,
-      scope: data.scope ?? null,
-      message: data.message,
-      locale: data.locale,
+    // Use Next.js after() to guarantee background webhook delivery on serverless without delaying response
+    after(async () => {
+      await notifyLead({
+        name: data.name,
+        email: data.email ?? null,
+        phone: data.phone ?? null,
+        company: data.company ?? null,
+        audienceType: data.audienceType,
+        needType: data.needType,
+        scope: data.scope ?? null,
+        message: data.message,
+        locale: data.locale,
+      });
     });
 
     return NextResponse.json({ ok: true });

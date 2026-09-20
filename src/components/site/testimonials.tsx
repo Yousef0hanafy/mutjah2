@@ -33,7 +33,7 @@ export function Testimonials({ testimonials }: { testimonials?: TestimonialData[
             const role = locale === "ar" ? item.roleAr : item.roleEn;
             return (
               <Reveal key={item.id} delay={i * 0.06} className="h-full">
-                <figure className="flex h-full flex-col rounded-3xl border border-sandline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/8 sm:p-7">
+                <figure className="flex h-full flex-col rounded-3xl border border-sandline bg-white p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-vector/30 hover:shadow-2xl hover:shadow-ink/8 sm:p-7">
                   <span
                     aria-hidden
                     className="text-5xl font-black leading-none text-coral/60"

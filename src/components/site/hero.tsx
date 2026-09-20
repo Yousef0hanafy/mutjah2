@@ -55,18 +55,18 @@ export function Hero() {
         >
           <Button
             asChild
-            className="h-12 rounded-xl bg-ink px-7 text-base font-semibold text-canvas shadow-sm transition-colors hover:bg-vector"
+            className="h-12 rounded-xl bg-ink px-7 text-base font-semibold text-canvas shadow-sm transition-all duration-200 hover:bg-vector hover:shadow-lg hover:shadow-vector/25 active:scale-95"
           >
             <a href="#contact">{t.hero.ctaPrimary}</a>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="h-12 rounded-xl border-ink/15 bg-white/60 px-7 text-base font-semibold text-ink transition-colors hover:border-vector hover:text-vector"
+            className="group h-12 rounded-xl border-ink/15 bg-white/60 px-7 text-base font-semibold text-ink transition-all duration-200 hover:border-vector hover:bg-white hover:text-vector active:scale-95"
           >
             <a href="#work">
               {t.hero.ctaSecondary}
-              <ArrowDown className="size-4" aria-hidden />
+              <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden />
             </a>
           </Button>
         </div>
@@ -77,8 +77,11 @@ export function Hero() {
           aria-label={t.hero.chips.join(" · ")}
         >
           {t.hero.chips.map((chip) => (
-            <li key={chip} className="flex items-center gap-2">
-              <span aria-hidden className="size-1.5 rounded-full bg-vector/70" />
+            <li
+              key={chip}
+              className="flex items-center gap-2 transition-colors duration-200 hover:text-ink"
+            >
+              <span aria-hidden className="size-1.5 rounded-full bg-vector/70 transition-transform duration-200 group-hover:scale-125" />
               {chip}
             </li>
           ))}

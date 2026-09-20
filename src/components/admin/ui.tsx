@@ -159,10 +159,12 @@ export function PublishedSwitch({
 export function ImageUploadField({
   label,
   path,
+  type = "cover",
   onChange,
 }: {
   label: string;
   path: string | null;
+  type?: "cover" | "avatar";
   onChange: (path: string | null) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -175,6 +177,7 @@ export function ImageUploadField({
     try {
       const form = new FormData();
       form.append("file", file);
+      form.append("type", type);
       const res = await fetch("/api/admin/upload", { method: "POST", body: form });
       const data = await res.json();
       if (res.ok && data.ok) {
@@ -182,12 +185,16 @@ export function ImageUploadField({
       } else if (data.error === "too_large") {
         setError("الصورة أكبر من 6MB");
       } else if (data.error === "bad_type") {
-        setError("صيغة غير مدعومة — استخدم PNG أو JPG أو WebP");
+        setError("صيغة غير مدعومة — استخدم PNG أو JPG أو WebP أو AVIF");
+      } else if (data.error === "invalid_image") {
+        setError("الملف تالف أو غير صالح كصورة");
+      } else if (data.error === "blob_token_missing") {
+        setError("خدمة تخزين الصور السحابية (Blob) غير مهيأة في بيئة الإنتاج");
       } else {
-        setError("تعذر رفع الصورة");
+        setError("تعذر رفع الصورة، أعد المحاولة");
       }
     } catch {
-      setError("تعذر رفع الصورة");
+      setError("تعذر الاتصال بالخادم لرفع الصورة");
     } finally {
       setUploading(false);
     }

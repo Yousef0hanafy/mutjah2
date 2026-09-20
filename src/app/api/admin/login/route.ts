@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-real-ip") ||
       "unknown";
 
-    if (loginRateLimited(ip)) {
+    if (await loginRateLimited(ip)) {
       return NextResponse.json(
         { ok: false, error: "rate_limited" },
         { status: 429 }
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    loginSucceeded(ip);
+    await loginSucceeded(ip);
     await setSessionCookie(createSessionToken(admin));
     return NextResponse.json({ ok: true, email: admin.email });
   } catch (err) {

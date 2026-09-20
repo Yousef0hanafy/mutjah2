@@ -15,8 +15,21 @@ const patchSchema = z.object({
   descEn: z.string().trim().min(1).max(1200).optional(),
   tagsAr: z.array(z.string().trim().min(1).max(60)).max(8).optional(),
   tagsEn: z.array(z.string().trim().min(1).max(60)).max(8).optional(),
-  url: z.string().trim().url().max(300).nullable().optional(),
-  coverPath: z.string().trim().max(300).nullable().optional(),
+  url: z
+    .string()
+    .trim()
+    .url()
+    .max(300)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
+  coverPath: z
+    .string()
+    .trim()
+    .max(300)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
   published: z.boolean().optional(),
 });
 

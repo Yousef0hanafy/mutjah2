@@ -248,6 +248,7 @@ function ProjectEditor({
         <ImageUploadField
           label="غلاف المشروع"
           path={form.coverPath}
+          type="cover"
           onChange={(p) => set("coverPath", p)}
         />
 

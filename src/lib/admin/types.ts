@@ -58,10 +58,31 @@ export type ContactInfo = { email: string; whatsapp: string };
 
 export function parseJsonArray(raw: string | null | undefined): string[] {
   if (!raw) return [];
+  const trimmed = raw.trim();
+  if (!trimmed) return [];
+
+  // 1. Try standard JSON parse
   try {
-    const v = JSON.parse(raw);
-    return Array.isArray(v) ? v.filter((x) => typeof x === "string") : [];
+    const v = JSON.parse(trimmed);
+    if (Array.isArray(v)) {
+      return v
+        .filter((x): x is string => typeof x === "string")
+        .map((x) => x.trim())
+        .filter((x) => x.length > 0);
+    }
   } catch {
-    return [];
+    // Fall through to resilient string parsing
   }
+
+  // 2. Resilient fallback: comma-separated or newline-separated values
+  if (trimmed.includes(",") || trimmed.includes("\n")) {
+    return trimmed
+      .split(/[,\n]+/)
+      .map((item) => item.replace(/^[["']+|[["']]+$/g, "").trim())
+      .filter((item) => item.length > 0);
+  }
+
+  // 3. Single item without JSON brackets/quotes
+  const cleaned = trimmed.replace(/^[["']+|[["']]+$/g, "").trim();
+  return cleaned ? [cleaned] : [];
 }

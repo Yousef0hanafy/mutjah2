@@ -138,6 +138,7 @@ function TestimonialEditor({
         <ImageUploadField
           label="صورة العميل"
           path={form.avatarPath}
+          type="avatar"
           onChange={(p) => set("avatarPath", p)}
         />
 

@@ -54,10 +54,11 @@ export const metadata: Metadata = {
   publisher: "MUTJAH",
   category: "technology",
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.url,
     languages: {
-      ar: "/",
-      en: "/",
+      ar: siteConfig.url,
+      en: siteConfig.url,
+      "x-default": siteConfig.url,
     },
   },
   openGraph: {

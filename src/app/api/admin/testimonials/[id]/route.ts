@@ -7,12 +7,36 @@ export const runtime = "nodejs";
 
 const patchSchema = z.object({
   name: z.string().trim().min(2).max(120).optional(),
-  company: z.string().trim().max(120).nullable().optional(),
-  roleAr: z.string().trim().max(160).nullable().optional(),
-  roleEn: z.string().trim().max(160).nullable().optional(),
+  company: z
+    .string()
+    .trim()
+    .max(120)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
+  roleAr: z
+    .string()
+    .trim()
+    .max(160)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
+  roleEn: z
+    .string()
+    .trim()
+    .max(160)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
   quoteAr: z.string().trim().min(10).max(800).optional(),
   quoteEn: z.string().trim().min(10).max(800).optional(),
-  avatarPath: z.string().trim().max(300).nullable().optional(),
+  avatarPath: z
+    .string()
+    .trim()
+    .max(300)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
   published: z.boolean().optional(),
 });
 

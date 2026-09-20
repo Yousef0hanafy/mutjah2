@@ -11,7 +11,7 @@ export const siteConfig = {
   /** Production origin — used for canonical URLs, sitemap, robots & OG */
   url: "https://mutjah.com",
   /** Public contact email — leave "" to hide from UI */
-  email: "youssefhanafy325@gmail.com",
+  email: "hello@mutjah.com",
   /** WhatsApp number in international format without "+", e.g. "201012345678" — leave "" to hide */
   whatsapp: "201100475722",
   /** Social channels — leave "" to hide from footer & structured data */

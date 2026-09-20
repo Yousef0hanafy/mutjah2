@@ -5,7 +5,11 @@ import { requireAdmin } from "@/lib/admin/auth";
 export const runtime = "nodejs";
 
 function csvCell(value: unknown): string {
-  const s = value === null || value === undefined ? "" : String(value);
+  let s = value === null || value === undefined ? "" : String(value);
+  // Mitigate CSV Formula Injection: if cell starts with =, +, -, or @, prefix with a single quote
+  if (/^[=+\-@]/.test(s)) {
+    s = `'${s}`;
+  }
   return `"${s.replace(/"/g, '""')}"`;
 }
 

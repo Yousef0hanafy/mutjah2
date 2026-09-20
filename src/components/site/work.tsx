@@ -93,7 +93,7 @@ function ProjectCard({
     <Reveal delay={delay} className="h-full">
       <article
         className={cn(
-          "group flex h-full flex-col overflow-hidden rounded-3xl border border-sandline bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/8",
+          "group flex h-full flex-col overflow-hidden rounded-3xl border border-sandline bg-white transition-all duration-500 hover:-translate-y-1.5 hover:border-vector/30 hover:shadow-2xl hover:shadow-ink/10",
           featured && "lg:row-span-1"
         )}
       >
@@ -106,7 +106,7 @@ function ProjectCard({
               width={1672}
               height={941}
               sizes={featured ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 1024px) 100vw, 32vw"}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
             />
           ) : (
             <div className="flex size-full items-center justify-center bg-mist-50">
@@ -143,11 +143,11 @@ function ProjectCard({
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2 py-1 text-sm font-bold text-vector transition-colors hover:text-vector-600"
+                className="group/btn inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1 text-sm font-bold text-vector transition-all hover:bg-vector-50 active:scale-95"
                 aria-label={`${t.work.visit}: ${project.name}`}
               >
                 {t.work.visit}
-                <Visit className="size-4" aria-hidden />
+                <Visit className="size-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 rtl:group-hover/btn:-translate-x-0.5" aria-hidden />
               </a>
             )}
           </div>

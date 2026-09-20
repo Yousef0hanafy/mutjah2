@@ -15,8 +15,21 @@ const projectSchema = z.object({
   descEn: z.string().trim().min(1).max(1200),
   tagsAr: z.array(z.string().trim().min(1).max(60)).max(8).default([]),
   tagsEn: z.array(z.string().trim().min(1).max(60)).max(8).default([]),
-  url: z.string().trim().url().max(300).nullable().optional(),
-  coverPath: z.string().trim().max(300).nullable().optional(),
+  url: z
+    .string()
+    .trim()
+    .url()
+    .max(300)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
+  coverPath: z
+    .string()
+    .trim()
+    .max(300)
+    .optional()
+    .nullable()
+    .or(z.literal("").transform(() => null)),
   published: z.boolean().default(true),
 });
 

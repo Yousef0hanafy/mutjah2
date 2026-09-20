@@ -1,4 +1,3 @@
-import { AdminApp } from "@/components/admin/admin-app";
 import { LanguageProvider } from "@/lib/i18n/language-provider";
 import { dictionaries } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
@@ -240,17 +239,7 @@ async function getContactSettings(): Promise<ContactInfo> {
   }
 }
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ admin?: string }>;
-}) {
-  // Admin panel — single-route access gate (/?admin=1), rendered only by query param
-  const { admin } = await searchParams;
-  if (admin === "1") {
-    return <AdminApp />;
-  }
-
+export default async function Home() {
   const workProjects = await getWorkProjects();
   const testimonials = await getPublishedTestimonials();
   const faqs = await getPublishedFaqs();

@@ -60,9 +60,9 @@ export function Services({ services }: { services?: ServiceItemData[] }) {
             const deliverables = locale === "ar" ? service.deliverablesAr : service.deliverablesEn;
             return (
               <Reveal key={service.id} delay={i * 0.06}>
-                <article className="group flex h-full flex-col rounded-3xl border border-sandline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-ink/25 hover:shadow-lg hover:shadow-ink/5 sm:p-7">
+                <article className="group flex h-full flex-col rounded-3xl border border-sandline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-vector/40 hover:shadow-xl hover:shadow-ink/5 sm:p-7">
                   <div className="flex items-center gap-4">
-                    <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-mist text-ink transition-colors duration-300 group-hover:bg-vector group-hover:text-white">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-mist text-ink transition-all duration-300 group-hover:scale-105 group-hover:bg-vector group-hover:text-white">
                       <Icon className="size-[22px]" aria-hidden />
                     </span>
                     <h3 className="text-xl font-bold text-ink sm:text-[1.35rem]">
@@ -112,7 +112,7 @@ export function Services({ services }: { services?: ServiceItemData[] }) {
             </div>
             <Button
               asChild
-              className="h-12 shrink-0 rounded-xl bg-vector px-6 text-base font-semibold text-white hover:bg-vector-600"
+              className="h-12 shrink-0 rounded-xl bg-vector px-6 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:bg-vector-600 hover:shadow-lg hover:shadow-vector/30 active:scale-95"
             >
               <a href="#contact">{t.services.support.cta}</a>
             </Button>

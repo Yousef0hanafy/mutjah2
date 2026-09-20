@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
   try {
     const form = await req.formData();
     const file = form.get("file");
+    const uploadType = form.get("type"); // "avatar" | "cover"
 
     if (!(file instanceof File)) {
       return NextResponse.json({ ok: false, error: "no_file" }, { status: 400 });
@@ -40,13 +41,29 @@ export async function POST(req: NextRequest) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const webp = await sharp(buffer)
-      .rotate() // respect EXIF orientation
-      .resize({ width: 1920, height: 1920, fit: "inside", withoutEnlargement: true })
-      .webp({ quality: 82, effort: 5 })
-      .toBuffer();
 
-    const name = `${Date.now().toString(36)}-${randomBytes(8).toString("hex")}.webp`;
+    let sharpPipeline = sharp(buffer).rotate(); // respect EXIF orientation
+
+    if (uploadType === "avatar") {
+      sharpPipeline = sharpPipeline
+        .resize({ width: 320, height: 320, fit: "cover", position: "center" })
+        .webp({ quality: 80, effort: 5 });
+    } else {
+      sharpPipeline = sharpPipeline
+        .resize({ width: 1920, height: 1080, fit: "inside", withoutEnlargement: true })
+        .webp({ quality: 82, effort: 5 });
+    }
+
+    let webp: Buffer;
+    try {
+      webp = await sharpPipeline.toBuffer();
+    } catch (imageErr) {
+      console.error("[/api/admin/upload POST] image processing error:", imageErr);
+      return NextResponse.json({ ok: false, error: "invalid_image" }, { status: 400 });
+    }
+
+    const prefix = uploadType === "avatar" ? "avatar" : "cover";
+    const name = `${prefix}-${Date.now().toString(36)}-${randomBytes(8).toString("hex")}.webp`;
 
     // Vercel serverless: read-only filesystem → use Blob storage when configured
     if (process.env.BLOB_READ_WRITE_TOKEN) {
@@ -56,6 +73,15 @@ export async function POST(req: NextRequest) {
         addRandomSuffix: false,
       });
       return NextResponse.json({ ok: true, path: blob.url }, { status: 201 });
+    }
+
+    // Guard: serverless read-only filesystem check in production
+    if (process.env.NODE_ENV === "production" && (process.env.VERCEL || process.env.VERCEL_ENV)) {
+      console.error("[/api/admin/upload POST] BLOB_READ_WRITE_TOKEN is missing on Vercel deployment!");
+      return NextResponse.json(
+        { ok: false, error: "blob_token_missing" },
+        { status: 500 }
+      );
     }
 
     await mkdir(UPLOADS_DIR, { recursive: true });

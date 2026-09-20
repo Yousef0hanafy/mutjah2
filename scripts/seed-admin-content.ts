@@ -103,7 +103,7 @@ async function main() {
 
   /* ── Site settings (mirror current site-config values) ───────────────── */
   const settings: Array<{ key: string; value: string }> = [
-    { key: "contact_email", value: "youssefhanafy325@gmail.com" },
+    { key: "contact_email", value: "hello@mutjah.com" },
     { key: "contact_whatsapp", value: "201100475722" },
   ];
   for (const s of settings) {

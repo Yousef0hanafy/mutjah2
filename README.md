@@ -11,7 +11,7 @@ Bilingual (Arabic RTL default / English), SEO-optimized, single-page experience 
 - **Bilingual AR/EN** — Arabic-first RTL with instant LTR toggle, persisted per visitor; SSR serves Arabic for SEO
 - **Single-page experience** — hero, services, process route, portfolio, audience paths, principles, FAQ, contact wizard
 - **Lead capture wizard** — 4-step diagnostic form with validation, honeypot, rate limiting, and optional webhook notifications (Make.com / n8n / Slack / Discord…)
-- **Admin panel** at `/?admin=1` — full CRUD for projects, testimonials, FAQ, services; leads inbox with status pipeline + CSV export; site contact settings; password management
+- **Admin panel** at `/admin` — full CRUD for projects, testimonials, FAQ, services; leads inbox with status pipeline + CSV export; site contact settings; password management
 - **DB-driven content with code fallback** — public sections render from the database; the bilingual dictionary acts as a resilient fallback
 - **Honest-claims policy** — testimonials section (and Review schema) auto-hides until real ones are added
 - **SEO** — full metadata, canonical + hreflang, OpenGraph/Twitter cards, JSON-LD (Organization, WebSite, ProfessionalService + OfferCatalog, FAQPage, Review), sitemap, robots
@@ -62,7 +62,7 @@ bun run build      # production build (standalone)
 
 ## 🔐 Admin Panel
 
-Open **`/?admin=1`** and sign in with your admin credentials.
+Open **`/admin`** and sign in with your admin credentials.
 
 - **لوحة القيادة** — overview stats
 - **المشاريع** — portfolio CRUD, cover upload (auto-WebP), ordering, publish/draft

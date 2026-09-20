@@ -236,18 +236,29 @@ export function LeadsTab() {
                         {l.email}
                       </a>
                     )}
-                    {l.phone && (
-                      <a
-                        href={`https://wa.me/${l.phone.replace(/[^0-9]/g, "")}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        dir="ltr"
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-mist-50 px-2.5 py-1.5 text-xs font-bold text-ink/70 transition-colors hover:text-vector"
-                      >
-                        <Phone className="size-3.5" aria-hidden />
-                        {l.phone}
-                      </a>
-                    )}
+                    {l.phone && (() => {
+                      const cleanDigits = l.phone.replace(/[^0-9]/g, "");
+                      return cleanDigits ? (
+                        <a
+                          href={`https://wa.me/${cleanDigits}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          dir="ltr"
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-mist-50 px-2.5 py-1.5 text-xs font-bold text-ink/70 transition-colors hover:text-vector"
+                        >
+                          <Phone className="size-3.5" aria-hidden />
+                          {l.phone}
+                        </a>
+                      ) : (
+                        <span
+                          dir="ltr"
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-mist-50 px-2.5 py-1.5 text-xs font-bold text-ink/70"
+                        >
+                          <Phone className="size-3.5" aria-hidden />
+                          {l.phone}
+                        </span>
+                      );
+                    })()}
                   </div>
 
                   <p

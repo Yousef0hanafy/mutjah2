@@ -17,6 +17,12 @@ const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 function secret(): string {
   const s = process.env.ADMIN_SESSION_SECRET;
   if (!s) throw new Error("ADMIN_SESSION_SECRET missing in .env");
+  if (s.length < 32) {
+    throw new Error("ADMIN_SESSION_SECRET must be at least 32 characters long for security");
+  }
+  if (process.env.NODE_ENV === "production" && s.includes("replace-with-random")) {
+    throw new Error("ADMIN_SESSION_SECRET must be set to a secure, unique secret in production");
+  }
   return s;
 }
 
@@ -113,25 +119,51 @@ export async function clearSessionCookie() {
   store.delete(SESSION_COOKIE);
 }
 
-/* ── Login rate limiting: 5 attempts / 15 min / IP ───────────────────────── */
+/* ── Login rate limiting: 5 attempts / 15 min / IP (Serverless-persistent via DB) ── */
 
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 5;
-const attempts = new Map<string, { count: number; reset: number }>();
 
-export function loginRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = attempts.get(ip);
-  if (!entry || now > entry.reset) {
-    attempts.set(ip, { count: 1, reset: now + WINDOW_MS });
+export async function loginRateLimited(ip: string): Promise<boolean> {
+  const key = `admin-login:${ip}`;
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + WINDOW_MS);
+
+  try {
+    const existing = await db.rateLimit.findUnique({
+      where: { key },
+    });
+
+    if (!existing || existing.expiresAt < now) {
+      await db.rateLimit.upsert({
+        where: { key },
+        create: { key, count: 1, expiresAt },
+        update: { count: 1, expiresAt },
+      });
+      return false;
+    }
+
+    const updated = await db.rateLimit.update({
+      where: { key },
+      data: { count: { increment: 1 } },
+    });
+
+    return updated.count > MAX_ATTEMPTS;
+  } catch (err) {
+    console.error("[loginRateLimited] DB error:", err);
     return false;
   }
-  entry.count += 1;
-  return entry.count > MAX_ATTEMPTS;
 }
 
-export function loginSucceeded(ip: string) {
-  attempts.delete(ip);
+export async function loginSucceeded(ip: string): Promise<void> {
+  const key = `admin-login:${ip}`;
+  try {
+    await db.rateLimit.deleteMany({
+      where: { key },
+    });
+  } catch (err) {
+    console.error("[loginSucceeded] DB cleanup error:", err);
+  }
 }
 
 export async function verifyAdminCredentials(
