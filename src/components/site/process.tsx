@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/language-provider";
 import { Reveal, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
  */
 export function Process() {
   const { t } = useLanguage();
-  const reduce = useReducedMotion();
 
   return (
     <section
@@ -37,7 +36,7 @@ export function Process() {
           <motion.span
             aria-hidden
             className="absolute start-[10px] end-[10px] top-[7px] h-0.5 origin-right bg-canvas/15"
-            initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+            initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}

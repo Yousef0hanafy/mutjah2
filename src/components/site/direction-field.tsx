@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
 
 const INK = "#10141C";
 const VECTOR = "#315BFF";
@@ -33,7 +32,6 @@ function shortestDelta(a: number, b: number) {
  * hero is off-screen or the tab is hidden.
  */
 export function DirectionField() {
-  const reduce = useReducedMotion();
   const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,7 +75,6 @@ export function DirectionField() {
       }
       angles = new Float32Array(needles.length);
       for (let i = 0; i < needles.length; i++) angles[i] = dirForward;
-      if (reduce) drawStatic();
     };
 
     /** Slow lissajous drift — the field keeps breathing without a pointer */
@@ -85,22 +82,6 @@ export function DirectionField() {
       x: w * 0.5 + w * 0.3 * Math.sin(t * 0.00023 + 1.7),
       y: h * 0.48 + h * 0.26 * Math.sin(t * 0.00031 + 0.4),
     });
-
-    const drawStatic = () => {
-      ctx.clearRect(0, 0, w, h);
-      ctx.strokeStyle = INK;
-      ctx.globalAlpha = 0.13;
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      for (const n of needles) {
-        const c = (Math.cos(dirForward) * 4.5) / 2;
-        const s = (Math.sin(dirForward) * 4.5) / 2;
-        ctx.moveTo(n.x - c, n.y - s);
-        ctx.lineTo(n.x + c, n.y + s);
-      }
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    };
 
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
@@ -239,13 +220,9 @@ export function DirectionField() {
 
     build();
     ro.observe(host);
-    if (reduce) {
-      drawStatic();
-    } else {
-      raf = requestAnimationFrame(tick);
-      window.addEventListener("pointermove", onMove, { passive: true });
-      window.addEventListener("pointerdown", onDown, { passive: true });
-    }
+    raf = requestAnimationFrame(tick);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onDown, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
@@ -258,7 +235,7 @@ export function DirectionField() {
       window.clearTimeout(steerTimer);
       canvas.remove();
     };
-  }, [reduce]);
+  }, []);
 
   return <div ref={hostRef} aria-hidden className="pointer-events-none absolute inset-0" />;
 }

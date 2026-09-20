@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -33,13 +33,11 @@ export function Reveal({
   x?: number;
   as?: "div" | "li";
 }) {
-  const reduce = useReducedMotion();
   const ref = useRef<Element | null>(null);
   const [armed, setArmed] = useState(false);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   useEffect(() => {
-    if (reduce) return;
     if (typeof IntersectionObserver === "undefined") return;
     // Arm after the first paint (rAF) so the server-visible state always
     // renders first. Only elements completely below the fold get hidden —
@@ -53,12 +51,7 @@ export function Reveal({
       }
     });
     return () => cancelAnimationFrame(raf);
-  }, [reduce]);
-
-  if (reduce) {
-    const Plain = as;
-    return <Plain className={className}>{children}</Plain>;
-  }
+  }, []);
 
   const Tag = as;
   const hidden = armed && !inView;

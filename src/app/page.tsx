@@ -18,6 +18,8 @@ import { ContactWizard } from "@/components/site/contact-wizard";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 
+export const dynamic = "force-dynamic";
+
 /** Markets served — remote-first across the Arab world. */
 const AREA_SERVED = [
   "Saudi Arabia",

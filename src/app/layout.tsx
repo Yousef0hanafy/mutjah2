@@ -4,6 +4,7 @@ import { Alexandria, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { JsMounted } from "@/components/site/js-mounted";
+import { PwaRegister } from "@/components/site/pwa-register";
 import { siteConfig } from "@/lib/site-config";
 
 const alexandria = Alexandria({
@@ -27,6 +28,12 @@ const ogImageUrl = `${siteConfig.url}/og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Mutjah | متجه",
+  },
   title: {
     default: "MUTJAH | مُتَّجَه — شركة حلول رقمية تنفيذية للعالم العربي",
     template: "%s | MUTJAH مُتَّجَه",
@@ -64,9 +71,13 @@ export const metadata: Metadata = {
   category: "technology",
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   alternates: {
     canonical: siteConfig.url,
@@ -114,7 +125,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F2EFE7",
+  themeColor: "#0B0E14",
   width: "device-width",
   initialScale: 1,
 };
@@ -143,6 +154,7 @@ export default function RootLayout({
       <body className={`${alexandria.variable} ${manrope.variable} antialiased bg-background text-foreground`}>
         {children}
         <JsMounted />
+        <PwaRegister />
         <Toaster />
 
         {/* Microsoft Clarity */}

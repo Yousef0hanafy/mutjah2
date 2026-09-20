@@ -41,7 +41,7 @@ export function JsMounted() {
     probe.observe(root);
     const probeTimer = window.setTimeout(() => {
       if (!ioHealthy) failOpen();
-    }, 1200);
+    }, 5000);
 
     // — 3. Self-healing sweep (two consecutive ticks = genuinely stuck) —
     const seen = new WeakSet<Element>();

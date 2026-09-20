@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   AppWindow,
   ArrowLeft,
@@ -56,7 +56,6 @@ const INITIAL = {
 
 export function ContactWizard({ contact }: { contact?: ContactInfo }) {
   const { t, locale, dir } = useLanguage();
-  const reduce = useReducedMotion();
   const prefillAudience = useLeadPrefill((s) => s.audience);
   const prefillNeed = useLeadPrefill((s) => s.need);
   const prefillNonce = useLeadPrefill((s) => s.nonce);
@@ -155,9 +154,9 @@ export function ContactWizard({ contact }: { contact?: ContactInfo }) {
   };
 
   const slide = {
-    initial: reduce ? { opacity: 0 } : { opacity: 0, x: dir === "rtl" ? -24 : 24 },
+    initial: { opacity: 0, x: dir === "rtl" ? -24 : 24 },
     animate: { opacity: 1, x: 0 },
-    exit: reduce ? { opacity: 0 } : { opacity: 0, x: dir === "rtl" ? 24 : -24 },
+    exit: { opacity: 0, x: dir === "rtl" ? 24 : -24 },
     transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const },
   };
 
