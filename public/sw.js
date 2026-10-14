@@ -1,9 +1,12 @@
 /**
  * Mutjah Progressive Web App (PWA) Service Worker
- * Version: 1.0.0
+ * Version: 1.1.0
  */
 
-const CACHE_NAME = 'mutjah-pwa-v1';
+const CACHE_NAME = 'mutjah-pwa-v2';
+
+// Never cache or intercept private/dynamic areas (admin panel, API, Next data routes).
+const BYPASS_PREFIXES = ['/admin', '/api/', '/_next/data/'];
 
 const PRECACHE_ASSETS = [
   '/',
@@ -44,6 +47,11 @@ self.addEventListener('fetch', (event) => {
 
   // Ignore non-GET requests or chrome-extension URLs
   if (request.method !== 'GET' || !url.protocol.startsWith('http')) {
+    return;
+  }
+
+  // Never intercept admin/API traffic on our own origin (privacy + freshness)
+  if (url.origin === self.location.origin && BYPASS_PREFIXES.some((p) => url.pathname.startsWith(p))) {
     return;
   }
 
