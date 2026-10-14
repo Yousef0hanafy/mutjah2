@@ -1,4 +1,8 @@
+import { notFound } from "next/navigation";
 import { LanguageProvider } from "@/lib/i18n/language-provider";
+import { hasLocale, localePath } from "@/lib/i18n/config";
+import { TARGET_MARKETS, seoCopy, absoluteUrl } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n/dictionary";
 import { dictionaries } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
 import { db } from "@/lib/db";
@@ -18,51 +22,38 @@ import { ContactWizard } from "@/components/site/contact-wizard";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 
-export const dynamic = "force-dynamic";
+/**
+ * Statically generated per locale (/ar, /en) and refreshed hourly. Admin edits
+ * trigger on-demand revalidation (see revalidateSite) so changes show up instantly.
+ */
+export const revalidate = 3600;
 
-/** Markets served — remote-first across the Arab world. */
-const AREA_SERVED = [
-  "Saudi Arabia",
-  "United Arab Emirates",
-  "Qatar",
-  "Kuwait",
-  "Bahrain",
-  "Oman",
-  "Jordan",
-  "Lebanon",
-  "Iraq",
-  "Palestine",
-  "Yemen",
-  "Morocco",
-  "Algeria",
-  "Tunisia",
-  "Libya",
-  "Sudan",
-  "Mauritania",
-  "Somalia",
-  "Djibouti",
-].map((name) => ({ "@type": "Country", name }));
+/** Markets served: Egypt first, then Saudi Arabia. */
+const AREA_SERVED = TARGET_MARKETS.map((m) => ({ "@type": "Country", name: m.name }));
 
 /** Structured data — Organization, WebSite, ProfessionalService, FAQPage (+ reviews when published) */
 function JsonLd({
+  locale,
   reviews,
   faqs,
   services,
 }: {
-  reviews: Array<{ name: string; quoteAr: string }>;
+  locale: Locale;
+  reviews: Array<{ name: string; quote: string }>;
   faqs: Array<{ q: string; a: string }>;
   services: Array<{ title: string; desc: string }>;
 }) {
-  const ar = dictionaries.ar;
-  const en = dictionaries.en;
-  const url = siteConfig.url;
+  const t = dictionaries[locale];
+  const root = siteConfig.url;
+  const url = absoluteUrl(localePath(locale));
+  const orgId = `${root}/#organization`;
 
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${url}/#organization`,
+        "@id": orgId,
         name: "MUTJAH",
         alternateName: [
           "مُتَّجَه",
@@ -73,11 +64,23 @@ function JsonLd({
           "شركة متجة",
           "شركة مُتَّجَه",
         ],
-        url,
-        logo: `${url}/icon.png`,
-        image: `${url}${siteConfig.ogImage}`,
-        description: en.footer.descriptor,
-        slogan: ar.hero.titleA + " " + ar.hero.titleB,
+        url: root,
+        logo: `${root}/icon.png`,
+        image: `${root}${siteConfig.ogImage}`,
+        description: t.footer.descriptor,
+        slogan: `${t.hero.titleA} ${t.hero.titleB}`,
+        ...(siteConfig.email || siteConfig.whatsapp
+          ? {
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                availableLanguage: ["Arabic", "English"],
+                areaServed: TARGET_MARKETS.map((m) => m.code),
+                ...(siteConfig.email ? { email: siteConfig.email } : {}),
+                ...(siteConfig.whatsapp ? { telephone: `+${siteConfig.whatsapp}` } : {}),
+              },
+            }
+          : {}),
         areaServed: AREA_SERVED,
         ...(siteConfig.linkedin || siteConfig.facebook
           ? {
@@ -95,31 +98,41 @@ function JsonLd({
       },
       {
         "@type": "WebSite",
-        "@id": `${url}/#website`,
-        url,
+        "@id": `${root}/#website`,
+        url: root,
         name: "MUTJAH | مُتَّجَه",
         inLanguage: ["ar", "en"],
-        publisher: { "@id": `${url}/#organization` },
+        publisher: { "@id": orgId },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: seoCopy[locale].title,
+        description: seoCopy[locale].description,
+        inLanguage: locale,
+        isPartOf: { "@id": `${root}/#website` },
+        about: { "@id": orgId },
       },
       {
         "@type": "ProfessionalService",
-        "@id": `${url}/#service`,
+        "@id": `${root}/#service`,
         name: "MUTJAH مُتَّجَه",
-        url,
-        image: `${url}${siteConfig.ogImage}`,
-        description: ar.footer.descriptor,
+        url: root,
+        image: `${root}${siteConfig.ogImage}`,
+        description: t.footer.descriptor,
         areaServed: AREA_SERVED,
-        parentOrganization: { "@id": `${url}/#organization` },
+        parentOrganization: { "@id": orgId },
         ...(reviews.length > 0 && {
           review: reviews.map((r) => ({
             "@type": "Review",
-            reviewBody: r.quoteAr,
+            reviewBody: r.quote,
             author: { "@type": "Person", name: r.name },
           })),
         }),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: ar.services.heading,
+          name: t.services.heading,
           itemListElement: services.map((s) => ({
             "@type": "Offer",
             itemOffered: {
@@ -133,7 +146,8 @@ function JsonLd({
       },
       {
         "@type": "FAQPage",
-        "@id": `${url}/#faq`,
+        "@id": `${url}#faq`,
+        inLanguage: locale,
         mainEntity: faqs.map((f) => ({
           "@type": "Question",
           name: f.q,
@@ -149,6 +163,17 @@ function JsonLd({
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
+}
+
+/**
+ * DB reads are cached by ISR, so a transient DB failure must NOT be baked into the cache as
+ * "empty content": in production we rethrow (Next keeps serving the last good page and a failed
+ * build never ships fallback copy by accident). Set ALLOW_DB_FALLBACK=1 to render the dictionary
+ * fallback anyway (local development / CI builds without a database).
+ */
+function handleDbError(scope: string, err: unknown): void {
+  console.error(`[page] failed to load ${scope}:`, err);
+  if (process.env.NODE_ENV === "production" && process.env.ALLOW_DB_FALLBACK !== "1") throw err;
 }
 
 /** Published projects from the DB — fallback to dictionary happens in <Work>. */
@@ -171,7 +196,7 @@ async function getWorkProjects(): Promise<WorkProjectData[] | undefined> {
       coverPath: r.coverPath,
     }));
   } catch (err) {
-    console.error("[page] failed to load projects:", err);
+    handleDbError("projects", err);
     return undefined;
   }
 }
@@ -192,7 +217,7 @@ async function getPublishedTestimonials() {
       avatarPath: r.avatarPath,
     }));
   } catch (err) {
-    console.error("[page] failed to load testimonials:", err);
+    handleDbError("testimonials", err);
     return undefined;
   }
 }
@@ -204,7 +229,7 @@ async function getPublishedFaqs(): Promise<FaqItemData[] | undefined> {
     if (rows.length === 0) return undefined;
     return rows.map((r) => ({ id: r.id, qAr: r.qAr, qEn: r.qEn, aAr: r.aAr, aEn: r.aEn }));
   } catch (err) {
-    console.error("[page] failed to load faqs:", err);
+    handleDbError("faqs", err);
     return undefined;
   }
 }
@@ -227,7 +252,7 @@ async function getPublishedServices(): Promise<ServiceItemData[] | undefined> {
       deliverablesEn: parseJsonArray(r.deliverablesEn),
     }));
   } catch (err) {
-    console.error("[page] failed to load services:", err);
+    handleDbError("services", err);
     return undefined;
   }
 }
@@ -244,35 +269,48 @@ async function getContactSettings(): Promise<ContactInfo> {
       whatsapp: map.contact_whatsapp || siteConfig.whatsapp,
     };
   } catch (err) {
-    console.error("[page] failed to load contact settings:", err);
+    handleDbError("contact settings", err);
     return { email: siteConfig.email, whatsapp: siteConfig.whatsapp };
   }
 }
 
-export default async function Home() {
-  const workProjects = await getWorkProjects();
-  const testimonials = await getPublishedTestimonials();
-  const faqs = await getPublishedFaqs();
-  const services = await getPublishedServices();
-  const contact = await getContactSettings();
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: rawLocale } = await params;
+  if (!hasLocale(rawLocale)) notFound();
+  const locale: Locale = rawLocale;
 
+  const [workProjects, testimonials, faqs, services, contact] = await Promise.all([
+    getWorkProjects(),
+    getPublishedTestimonials(),
+    getPublishedFaqs(),
+    getPublishedServices(),
+    getContactSettings(),
+  ]);
+
+  const isAr = locale === "ar";
+  const t = dictionaries[locale];
   const jsonLdFaqs =
     faqs && faqs.length > 0
-      ? faqs.map((f) => ({ q: f.qAr, a: f.aAr }))
-      : dictionaries.ar.faq.items.map((f) => ({ q: f.q, a: f.a }));
+      ? faqs.map((f) => ({ q: isAr ? f.qAr : f.qEn, a: isAr ? f.aAr : f.aEn }))
+      : t.faq.items.map((f) => ({ q: f.q, a: f.a }));
   const jsonLdServices =
     services && services.length > 0
-      ? services.map((s) => ({ title: s.titleAr, desc: s.descAr }))
-      : dictionaries.ar.services.items.map((s) => ({ title: s.title, desc: s.desc }));
+      ? services.map((s) => ({ title: isAr ? s.titleAr : s.titleEn, desc: isAr ? s.descAr : s.descEn }))
+      : t.services.items.map((s) => ({ title: s.title, desc: s.desc }));
 
   return (
-    <LanguageProvider>
-      <JsonLd reviews={testimonials ?? []} faqs={jsonLdFaqs} services={jsonLdServices} />
+    <LanguageProvider locale={locale}>
+      <JsonLd
+        locale={locale}
+        reviews={(testimonials ?? []).map((r) => ({ name: r.name, quote: isAr ? r.quoteAr : r.quoteEn }))}
+        faqs={jsonLdFaqs}
+        services={jsonLdServices}
+      />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-canvas"
       >
-        تخطَّ إلى المحتوى
+        {t.misc.skipToContent}
       </a>
       <Header />
       <main id="main" className="flex min-h-screen flex-col">

@@ -1,19 +1,16 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
+import { locales, localePath } from "@/lib/i18n/config";
+import { absoluteUrl, languageAlternates } from "@/lib/seo";
+
+// Bump when the public content meaningfully changes (keeps lastmod honest instead of "now" on every crawl).
+const CONTENT_LAST_MODIFIED = new Date("2026-10-14");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: siteConfig.url,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: {
-        languages: {
-          ar: siteConfig.url,
-          en: siteConfig.url,
-        },
-      },
-    },
-  ];
+  return locales.map((locale) => ({
+    url: absoluteUrl(localePath(locale)),
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: "weekly",
+    priority: locale === "ar" ? 1 : 0.9,
+    alternates: { languages: languageAlternates() },
+  }));
 }

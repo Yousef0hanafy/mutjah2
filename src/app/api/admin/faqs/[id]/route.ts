@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/auth";
+import { revalidateSite } from "@/lib/revalidate";
 
 export const runtime = "nodejs";
 
@@ -26,6 +27,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       );
     }
     const faq = await db.faqItem.update({ where: { id }, data: parsed.data });
+    revalidateSite();
     return NextResponse.json({ ok: true, faq });
   } catch (err) {
     console.error("[/api/admin/faqs PATCH] error:", err);
@@ -39,6 +41,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
   try {
     const { id } = await params;
     await db.faqItem.delete({ where: { id } });
+    revalidateSite();
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[/api/admin/faqs DELETE] error:", err);

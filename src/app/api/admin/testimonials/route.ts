@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/auth";
+import { revalidateSite } from "@/lib/revalidate";
 
 export const runtime = "nodejs";
 
@@ -78,6 +79,7 @@ export async function POST(req: NextRequest) {
         order: (last?.order ?? -1) + 1,
       },
     });
+    revalidateSite();
     return NextResponse.json({ ok: true, testimonial }, { status: 201 });
   } catch (err) {
     console.error("[/api/admin/testimonials POST] error:", err);

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { AlertTriangle, Home, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +13,9 @@ export default function ErrorBoundary({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const params = useParams<{ locale?: string }>();
+  const homeHref = params.locale === "en" ? "/en" : "/ar";
+
   useEffect(() => {
     // Log runtime error for debugging
     console.error("[Application Error Boundary caught error]:", error);
@@ -68,7 +72,7 @@ export default function ErrorBoundary({
             variant="outline"
             className="h-11 rounded-xl border-white/15 bg-white/5 px-6 text-sm font-bold text-canvas hover:bg-white/10 hover:text-white"
           >
-            <Link href="/">
+            <Link href={homeHref}>
               <Home className="size-4 ms-1" aria-hidden />
               العودة للرئيسية
             </Link>

@@ -10,17 +10,20 @@ Site language: Arabic-first (RTL), English secondary.
 - Pricing policy: **never show prices or numbers** (no price ranges, no "starting from").
 - Honest-claims policy: no invented metrics, clients or testimonials. Sections without real data stay hidden.
 - AI goal: be discoverable/citable in ChatGPT, Google AI Overviews and similar engines (GEO). No on-site chat assistant.
-- SEO is a priority and is currently weak (single URL, no separate EN URLs, `force-dynamic` home).
+- SEO is a priority. Each language has its own URL (`/ar` default/x-default, `/en`); `/` 308-redirects to `/ar`.
 
 ## Layout
-- `src/app/page.tsx` — the single home page; reads DB content (projects/services/FAQ/testimonials/settings) with dictionary fallback; emits JSON-LD.
-- `src/app/layout.tsx` — metadata, fonts, GA4 + Clarity, pre-paint script (data-js fail-open guard).
-- `src/lib/i18n/dictionary.ts` — all bilingual copy (`ar` / `en`). `language-provider.tsx` stores locale in localStorage.
+- `src/app/[locale]/layout.tsx` — root layout for the public site (`<html lang dir>`, fonts, GA4 + Clarity, pre-paint fail-open script). `dynamicParams = false`, `generateStaticParams` → `/ar`, `/en`.
+- `src/app/[locale]/page.tsx` — the home page, statically generated, `revalidate = 3600`; reads DB content with dictionary fallback; emits JSON-LD (Egypt + Saudi `areaServed`). In production a DB error is rethrown so ISR keeps the last good page; set `ALLOW_DB_FALLBACK=1` to build/run without a DB.
+- `src/app/admin/layout.tsx` — separate root layout for `/admin` (no analytics, no PWA, noindex). `src/app/global-not-found.tsx` — 404 (needs `experimental.globalNotFound`).
+- `src/lib/seo.ts` — per-locale title/description/keywords, `buildMetadata`, hreflang map, target markets. `src/lib/i18n/config.ts` — locales helpers. `src/lib/revalidate.ts` — `revalidateSite()`; **every admin mutation route must call it** so edits appear immediately.
+- `src/lib/i18n/dictionary.ts` — all bilingual copy. `language-provider.tsx` takes `locale` from the URL (no localStorage); the header language switch is a real `<Link>` to the other locale.
+- `public/llms.txt`, `src/app/robots.ts` (explicitly allows AI crawlers), `src/app/sitemap.ts` — discoverability for search + AI engines.
 - `src/lib/site-config.ts` — domain, contact channels, socials.
-- `src/components/site/*` — public sections; `src/components/admin/*` — admin panel UI; `src/components/ui/*` — shadcn.
+- `src/components/site/*` — public sections; `src/components/admin/*` — admin UI; `src/components/ui/*` — shadcn.
 - `src/app/api/leads` — public lead endpoint (zod, honeypot, DB rate limit, optional webhook).
 - `src/app/api/admin/*` — admin CRUD; every route must call `requireAdmin()` (`src/lib/admin/auth.ts`).
-- `public/sw.js` — PWA service worker.
+- `public/sw.js` — PWA service worker (bypasses /admin and /api; bump `CACHE_NAME` when precache changes).
 
 ## Commands
 - `npm run typecheck` · `npm run lint` · `npm run build` (needs `DATABASE_URL`, `DIRECT_DATABASE_URL`, `ADMIN_SESSION_SECRET` ≥32 chars; dummy values are fine for a build).

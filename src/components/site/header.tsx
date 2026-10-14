@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-provider";
@@ -34,7 +35,7 @@ function Wordmark({ className }: { className?: string }) {
 }
 
 export function Header() {
-  const { t, toggle, locale } = useLanguage();
+  const { t, switchHref, locale } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -84,13 +85,19 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Button
+            asChild
             variant="ghost"
             size="sm"
-            onClick={toggle}
-            aria-label={t.nav.switchAria}
             className="font-meta h-9 min-w-12 px-3 text-sm font-bold text-ink/70 hover:bg-ink/5 hover:text-ink"
           >
-            {t.nav.switchLabel}
+            <Link
+              href={switchHref}
+              hrefLang={locale === "ar" ? "en" : "ar"}
+              lang={locale === "ar" ? "en" : "ar"}
+              aria-label={t.nav.switchAria}
+            >
+              {t.nav.switchLabel}
+            </Link>
           </Button>
           <Button
             asChild
