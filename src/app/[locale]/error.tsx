@@ -6,6 +6,25 @@ import { useParams } from "next/navigation";
 import { AlertTriangle, Home, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const COPY = {
+  ar: {
+    badge: "حدث خطأ غير متوقع",
+    title: "نعتذر، حدثت مشكلة أثناء تحميل المحتوى",
+    body: "فريق مُتَّجَه يعمل باستمرار لضمان استقرار المنصة. يمكنك إعادة المحاولة الآن.",
+    ref: "رمز الخطأ المرجعي:",
+    retry: "إعادة المحاولة",
+    home: "العودة للرئيسية",
+  },
+  en: {
+    badge: "Something went wrong",
+    title: "Sorry, there was a problem loading the content",
+    body: "The MUTJAH team works to keep the platform stable. You can try again now.",
+    ref: "Reference code:",
+    retry: "Try again",
+    home: "Back to home",
+  },
+} as const;
+
 export default function ErrorBoundary({
   error,
   reset,
@@ -14,7 +33,9 @@ export default function ErrorBoundary({
   reset: () => void;
 }) {
   const params = useParams<{ locale?: string }>();
-  const homeHref = params.locale === "en" ? "/en" : "/ar";
+  const locale = params.locale === "en" ? "en" : "ar";
+  const homeHref = `/${locale}`;
+  const c = COPY[locale];
 
   useEffect(() => {
     // Log runtime error for debugging
@@ -23,7 +44,7 @@ export default function ErrorBoundary({
 
   return (
     <div
-      dir="rtl"
+      dir={locale === "en" ? "ltr" : "rtl"}
       className="flex min-h-screen flex-col items-center justify-center bg-ink px-4 text-center text-canvas selection:bg-coral selection:text-white"
     >
       <div className="relative mx-auto flex w-full max-w-md flex-col items-center">
@@ -40,20 +61,20 @@ export default function ErrorBoundary({
 
         {/* Badge */}
         <span className="inline-block rounded-full bg-coral/20 px-3.5 py-1 text-xs font-black tracking-wider text-coral">
-          حدث خطأ غير متوقع
+          {c.badge}
         </span>
 
         {/* Headings */}
         <h1 className="mt-4 text-2xl font-black tracking-tight sm:text-3xl">
-          نعتذر، حدثت مشكلة أثناء تحميل المحتوى
+          {c.title}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-canvas/60">
-          فريق مُتَّجَه يعمل باستمرار لضمان استقرار المنصة. يمكنك إعادة المحاولة الآن.
+          {c.body}
         </p>
 
         {error.digest && (
           <p className="mt-2 text-[11px] font-mono text-canvas/30" dir="ltr">
-            رمز الخطأ المرجعي: {error.digest}
+            {c.ref} {error.digest}
           </p>
         )}
 
@@ -64,7 +85,7 @@ export default function ErrorBoundary({
             className="h-11 rounded-xl bg-coral px-6 text-sm font-bold text-white shadow-lg shadow-coral/20 transition-transform hover:-translate-y-0.5 hover:bg-coral/90"
           >
             <RotateCcw className="size-4 ms-1" aria-hidden />
-            إعادة المحاولة
+            {c.retry}
           </Button>
 
           <Button
@@ -74,7 +95,7 @@ export default function ErrorBoundary({
           >
             <Link href={homeHref}>
               <Home className="size-4 ms-1" aria-hidden />
-              العودة للرئيسية
+              {c.home}
             </Link>
           </Button>
         </div>

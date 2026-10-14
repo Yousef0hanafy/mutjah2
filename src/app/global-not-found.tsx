@@ -63,8 +63,8 @@ export default function GlobalNotFound() {
             variant="outline"
             className="h-11 rounded-xl border-white/15 bg-white/5 px-6 text-sm font-bold text-canvas hover:bg-white/10 hover:text-white"
           >
-            <Link href="/ar#contact">
-              تواصل معنا
+            <Link href="/en" lang="en" dir="ltr">
+              Back to the English site
               <ArrowLeft className="size-4 me-1" aria-hidden />
             </Link>
           </Button>

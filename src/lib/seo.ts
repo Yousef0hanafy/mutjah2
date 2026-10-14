@@ -23,7 +23,7 @@ export const seoCopy: Record<Locale, SeoCopy> = {
       "متجه",
       "شركة متجه",
       "شركة حلول رقمية",
-            "تصميم وتطوير مواقع",
+      "تصميم وتطوير مواقع",
       "تطوير تطبيقات ويب",
       "أنظمة إدارة داخلية",
       "أتمتة العمليات",
@@ -51,7 +51,7 @@ export const seoCopy: Record<Locale, SeoCopy> = {
 export const absoluteUrl = (path = "") => `${siteConfig.url}${path}`;
 
 /** hreflang map: each language has its own URL; x-default is the Arabic home. */
-export function languageAlternates() {
+export function languageAlternates(): Record<string, string> {
   return {
     ...Object.fromEntries(locales.map((l) => [l, absoluteUrl(localePath(l))])),
     "x-default": absoluteUrl(localePath("ar")),

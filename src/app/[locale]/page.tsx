@@ -32,11 +32,13 @@ export const revalidate = 3600;
 /** Structured data — Organization, WebSite, ProfessionalService, FAQPage (+ reviews when published) */
 function JsonLd({
   locale,
+  contact,
   reviews,
   faqs,
   services,
 }: {
   locale: Locale;
+  contact: ContactInfo;
   reviews: Array<{ name: string; quote: string }>;
   faqs: Array<{ q: string; a: string }>;
   services: Array<{ title: string; desc: string }>;
@@ -67,14 +69,14 @@ function JsonLd({
         image: `${root}${siteConfig.ogImage}`,
         description: t.footer.descriptor,
         slogan: `${t.hero.titleA} ${t.hero.titleB}`,
-        ...(siteConfig.email || siteConfig.whatsapp
+        ...(contact.email || contact.whatsapp
           ? {
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "sales",
                 availableLanguage: ["Arabic", "English"],
-                ...(siteConfig.email ? { email: siteConfig.email } : {}),
-                ...(siteConfig.whatsapp ? { telephone: `+${siteConfig.whatsapp}` } : {}),
+                ...(contact.email ? { email: contact.email } : {}),
+                ...(contact.whatsapp ? { telephone: `+${contact.whatsapp}` } : {}),
               },
             }
           : {}),
@@ -134,7 +136,7 @@ function JsonLd({
               "@type": "Service",
               name: s.title,
               description: s.desc,
-                  },
+            },
           })),
         },
       },
@@ -170,10 +172,24 @@ function handleDbError(scope: string, err: unknown): void {
   if (process.env.NODE_ENV === "production" && process.env.ALLOW_DB_FALLBACK !== "1") throw err;
 }
 
+/** One short retry absorbs a Neon cold start or pooler blip so it doesn't fail a build or an ISR refresh. */
+async function withRetry<T>(fn: () => Promise<T>, attempts = 3): Promise<T> {
+  let lastErr: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 400 * (i + 1)));
+    }
+  }
+  throw lastErr;
+}
+
 /** Published projects from the DB — fallback to dictionary happens in <Work>. */
 async function getWorkProjects(): Promise<WorkProjectData[] | undefined> {
   try {
-    const rows = await db.project.findMany({ where: { published: true }, orderBy: { order: "asc" } });
+    const rows = await withRetry(() => db.project.findMany({ where: { published: true }, orderBy: { order: "asc" } }));
     if (rows.length === 0) return undefined;
     return rows.map((r) => ({
       id: r.id,
@@ -198,7 +214,7 @@ async function getWorkProjects(): Promise<WorkProjectData[] | undefined> {
 /** Published testimonials from the DB — section + Review schema hide when empty. */
 async function getPublishedTestimonials() {
   try {
-    const rows = await db.testimonial.findMany({ where: { published: true }, orderBy: { order: "asc" } });
+    const rows = await withRetry(() => db.testimonial.findMany({ where: { published: true }, orderBy: { order: "asc" } }));
     if (rows.length === 0) return undefined;
     return rows.map((r) => ({
       id: r.id,
@@ -219,7 +235,7 @@ async function getPublishedTestimonials() {
 /** Published FAQ items from the DB. */
 async function getPublishedFaqs(): Promise<FaqItemData[] | undefined> {
   try {
-    const rows = await db.faqItem.findMany({ where: { published: true }, orderBy: { order: "asc" } });
+    const rows = await withRetry(() => db.faqItem.findMany({ where: { published: true }, orderBy: { order: "asc" } }));
     if (rows.length === 0) return undefined;
     return rows.map((r) => ({ id: r.id, qAr: r.qAr, qEn: r.qEn, aAr: r.aAr, aEn: r.aEn }));
   } catch (err) {
@@ -231,7 +247,7 @@ async function getPublishedFaqs(): Promise<FaqItemData[] | undefined> {
 /** Published services from the DB. */
 async function getPublishedServices(): Promise<ServiceItemData[] | undefined> {
   try {
-    const rows = await db.serviceItem.findMany({ where: { published: true }, orderBy: { order: "asc" } });
+    const rows = await withRetry(() => db.serviceItem.findMany({ where: { published: true }, orderBy: { order: "asc" } }));
     if (rows.length === 0) return undefined;
     return rows.map((r) => ({
       id: r.id,
@@ -254,9 +270,11 @@ async function getPublishedServices(): Promise<ServiceItemData[] | undefined> {
 /** Contact channels from DB settings — siteConfig values as fallback. */
 async function getContactSettings(): Promise<ContactInfo> {
   try {
-    const rows = await db.siteSetting.findMany({
-      where: { key: { in: ["contact_email", "contact_whatsapp"] } },
-    });
+    const rows = await withRetry(() =>
+      db.siteSetting.findMany({
+        where: { key: { in: ["contact_email", "contact_whatsapp"] } },
+      })
+    );
     const map = Object.fromEntries(rows.map((r) => [r.key, r.value]));
     return {
       email: map.contact_email || siteConfig.email,
@@ -296,6 +314,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <LanguageProvider locale={locale}>
       <JsonLd
         locale={locale}
+        contact={contact}
         reviews={(testimonials ?? []).map((r) => ({ name: r.name, quote: isAr ? r.quoteAr : r.quoteEn }))}
         faqs={jsonLdFaqs}
         services={jsonLdServices}

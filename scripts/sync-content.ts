@@ -15,6 +15,14 @@ import { PrismaClient } from "@prisma/client";
 import { dictionaries } from "../src/lib/i18n/dictionary";
 
 const db = new PrismaClient();
+
+/** Icon per service id (not per array position, so reordering the dictionary cannot mismatch icons). */
+const SERVICE_ICONS: Record<string, string> = {
+  website: "globe",
+  product: "layout-grid",
+  system: "database",
+  automation: "bot",
+};
 const apply = process.argv.includes("--yes");
 
 async function main() {
@@ -25,7 +33,7 @@ async function main() {
     const e = en.services.items.find((x) => x.id === s.id);
     return {
       order: i,
-      icon: ["globe", "layout-grid", "database", "bot"][i] ?? "globe",
+      icon: SERVICE_ICONS[s.id] ?? "globe",
       titleAr: s.title,
       titleEn: e?.title ?? s.title,
       needAr: s.need,
@@ -62,7 +70,8 @@ async function main() {
     db.faqItem.deleteMany(),
     db.faqItem.createMany({ data: faqs }),
   ]);
-  console.log("\n✓ Services and FAQ replaced from the dictionary.");
+  console.log("\n✓ Services and FAQ replaced from the dictionary (unpublished drafts included were removed).");
+  console.log("Note: this script runs outside Next, so it cannot revalidate. Pages refresh within the hour, or save anything in /admin to refresh /ar and /en immediately.");
 }
 
 main()
