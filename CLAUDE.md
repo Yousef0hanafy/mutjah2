@@ -26,7 +26,7 @@ Site language: Arabic-first (RTL), English secondary.
 - `public/sw.js` — PWA service worker (bypasses /admin and /api; bump `CACHE_NAME` when precache changes).
 
 ## Commands
-- `npm run typecheck` · `npm run lint` · `npm run build` (needs `DATABASE_URL`, `DIRECT_DATABASE_URL`, `ADMIN_SESSION_SECRET` ≥32 chars; dummy values are fine for a build).
+- `npm run typecheck` · `npm run lint` · `npm run build` (needs `DATABASE_URL`, `DIRECT_DATABASE_URL`, `ADMIN_SESSION_SECRET` ≥32 chars; without a reachable DB also set `ALLOW_DB_FALLBACK=1`, otherwise the production build fails on purpose).
 - `npm run db:push` — schema push to the real DB. It no longer passes `--accept-data-loss`; never add it back without asking.
 
 ## Cloud-sandbox install note
