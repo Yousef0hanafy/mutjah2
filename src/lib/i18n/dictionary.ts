@@ -27,19 +27,19 @@ const ar = {
     why: "لماذا مُتَّجَه",
     faq: "الأسئلة الشائعة",
     contact: "تواصل",
-    cta: "ابدأ من احتياجك",
+    cta: "ابدأ من وجهتك",
     switchLabel: "EN",
     switchAria: "التبديل إلى الإنجليزية",
     openMenu: "فتح القائمة",
     closeMenu: "إغلاق القائمة",
   },
   hero: {
-    eyebrow: "شركة حلول رقمية تنفيذية — العالم العربي",
+    eyebrow: "شركة حلول رقمية تنفيذية",
     titleA: "لكل عمل اتجاه.",
     titleB: "نبني ما يحرّكه.",
     subtitle:
-      "من المواقع والمنصات إلى الأنظمة والأتمتة وحلول الذكاء الاصطناعي — نبني ما يحتاجه عملك أو فكرتك لينتقل من الاحتياج إلى شيء يعمل.",
-    ctaPrimary: "ابدأ من احتياجك",
+      "فكرة أو عمل قائم؟ نبني لك موقعًا أو منصة أو نظامًا يعمل فعلًا، ونرافقك في كل محطة حتى يعمل.",
+    ctaPrimary: "ابدأ من وجهتك",
     ctaSecondary: "شاهد ما بنيناه",
     chips: ["مواقع", "منتجات رقمية", "أنظمة", "أتمتة", "ذكاء اصطناعي تطبيقي"],
     route: {
@@ -49,9 +49,18 @@ const ar = {
     },
     scrollHint: "اكتشف الطريقة",
   },
+  assurances: {
+    label: "على ماذا تطمئن",
+    items: [
+      { title: "نطاق مكتوب قبل أي تنفيذ", desc: "تعرف ماذا نبني وماذا لا نبني الآن، قبل أن نبدأ." },
+      { title: "أعمال حية بحالتها الحقيقية", desc: "نعرض كل مشروع كما هو: منصة حية، أو منتج منشور، أو نموذج وظيفي." },
+      { title: "ملكية كاملة لما بُني", desc: "تستلم التسليم والتوثيق، وما بُني لك يبقى لك." },
+      { title: "ذكاء اصطناعي بموافقة بشرية", desc: "وظيفة محددة ونقاط تدخل بشري، لا ميزة للعرض." },
+    ],
+  },
   movement: {
     label: "الحركة التي نصنعها",
-    heading: "كل مشروع هو انتقال من حالة إلى حالة أفضل",
+    heading: "من أين تبدأ؟ وإلى أين تريد أن تصل؟",
     items: [
       { from: "احتياج غامض", to: "مشكلة محددة" },
       { from: "فكرة", to: "منتج قابل للاستخدام" },
@@ -75,7 +84,7 @@ const ar = {
   },
   services: {
     label: "الخدمات",
-    heading: "أربعة أبواب، تُشكَّل حول احتياجك",
+    heading: "أربعة أبواب نحو وجهتك، تُشكَّل حول احتياجك",
     sub: "خدمات مستقلة قابلة للدمج — لا باقات جاهزة تفرض شكلًا قبل فهم المشكلة. نجمع ما يحتاجه عملك فقط، ونبنيه ليُستخدم فعلًا.",
     needLabel: "متى تحتاجها؟",
     includesLabel: "ماذا تشمل؟",
@@ -272,7 +281,7 @@ const ar = {
   },
   why: {
     label: "لماذا مُتَّجَه",
-    heading: "مبادئ تتحكم في كل قرار",
+    heading: "بوصلتنا: مبادئ تتحكم في كل قرار",
     sub: "اسمنا مُتَّجَه لأننا نؤمن أن لكل إنسان ولكل عمل اتجاهًا. وما يدفعنا حقًّا هو حب مساعدة الناس — شركات وأفرادًا، مؤسسين ومحترفين — على أن يعرفوا وجهتهم ويصلوا إليها بشيء يعمل فعلًا.",
     quote: "نبدأ بالحركة المطلوبة، لا بالخدمة التي نريد بيعها.",
     items: [
@@ -304,7 +313,7 @@ const ar = {
   },
   faq: {
     label: "الأسئلة الشائعة",
-    heading: "أسئلة تصلح بداية أي محادثة",
+    heading: "ما الذي تحتاج معرفته قبل أن تتحرك؟",
     items: [
       {
         q: "كيف تبدأ العمل مع مُتَّجَه؟",
@@ -349,9 +358,9 @@ const ar = {
     ],
   },
   contact: {
-    label: "ابدأ من احتياجك",
-    heading: "ما الذي يحتاج أن يتحرك في عملك؟",
-    sub: "أربع خطوات قصيرة تصل بك من الاحتياج إلى طلب واضح. نقرأ كل طلب بأنفسنا ونرد شخصيًا.",
+    label: "ابدأ من وجهتك",
+    heading: "إلى أين تريد أن تصل؟",
+    sub: "أربع خطوات قصيرة نحدد بها نقطة البداية ووجهتك. نقرأ كل طلب بأنفسنا ونرد شخصيًا.",
     steps: ["من أنت؟", "الاحتياج", "التواصل", "تم"],
     step1: {
       title: "أخبرنا: من أنت؟",
@@ -419,8 +428,8 @@ const ar = {
     navTitle: "روابط",
     servicesTitle: "الأبواب الأربعة",
     contactTitle: "تواصل",
-    contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من احتياجك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
-    location: "نعمل عن بُعد مع فرق وأعمال في كل العالم العربي.",
+    contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من وجهتك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
+    location: "نعمل عن بُعد، ونتواصل معك بالعربية أو الإنجليزية.",
     rights: "جميع الحقوق محفوظة.",
     crafted: "هذا الموقع صُمّم وبُني داخليًا بواسطة مُتَّجَه — عيّنة مباشرة من مستوى تنفيذنا.",
   },
@@ -445,19 +454,19 @@ const en: Dictionary = {
     why: "Why MUTJAH",
     faq: "FAQ",
     contact: "Contact",
-    cta: "Start from your need",
+    cta: "Start from your destination",
     switchLabel: "عربي",
     switchAria: "Switch to Arabic",
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },
   hero: {
-    eyebrow: "Execution-led digital solutions — Arab world",
+    eyebrow: "Execution-led digital solutions company",
     titleA: "Every business has a direction.",
     titleB: "We build what moves it forward.",
     subtitle:
-      "From websites and platforms to systems, automation, and applied AI — we build what your business or idea needs to move from intention to something that works.",
-    ctaPrimary: "Start from your need",
+      "An idea, or a business already running? We build the website, platform or system that actually works — and walk with you through every station until it does.",
+    ctaPrimary: "Start from your destination",
     ctaSecondary: "See what we built",
     chips: ["Websites", "Digital products", "Systems", "Automation", "Applied AI"],
     route: {
@@ -467,9 +476,18 @@ const en: Dictionary = {
     },
     scrollHint: "Explore the way",
   },
+  assurances: {
+    label: "What you can rely on",
+    items: [
+      { title: "Written scope before any build", desc: "You know what we build and what we don't build now, before we start." },
+      { title: "Live work, shown as it really is", desc: "Every project appears as it is: a live platform, a deployed product, or a functional MVP." },
+      { title: "Full ownership of what's built", desc: "You receive handover and documentation, and what was built for you stays yours." },
+      { title: "AI with human approval", desc: "A defined job and human-approval points, not a feature for show." },
+    ],
+  },
   movement: {
     label: "The movement we create",
-    heading: "Every project is a transition from one state to a better one",
+    heading: "Where do you start — and where do you want to arrive?",
     items: [
       { from: "An unclear need", to: "A defined problem" },
       { from: "An idea", to: "A usable product" },
@@ -493,7 +511,7 @@ const en: Dictionary = {
   },
   services: {
     label: "Services",
-    heading: "Four doors, shaped around your need",
+    heading: "Four doors toward your destination, shaped around your need",
     sub: "Independent, combinable services — not ready-made packages that impose a shape before understanding the problem. We assemble only what your business needs, and build it to be actually used.",
     needLabel: "When do you need it?",
     includesLabel: "What it includes",
@@ -690,7 +708,7 @@ const en: Dictionary = {
   },
   why: {
     label: "Why MUTJAH",
-    heading: "Principles that govern every decision",
+    heading: "Our compass: principles that govern every decision",
     sub: "We are called MUTJAH because we believe every person and every business has a direction. What truly drives us is a love of helping people — companies and individuals, founders and professionals — know where they are heading and get there with something that actually works.",
     quote: "We start with the movement that's required — not the service we want to sell.",
     items: [
@@ -722,7 +740,7 @@ const en: Dictionary = {
   },
   faq: {
     label: "FAQ",
-    heading: "Questions that start any conversation well",
+    heading: "What to know before you move",
     items: [
       {
         q: "How does working with MUTJAH start?",
@@ -767,9 +785,9 @@ const en: Dictionary = {
     ],
   },
   contact: {
-    label: "Start from your need",
-    heading: "What needs to move in your business?",
-    sub: "Four short steps take you from a need to a clear request. Every request is read by us and answered personally.",
+    label: "Start from your destination",
+    heading: "Where do you want to arrive?",
+    sub: "Four short steps to mark your starting point and your destination. Every request is read by us and answered personally.",
     steps: ["Who you are", "The need", "Contact", "Done"],
     step1: {
       title: "Tell us: who are you?",
@@ -838,8 +856,8 @@ const en: Dictionary = {
     navTitle: "Links",
     servicesTitle: "The four doors",
     contactTitle: "Contact",
-    contactMsg: "The fastest way to reach us is the 'Start from your need' form — your request arrives organized and ready to discuss.",
-    location: "Remote-first — working with teams across the Arab world.",
+    contactMsg: "The fastest way to reach us is the 'Start from your destination' form — your request arrives organized and ready to discuss.",
+    location: "Remote-first — we work with you in Arabic or English.",
     rights: "All rights reserved.",
     crafted: "This website was designed and built in-house by MUTJAH — a direct sample of our execution level.",
   },

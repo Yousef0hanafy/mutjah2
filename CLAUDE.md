@@ -7,7 +7,7 @@ Site language: Arabic-first (RTL), English secondary.
 ## Business goals (drive every decision)
 - The site must read as a credible tech company that creates real value **and** convert visitors into leads (sales).
 - **Audience: companies AND individuals** (founders, professionals) — never write copy that addresses companies only.
-- **Market priority (internal strategy only): Egypt first, Saudi Arabia second.** Do NOT name countries in visible copy, titles, schema or llms.txt — the public scope stays open to everyone in the Arab world.
+- **Market priority (internal strategy only): Egypt first, Saudi Arabia second.** Do NOT name countries in visible copy, titles, schema or llms.txt — the public scope stays open to everyone. Do not write "Arab world" either.
 - Brand "why": we are MUTJAH (direction) because we love helping people find their direction and reach it with something that works. Copy should explain this honestly, not read as sales copy.
 - Pricing policy: **never show prices or numbers** (no price ranges, no "starting from").
 - Honest-claims policy: no invented metrics, clients or testimonials. Sections without real data stay hidden.

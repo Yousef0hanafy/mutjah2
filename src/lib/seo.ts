@@ -15,7 +15,7 @@ export const seoCopy: Record<Locale, SeoCopy> = {
   ar: {
     title: "مُتَّجَه | مواقع وأنظمة وأتمتة وذكاء اصطناعي للشركات والأفراد",
     description:
-      "مُتَّجَه شركة حلول رقمية تنفيذية للعالم العربي: نبني مواقع ومنتجات رقمية وأنظمة أعمال وأتمتة وحلول ذكاء اصطناعي تطبيقية للشركات والأفراد — من الاحتياج إلى شيء يعمل.",
+      "مُتَّجَه شركة حلول رقمية تنفيذية: نبني مواقع ومنتجات رقمية وأنظمة أعمال وأتمتة وحلول ذكاء اصطناعي تطبيقية للشركات والأفراد — لكل عمل اتجاه، ونبني ما يحرّكه.",
     ogTitle: "مُتَّجَه | لكل عمل اتجاه. نبني ما يحرّكه.",
     ogLocale: "ar_AR",
     keywords: [
@@ -23,8 +23,7 @@ export const seoCopy: Record<Locale, SeoCopy> = {
       "متجه",
       "شركة متجه",
       "شركة حلول رقمية",
-      "شركة برمجيات في الوطن العربي",
-      "تصميم وتطوير مواقع",
+            "تصميم وتطوير مواقع",
       "تطوير تطبيقات ويب",
       "أنظمة إدارة داخلية",
       "أتمتة العمليات",
@@ -34,12 +33,12 @@ export const seoCopy: Record<Locale, SeoCopy> = {
   en: {
     title: "MUTJAH | Websites, Systems, Automation & AI for Companies and Individuals",
     description:
-      "MUTJAH is an execution-led digital solutions company for the Arab world. Websites, digital products, business systems, automation and applied AI for companies and individuals — from a real need to something that works.",
+      "MUTJAH is an execution-led digital solutions company. Websites, digital products, business systems, automation and applied AI for companies and individuals — every business has a direction, and we build what moves it forward.",
     ogTitle: "MUTJAH | Every business has a direction. We build what moves it forward.",
     ogLocale: "en_US",
     keywords: [
       "MUTJAH",
-      "digital solutions company Arab world",
+      "digital solutions company",
       "web development",
       "business systems",
       "business automation",

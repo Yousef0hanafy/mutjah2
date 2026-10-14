@@ -9,6 +9,7 @@ import { db } from "@/lib/db";
 import { parseJsonArray, type ContactInfo, type FaqItemData, type ServiceItemData, type WorkProjectData } from "@/lib/admin/types";
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
+import { Assurances } from "@/components/site/assurances";
 import { Movement } from "@/components/site/movement";
 import { RouteLab } from "@/components/site/route-lab";
 import { Services } from "@/components/site/services";
@@ -308,6 +309,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Header />
       <main id="main" className="flex min-h-screen flex-col">
         <Hero />
+        <Assurances />
         <Movement />
         <RouteLab />
         <Services services={services} />

@@ -1,7 +1,7 @@
 # MUTJAH (مُتَّجَه)
 
-> MUTJAH is an execution-led digital solutions company for the Arab world, working with companies and individuals. We build websites, digital products and platforms, internal business systems, workflow automation and applied AI — Arabic-first (native RTL) with credible English. Remote-first.
-> مُتَّجَه شركة حلول رقمية تنفيذية للعالم العربي، نعمل مع الشركات والأفراد: مواقع، منتجات ومنصات رقمية، أنظمة أعمال، أتمتة، وحلول ذكاء اصطناعي تطبيقية — بالعربية أولًا وبإنجليزية موثوقة.
+> MUTJAH is an execution-led digital solutions company working with companies and individuals. We build websites, digital products and platforms, internal business systems, workflow automation and applied AI — Arabic-first (native RTL) with credible English. Remote-first.
+> مُتَّجَه شركة حلول رقمية تنفيذية، نعمل مع الشركات والأفراد: مواقع، منتجات ومنصات رقمية، أنظمة أعمال، أتمتة، وحلول ذكاء اصطناعي تطبيقية — بالعربية أولًا وبإنجليزية موثوقة.
 
 ## Pages
 - [Arabic home / الصفحة الرئيسية](https://mutjah.com/ar): services, process, work, FAQ and contact form in Arabic
