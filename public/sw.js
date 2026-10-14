@@ -1,12 +1,15 @@
 /**
  * Mutjah Progressive Web App (PWA) Service Worker
- * Version: 1.0.0
+ * Version: 1.2.0
  */
 
-const CACHE_NAME = 'mutjah-pwa-v1';
+const CACHE_NAME = 'mutjah-pwa-v3';
+
+// Never cache or intercept private/dynamic areas (admin panel, API, Next data routes).
+const BYPASS_PREFIXES = ['/admin', '/api/', '/_next/data/'];
 
 const PRECACHE_ASSETS = [
-  '/',
+  '/ar',
   '/favicon.ico',
   '/logo.svg',
   '/icons/icon-192.png',
@@ -47,6 +50,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Never intercept admin/API traffic on our own origin (privacy + freshness)
+  if (url.origin === self.location.origin && BYPASS_PREFIXES.some((p) => url.pathname.startsWith(p))) {
+    return;
+  }
+
   // 1. Navigation requests (HTML pages): Network-first with cache fallback
   if (request.mode === 'navigate') {
     event.respondWith(
@@ -63,7 +71,7 @@ self.addEventListener('fetch', (event) => {
         .catch(async () => {
           const cachedResponse = await caches.match(request);
           if (cachedResponse) return cachedResponse;
-          const fallback = await caches.match('/');
+          const fallback = await caches.match('/ar');
           if (fallback) return fallback;
           return new Response('Offline', { status: 503, statusText: 'Offline' });
         })

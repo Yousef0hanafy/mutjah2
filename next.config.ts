@@ -25,6 +25,16 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   reactStrictMode: true,
+  experimental: {
+    // Serves app/global-not-found.tsx for URLs that match no route (admin and site have separate root layouts)
+    globalNotFound: true,
+  },
+  async redirects() {
+    return [
+      // The bare domain redirects to the Arabic home (x-default); each language has its own URL.
+      { source: "/", destination: "/ar", permanent: true },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

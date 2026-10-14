@@ -27,19 +27,19 @@ const ar = {
     why: "لماذا مُتَّجَه",
     faq: "الأسئلة الشائعة",
     contact: "تواصل",
-    cta: "ابدأ من احتياجك",
+    cta: "ابدأ من وجهتك",
     switchLabel: "EN",
     switchAria: "التبديل إلى الإنجليزية",
     openMenu: "فتح القائمة",
     closeMenu: "إغلاق القائمة",
   },
   hero: {
-    eyebrow: "شركة حلول رقمية تنفيذية — العالم العربي",
+    eyebrow: "شركة حلول رقمية تنفيذية",
     titleA: "لكل عمل اتجاه.",
     titleB: "نبني ما يحرّكه.",
     subtitle:
-      "من المواقع والمنصات إلى الأنظمة والأتمتة وحلول الذكاء الاصطناعي — نبني ما يحتاجه عملك لينتقل من الاحتياج إلى شيء يعمل.",
-    ctaPrimary: "ابدأ من احتياجك",
+      "فكرة أو عمل قائم؟ نبني لك موقعًا أو منصة أو نظامًا يعمل فعلًا، ونرافقك في كل محطة حتى يعمل.",
+    ctaPrimary: "ابدأ من وجهتك",
     ctaSecondary: "شاهد ما بنيناه",
     chips: ["مواقع", "منتجات رقمية", "أنظمة", "أتمتة", "ذكاء اصطناعي تطبيقي"],
     route: {
@@ -49,9 +49,18 @@ const ar = {
     },
     scrollHint: "اكتشف الطريقة",
   },
+  assurances: {
+    label: "على ماذا تطمئن",
+    items: [
+      { title: "نطاق مكتوب قبل أي تنفيذ", desc: "تعرف ماذا نبني وماذا لا نبني الآن، قبل أن نبدأ." },
+      { title: "أعمال حية بحالتها الحقيقية", desc: "نعرض كل مشروع كما هو: منصة حية، أو منتج منشور، أو نموذج وظيفي." },
+      { title: "ملكية كاملة لما بُني", desc: "تستلم التسليم والتوثيق، وما بُني لك يبقى لك." },
+      { title: "ذكاء اصطناعي بموافقة بشرية", desc: "وظيفة محددة ونقاط تدخل بشري، لا ميزة للعرض." },
+    ],
+  },
   movement: {
     label: "الحركة التي نصنعها",
-    heading: "كل مشروع هو انتقال من حالة إلى حالة أفضل",
+    heading: "من أين تبدأ؟ وإلى أين تريد أن تصل؟",
     items: [
       { from: "احتياج غامض", to: "مشكلة محددة" },
       { from: "فكرة", to: "منتج قابل للاستخدام" },
@@ -75,7 +84,7 @@ const ar = {
   },
   services: {
     label: "الخدمات",
-    heading: "أربعة أبواب، تُشكَّل حول احتياجك",
+    heading: "أربعة أبواب نحو وجهتك، تُشكَّل حول احتياجك",
     sub: "خدمات مستقلة قابلة للدمج — لا باقات جاهزة تفرض شكلًا قبل فهم المشكلة. نجمع ما يحتاجه عملك فقط، ونبنيه ليُستخدم فعلًا.",
     needLabel: "متى تحتاجها؟",
     includesLabel: "ماذا تشمل؟",
@@ -272,7 +281,8 @@ const ar = {
   },
   why: {
     label: "لماذا مُتَّجَه",
-    heading: "مبادئ تتحكم في كل قرار",
+    heading: "بوصلتنا: مبادئ تتحكم في كل قرار",
+    sub: "اسمنا مُتَّجَه لأننا نؤمن أن لكل إنسان ولكل عمل اتجاهًا. وما يدفعنا حقًّا هو حب مساعدة الناس — شركات وأفرادًا، مؤسسين ومحترفين — على أن يعرفوا وجهتهم ويصلوا إليها بشيء يعمل فعلًا.",
     quote: "نبدأ بالحركة المطلوبة، لا بالخدمة التي نريد بيعها.",
     items: [
       {
@@ -303,11 +313,19 @@ const ar = {
   },
   faq: {
     label: "الأسئلة الشائعة",
-    heading: "أسئلة تصلح بداية أي محادثة",
+    heading: "ما الذي تحتاج معرفته قبل أن تتحرك؟",
     items: [
       {
         q: "كيف تبدأ العمل مع مُتَّجَه؟",
         a: "تبدأ من احتياجك. في أول محادثة قصيرة نفهم السياق والمطلوب، ثم نحدد معًا الحركة المطلوبة قبل اقتراح أي شكل تنفيذي. بعد ذلك يصلك نطاق واضح مكتوب قبل بدء أي تنفيذ.",
+      },
+      {
+        q: "ما الخدمات التي تقدمها مُتَّجَه؟",
+        a: "أربع خدمات يمكن الجمع بينها: مواقع وحضور رقمي، ومنتجات ومنصات رقمية، وأنظمة أعمال وأدوات داخلية، وأتمتة وذكاء اصطناعي تطبيقي. وبعد الإطلاق: دعم وتطوير مستمر باتفاق محدد النطاق.",
+      },
+      {
+        q: "هل تعملون مع الأفراد أم مع الشركات فقط؟",
+        a: "نعمل مع الاثنين. للشركات: موقع أو منصة أو نظام داخلي أو أتمتة. وللأفراد والمؤسسين والمحترفين: موقع شخصي أو بورتفوليو أو MVP أو أداة مركّزة — بجودة التنفيذ نفسها.",
       },
       {
         q: "هل تبيعون باقات جاهزة؟",
@@ -322,6 +340,10 @@ const ar = {
         a: "نعم. نبني تجارب عربية أولًا بواجهات RTL أصلية، وبإنجليزية موثوقة عند الحاجة — مع معالجة منظمة للمحتوى ثنائي اللغة.",
       },
       {
+        q: "ما المقصود بالذكاء الاصطناعي التطبيقي؟",
+        a: "هو استخدام الذكاء الاصطناعي في وظيفة محددة داخل عملك، مثل مساعد معرفة يجيب من مستنداتك المعتمدة، أو أتمتة تمر بنقاط موافقة بشرية ومعالجة للأخطاء. لا نقدّمه كميزة ديكورية للعرض.",
+      },
+      {
         q: "ماذا يحدث بعد الإطلاق؟",
         a: "تستلم التسليم والتوثيق وملكية كاملة لما بُني. وعند الحاجة نواصل بصيانة وتحسينات باتفاق محدد النطاق — لا دعم «غير محدود» بلا حدود.",
       },
@@ -331,14 +353,14 @@ const ar = {
       },
       {
         q: "ما التقنيات التي تستخدمونها؟",
-        a: "نختار التقنية للوظيفة لا للعرض: حديثة وموثوقة ومجرّبة في مشاريع حية. التقنية تفصيل تنفيذي نشاركه بشفافية داخل كل مشروع.",
+        a: "نختار التقنية للوظيفة لا للعرض: حديثة وموثوقة ومجرّبة في مشاريع حية. هذا الموقع نفسه مبني بـ Next.js وReact وPostgreSQL. والتقنية تفصيل تنفيذي نشاركه بشفافية داخل كل مشروع.",
       },
     ],
   },
   contact: {
-    label: "ابدأ من احتياجك",
-    heading: "ما الذي يحتاج أن يتحرك في عملك؟",
-    sub: "أربع خطوات قصيرة تصل بك من الاحتياج إلى طلب واضح. نقرأ كل طلب بأنفسنا ونرد شخصيًا.",
+    label: "ابدأ من وجهتك",
+    heading: "إلى أين تريد أن تصل؟",
+    sub: "أربع خطوات قصيرة نحدد بها نقطة البداية ووجهتك. نقرأ كل طلب بأنفسنا ونرد شخصيًا.",
     steps: ["من أنت؟", "الاحتياج", "التواصل", "تم"],
     step1: {
       title: "أخبرنا: من أنت؟",
@@ -406,8 +428,8 @@ const ar = {
     navTitle: "روابط",
     servicesTitle: "الأبواب الأربعة",
     contactTitle: "تواصل",
-    contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من احتياجك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
-    location: "نعمل عن بُعد مع فرق وأعمال في كل العالم العربي.",
+    contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من وجهتك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
+    location: "نعمل عن بُعد، ونتواصل معك بالعربية أو الإنجليزية.",
     rights: "جميع الحقوق محفوظة.",
     crafted: "هذا الموقع صُمّم وبُني داخليًا بواسطة مُتَّجَه — عيّنة مباشرة من مستوى تنفيذنا.",
   },
@@ -432,19 +454,19 @@ const en: Dictionary = {
     why: "Why MUTJAH",
     faq: "FAQ",
     contact: "Contact",
-    cta: "Start from your need",
+    cta: "Start from your destination",
     switchLabel: "عربي",
     switchAria: "Switch to Arabic",
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },
   hero: {
-    eyebrow: "Execution-led digital solutions — Arab world",
+    eyebrow: "Execution-led digital solutions company",
     titleA: "Every business has a direction.",
     titleB: "We build what moves it forward.",
     subtitle:
-      "From websites and platforms to systems, automation, and applied AI — we build what your business needs to move from intention to something that works.",
-    ctaPrimary: "Start from your need",
+      "An idea, or a business already running? We build the website, platform or system that actually works — and walk with you through every station until it does.",
+    ctaPrimary: "Start from your destination",
     ctaSecondary: "See what we built",
     chips: ["Websites", "Digital products", "Systems", "Automation", "Applied AI"],
     route: {
@@ -454,9 +476,18 @@ const en: Dictionary = {
     },
     scrollHint: "Explore the way",
   },
+  assurances: {
+    label: "What you can rely on",
+    items: [
+      { title: "Written scope before any build", desc: "You know what we build and what we don't build now, before we start." },
+      { title: "Live work, shown as it really is", desc: "Every project appears as it is: a live platform, a deployed product, or a functional MVP." },
+      { title: "Full ownership of what's built", desc: "You receive handover and documentation, and what was built for you stays yours." },
+      { title: "AI with human approval", desc: "A defined job and human-approval points, not a feature for show." },
+    ],
+  },
   movement: {
     label: "The movement we create",
-    heading: "Every project is a transition from one state to a better one",
+    heading: "Where do you start — and where do you want to arrive?",
     items: [
       { from: "An unclear need", to: "A defined problem" },
       { from: "An idea", to: "A usable product" },
@@ -480,7 +511,7 @@ const en: Dictionary = {
   },
   services: {
     label: "Services",
-    heading: "Four doors, shaped around your need",
+    heading: "Four doors toward your destination, shaped around your need",
     sub: "Independent, combinable services — not ready-made packages that impose a shape before understanding the problem. We assemble only what your business needs, and build it to be actually used.",
     needLabel: "When do you need it?",
     includesLabel: "What it includes",
@@ -677,7 +708,8 @@ const en: Dictionary = {
   },
   why: {
     label: "Why MUTJAH",
-    heading: "Principles that govern every decision",
+    heading: "Our compass: principles that govern every decision",
+    sub: "We are called MUTJAH because we believe every person and every business has a direction. What truly drives us is a love of helping people — companies and individuals, founders and professionals — know where they are heading and get there with something that actually works.",
     quote: "We start with the movement that's required — not the service we want to sell.",
     items: [
       {
@@ -708,11 +740,19 @@ const en: Dictionary = {
   },
   faq: {
     label: "FAQ",
-    heading: "Questions that start any conversation well",
+    heading: "What to know before you move",
     items: [
       {
         q: "How does working with MUTJAH start?",
         a: "It starts from your need. In a first short conversation we understand the context, then define together the movement required before proposing any deliverable. You then receive clear written scope before execution begins.",
+      },
+      {
+        q: "What services does MUTJAH offer?",
+        a: "Four services you can combine: websites and digital presence, digital products and platforms, business systems and internal tools, and automation and applied AI. After launch: ongoing support and development under a clearly scoped agreement.",
+      },
+      {
+        q: "Do you work with individuals or only with companies?",
+        a: "Both. For companies: a website, platform, internal system or automation. For individuals, founders and professionals: a personal website, portfolio, MVP or focused tool — with the same execution quality.",
       },
       {
         q: "Do you sell ready-made packages?",
@@ -727,6 +767,10 @@ const en: Dictionary = {
         a: "Yes. We build Arabic-first experiences with native RTL layouts, and credible English when required — with structured handling of bilingual content.",
       },
       {
+        q: "What do you mean by applied AI?",
+        a: "Using AI for a defined job inside your business, such as a knowledge assistant that answers from your approved documents, or automation with human-approval points and failure handling. We don't offer it as a decorative feature.",
+      },
+      {
         q: "What happens after launch?",
         a: "You receive handover, documentation, and full ownership of what was built. When needed we continue with maintenance and improvements under a clearly scoped agreement — not 'unlimited' support.",
       },
@@ -736,14 +780,14 @@ const en: Dictionary = {
       },
       {
         q: "What technologies do you use?",
-        a: "We choose technology for the job, not for the pitch: modern, reliable, and proven in live projects. Technology is an implementation detail we share transparently within each project.",
+        a: "We choose technology for the job, not for the pitch: modern, reliable, and proven in live projects. This website itself is built with Next.js, React and PostgreSQL. Technology is an implementation detail we share transparently within each project.",
       },
     ],
   },
   contact: {
-    label: "Start from your need",
-    heading: "What needs to move in your business?",
-    sub: "Four short steps take you from a need to a clear request. Every request is read by us and answered personally.",
+    label: "Start from your destination",
+    heading: "Where do you want to arrive?",
+    sub: "Four short steps to mark your starting point and your destination. Every request is read by us and answered personally.",
     steps: ["Who you are", "The need", "Contact", "Done"],
     step1: {
       title: "Tell us: who are you?",
@@ -812,8 +856,8 @@ const en: Dictionary = {
     navTitle: "Links",
     servicesTitle: "The four doors",
     contactTitle: "Contact",
-    contactMsg: "The fastest way to reach us is the 'Start from your need' form — your request arrives organized and ready to discuss.",
-    location: "Remote-first — working with teams across the Arab world.",
+    contactMsg: "The fastest way to reach us is the 'Start from your destination' form — your request arrives organized and ready to discuss.",
+    location: "Remote-first — we work with you in Arabic or English.",
     rights: "All rights reserved.",
     crafted: "This website was designed and built in-house by MUTJAH — a direct sample of our execution level.",
   },

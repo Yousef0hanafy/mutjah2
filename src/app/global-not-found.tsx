@@ -1,9 +1,19 @@
+import "./globals.css";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { alexandria, manrope } from "@/lib/fonts";
 import { ArrowLeft, Home, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function NotFound() {
+export const metadata: Metadata = {
+  title: "404 | MUTJAH مُتَّجَه",
+  robots: { index: false, follow: false },
+};
+
+export default function GlobalNotFound() {
   return (
+    <html lang="ar" dir="rtl">
+      <body className={`${alexandria.variable} ${manrope.variable} antialiased bg-background text-foreground`}>
     <div
       dir="rtl"
       className="flex min-h-screen flex-col items-center justify-center bg-ink px-4 text-center text-canvas selection:bg-vector selection:text-white"
@@ -42,7 +52,7 @@ export default function NotFound() {
             asChild
             className="h-11 rounded-xl bg-vector px-6 text-sm font-bold text-white shadow-lg shadow-vector/25 transition-transform hover:-translate-y-0.5 hover:bg-vector/90"
           >
-            <Link href="/">
+            <Link href="/ar">
               <Home className="size-4 ms-1" aria-hidden />
               العودة للرئيسية
             </Link>
@@ -53,8 +63,8 @@ export default function NotFound() {
             variant="outline"
             className="h-11 rounded-xl border-white/15 bg-white/5 px-6 text-sm font-bold text-canvas hover:bg-white/10 hover:text-white"
           >
-            <Link href="/#contact">
-              تواصل معنا
+            <Link href="/en" lang="en" dir="ltr">
+              Back to the English site
               <ArrowLeft className="size-4 me-1" aria-hidden />
             </Link>
           </Button>
@@ -65,5 +75,7 @@ export default function NotFound() {
         </div>
       </div>
     </div>
+      </body>
+    </html>
   );
 }

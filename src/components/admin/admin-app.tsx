@@ -206,7 +206,7 @@ export function AdminApp() {
               size="sm"
               className="h-9 text-sm font-semibold text-ink/70 hover:bg-ink/5 hover:text-ink"
             >
-              <a href="/" target="_blank" rel="noopener noreferrer">
+              <a href="/ar" target="_blank" rel="noopener noreferrer">
                 عرض الموقع
                 <ExternalLink className="size-4" aria-hidden />
               </a>
