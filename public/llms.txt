@@ -8,11 +8,17 @@
 - [English home](https://mutjah.com/en): the same content in English
 
 ## What we do
-- Websites & digital presence: corporate and service sites, portfolios, landing pages, bilingual RTL/LTR sites
-- Digital products & platforms: MVPs, web apps, learning/membership/booking platforms, customer portals
-- Business systems & internal tools: dashboards, workflows, approvals, internal search and reporting
-- Automation & applied AI: workflow automation, knowledge assistants, chatbots connected to approved knowledge, with human approval points
+- Business website design & development: corporate and service sites, portfolios, landing pages, bilingual RTL/LTR sites
+- Digital platforms & products: MVPs, web apps, learning/membership/booking platforms, customer portals
+- Internal business systems & operations tools: dashboards, workflows, approvals, internal search and reporting
+- Process automation & AI for business: workflow automation, knowledge assistants, chatbots connected to approved knowledge, with human approval points
 - Post-launch support: maintenance and improvement under a defined scope
+
+## Common questions
+- Do you work with businesses in Egypt and Saudi Arabia? Yes, remotely, in Arabic or English.
+- How much does it cost? We do not publish fixed prices: cost follows scope (pages, roles, integrations, automation). A written scope and estimate come after a short conversation, before any commitment.
+- Do we own what you build? Yes. Handover, documentation and full ownership are included.
+- What is applied AI? AI used for one specific job (for example answering from approved documents) with human approval points, not a showcase feature.
 
 ## How we work
 Clarify → Shape → Build → Launch → Support. Services are modular (no forced packages). Scope is written down before execution starts.
