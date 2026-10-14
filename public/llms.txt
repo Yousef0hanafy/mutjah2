@@ -1,24 +1,25 @@
 # MUTJAH (مُتَّجَه)
 
-> MUTJAH is an execution-led digital solutions company serving businesses in Egypt and Saudi Arabia. We build websites, digital products and platforms, internal business systems, workflow automation and applied AI — Arabic-first (native RTL) with credible English. Remote-first.
-> مُتَّجَه شركة حلول رقمية تنفيذية تخدم الشركات في مصر والسعودية: مواقع، منتجات ومنصات رقمية، أنظمة داخلية، أتمتة، وحلول ذكاء اصطناعي تطبيقية — بالعربية أولًا وبإنجليزية موثوقة.
+> MUTJAH is an execution-led digital solutions company for the Arab world, working with companies and individuals. We build websites, digital products and platforms, internal business systems, workflow automation and applied AI — Arabic-first (native RTL) with credible English. Remote-first.
+> مُتَّجَه شركة حلول رقمية تنفيذية للعالم العربي، نعمل مع الشركات والأفراد: مواقع، منتجات ومنصات رقمية، أنظمة أعمال، أتمتة، وحلول ذكاء اصطناعي تطبيقية — بالعربية أولًا وبإنجليزية موثوقة.
 
 ## Pages
 - [Arabic home / الصفحة الرئيسية](https://mutjah.com/ar): services, process, work, FAQ and contact form in Arabic
 - [English home](https://mutjah.com/en): the same content in English
 
 ## What we do
-- Business website design & development: corporate and service sites, portfolios, landing pages, bilingual RTL/LTR sites
-- Digital platforms & products: MVPs, web apps, learning/membership/booking platforms, customer portals
-- Internal business systems & operations tools: dashboards, workflows, approvals, internal search and reporting
-- Process automation & AI for business: workflow automation, knowledge assistants, chatbots connected to approved knowledge, with human approval points
+- Websites & digital presence: corporate and service sites, personal sites and portfolios, landing pages, bilingual RTL/LTR sites
+- Digital products & platforms: MVPs, web apps, learning/membership/booking platforms, customer portals
+- Business systems & internal tools: dashboards, workflows, approvals, internal search and reporting
+- Automation & applied AI: workflow automation, knowledge assistants, chatbots connected to approved knowledge, with human approval points
 - Post-launch support: maintenance and improvement under a defined scope
 
 ## Common questions
-- Do you work with businesses in Egypt and Saudi Arabia? Yes, remotely, in Arabic or English.
-- How much does it cost? We do not publish fixed prices: cost follows scope (pages, roles, integrations, automation). A written scope and estimate come after a short conversation, before any commitment.
+- Who do you work with? Both companies and individuals (founders and professionals).
+- Do you sell packages? No. Services are independent and combinable; the shape follows the need.
+- How long and how much? It depends on scope; after a clarification session we return with a realistic scope and timeline.
 - Do we own what you build? Yes. Handover, documentation and full ownership are included.
-- What is applied AI? AI used for one specific job (for example answering from approved documents) with human approval points, not a showcase feature.
+- What is applied AI? AI used for one defined job (for example answering from approved documents) with human-approval points, not a decorative feature.
 
 ## How we work
 Clarify → Shape → Build → Launch → Support. Services are modular (no forced packages). Scope is written down before execution starts.
@@ -29,6 +30,9 @@ Clarify → Shape → Build → Launch → Support. Services are modular (no for
 - QIDR (قِدر) — bilingual, branch-aware restaurant menu and operations platform
 - El Morabbi (المربي) — Arabic mentorship and daily-accountability platform (MVP)
 - Performance Gym — membership platform with WhatsApp sales handoff (MVP)
+
+## Why we exist
+We are called MUTJAH because we believe every person and every business has a direction. What drives us is a love of helping people — companies and individuals — know where they are heading and get there with something that actually works.
 
 ## Principles
 Direction before production; useful over impressive; built to be used; evidence over hype (no invented metrics, clients or testimonials); modular, not packaged.

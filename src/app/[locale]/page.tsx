@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { LanguageProvider } from "@/lib/i18n/language-provider";
 import { hasLocale, localePath } from "@/lib/i18n/config";
-import { TARGET_MARKETS, seoCopy, absoluteUrl } from "@/lib/seo";
+import { seoCopy, absoluteUrl } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n/dictionary";
 import { dictionaries } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
@@ -27,9 +27,6 @@ import { WhatsAppFloat } from "@/components/site/whatsapp-float";
  * trigger on-demand revalidation (see revalidateSite) so changes show up instantly.
  */
 export const revalidate = 3600;
-
-/** Markets served: Egypt first, then Saudi Arabia. */
-const AREA_SERVED = TARGET_MARKETS.map((m) => ({ "@type": "Country", name: m.name }));
 
 /** Structured data — Organization, WebSite, ProfessionalService, FAQPage (+ reviews when published) */
 function JsonLd({
@@ -75,13 +72,11 @@ function JsonLd({
                 "@type": "ContactPoint",
                 contactType: "sales",
                 availableLanguage: ["Arabic", "English"],
-                areaServed: TARGET_MARKETS.map((m) => m.code),
                 ...(siteConfig.email ? { email: siteConfig.email } : {}),
                 ...(siteConfig.whatsapp ? { telephone: `+${siteConfig.whatsapp}` } : {}),
               },
             }
           : {}),
-        areaServed: AREA_SERVED,
         ...(siteConfig.linkedin || siteConfig.facebook
           ? {
               sameAs: [siteConfig.linkedin, siteConfig.facebook].filter(Boolean),
@@ -121,7 +116,6 @@ function JsonLd({
         url: root,
         image: `${root}${siteConfig.ogImage}`,
         description: t.footer.descriptor,
-        areaServed: AREA_SERVED,
         parentOrganization: { "@id": orgId },
         ...(reviews.length > 0 && {
           review: reviews.map((r) => ({
@@ -139,8 +133,7 @@ function JsonLd({
               "@type": "Service",
               name: s.title,
               description: s.desc,
-              areaServed: AREA_SERVED,
-            },
+                  },
           })),
         },
       },

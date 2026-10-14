@@ -3,12 +3,6 @@ import type { Locale } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
 import { locales, localePath } from "@/lib/i18n/config";
 
-/** Markets MUTJAH actively targets, in priority order: Egypt first, then Saudi Arabia. */
-export const TARGET_MARKETS = [
-  { name: "Egypt", nameAr: "مصر", code: "EG" },
-  { name: "Saudi Arabia", nameAr: "المملكة العربية السعودية", code: "SA" },
-] as const;
-
 type SeoCopy = {
   title: string;
   description: string;
@@ -19,39 +13,37 @@ type SeoCopy = {
 
 export const seoCopy: Record<Locale, SeoCopy> = {
   ar: {
-    title: "مُتَّجَه | مواقع وأنظمة وأتمتة وذكاء اصطناعي للشركات في مصر والسعودية",
+    title: "مُتَّجَه | مواقع وأنظمة وأتمتة وذكاء اصطناعي للشركات والأفراد",
     description:
-      "مُتَّجَه شركة حلول رقمية تنفيذية: نبني مواقع ومنصات وأنظمة داخلية وأتمتة وحلول ذكاء اصطناعي تطبيقية للشركات في مصر والسعودية — من الاحتياج إلى شيء يعمل.",
+      "مُتَّجَه شركة حلول رقمية تنفيذية للعالم العربي: نبني مواقع ومنتجات رقمية وأنظمة أعمال وأتمتة وحلول ذكاء اصطناعي تطبيقية للشركات والأفراد — من الاحتياج إلى شيء يعمل.",
     ogTitle: "مُتَّجَه | لكل عمل اتجاه. نبني ما يحرّكه.",
-    ogLocale: "ar_EG",
+    ogLocale: "ar_AR",
     keywords: [
       "مُتَّجَه",
       "متجه",
       "شركة متجه",
       "شركة حلول رقمية",
-      "شركة برمجة في مصر",
-      "شركة برمجة في السعودية",
-      "تصميم مواقع للشركات",
+      "شركة برمجيات في الوطن العربي",
+      "تصميم وتطوير مواقع",
       "تطوير تطبيقات ويب",
       "أنظمة إدارة داخلية",
       "أتمتة العمليات",
-      "حلول الذكاء الاصطناعي للشركات",
+      "ذكاء اصطناعي تطبيقي",
     ],
   },
   en: {
-    title: "MUTJAH | Websites, Systems, Automation & AI for Businesses in Egypt & Saudi Arabia",
+    title: "MUTJAH | Websites, Systems, Automation & AI for Companies and Individuals",
     description:
-      "MUTJAH is an execution-led digital solutions company. We build websites, platforms, internal business systems, automation and applied AI for businesses in Egypt and Saudi Arabia — from a real need to something that works.",
+      "MUTJAH is an execution-led digital solutions company for the Arab world. Websites, digital products, business systems, automation and applied AI for companies and individuals — from a real need to something that works.",
     ogTitle: "MUTJAH | Every business has a direction. We build what moves it forward.",
     ogLocale: "en_US",
     keywords: [
       "MUTJAH",
-      "digital solutions company Egypt",
-      "software company Saudi Arabia",
-      "web development Egypt",
-      "web development Saudi Arabia",
+      "digital solutions company Arab world",
+      "web development",
+      "business systems",
       "business automation",
-      "applied AI for business",
+      "applied AI",
       "bilingual Arabic English websites",
     ],
   },
@@ -103,7 +95,7 @@ export function buildMetadata(locale: Locale): Metadata {
     openGraph: {
       type: "website",
       locale: copy.ogLocale,
-      alternateLocale: locale === "ar" ? ["ar_SA", "en_US"] : ["ar_EG", "ar_SA"],
+      alternateLocale: locale === "ar" ? ["en_US"] : ["ar_AR"],
       url,
       siteName: "MUTJAH | مُتَّجَه",
       title: copy.ogTitle,

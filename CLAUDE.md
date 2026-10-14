@@ -6,7 +6,9 @@ Site language: Arabic-first (RTL), English secondary.
 
 ## Business goals (drive every decision)
 - The site must read as a credible tech company that creates real value **and** convert visitors into leads (sales).
-- **Target markets, in order: Egypt first, Saudi Arabia second.** Do not add copy, schema or pages for other countries.
+- **Audience: companies AND individuals** (founders, professionals) — never write copy that addresses companies only.
+- **Market priority (internal strategy only): Egypt first, Saudi Arabia second.** Do NOT name countries in visible copy, titles, schema or llms.txt — the public scope stays open to everyone in the Arab world.
+- Brand "why": we are MUTJAH (direction) because we love helping people find their direction and reach it with something that works. Copy should explain this honestly, not read as sales copy.
 - Pricing policy: **never show prices or numbers** (no price ranges, no "starting from").
 - Honest-claims policy: no invented metrics, clients or testimonials. Sections without real data stay hidden.
 - AI goal: be discoverable/citable in ChatGPT, Google AI Overviews and similar engines (GEO). No on-site chat assistant.
@@ -14,9 +16,9 @@ Site language: Arabic-first (RTL), English secondary.
 
 ## Layout
 - `src/app/[locale]/layout.tsx` — root layout for the public site (`<html lang dir>`, fonts, GA4 + Clarity, pre-paint fail-open script). `dynamicParams = false`, `generateStaticParams` → `/ar`, `/en`.
-- `src/app/[locale]/page.tsx` — the home page, statically generated, `revalidate = 3600`; reads DB content with dictionary fallback; emits JSON-LD (Egypt + Saudi `areaServed`). In production a DB error is rethrown so ISR keeps the last good page; set `ALLOW_DB_FALLBACK=1` to build/run without a DB.
+- `src/app/[locale]/page.tsx` — the home page, statically generated, `revalidate = 3600`; reads DB content with dictionary fallback; emits JSON-LD (no `areaServed` on purpose). In production a DB error is rethrown so ISR keeps the last good page; set `ALLOW_DB_FALLBACK=1` to build/run without a DB.
 - `src/app/admin/layout.tsx` — separate root layout for `/admin` (no analytics, no PWA, noindex). `src/app/global-not-found.tsx` — 404 (needs `experimental.globalNotFound`).
-- `src/lib/seo.ts` — per-locale title/description/keywords, `buildMetadata`, hreflang map, target markets. `src/lib/i18n/config.ts` — locales helpers. `src/lib/revalidate.ts` — `revalidateSite()`; **every admin mutation route must call it** so edits appear immediately.
+- `src/lib/seo.ts` — per-locale title/description/keywords, `buildMetadata`, hreflang map. `src/lib/i18n/config.ts` — locales helpers. `src/lib/revalidate.ts` — `revalidateSite()`; **every admin mutation route must call it** so edits appear immediately.
 - `src/lib/i18n/dictionary.ts` — all bilingual copy. `language-provider.tsx` takes `locale` from the URL (no localStorage); the header language switch is a real `<Link>` to the other locale.
 - `public/llms.txt`, `src/app/robots.ts` (explicitly allows AI crawlers), `src/app/sitemap.ts` — discoverability for search + AI engines.
 - `src/lib/site-config.ts` — domain, contact channels, socials.

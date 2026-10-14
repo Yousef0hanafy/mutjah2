@@ -34,14 +34,14 @@ const ar = {
     closeMenu: "إغلاق القائمة",
   },
   hero: {
-    eyebrow: "شركة حلول رقمية للشركات في مصر والسعودية",
+    eyebrow: "شركة حلول رقمية تنفيذية — العالم العربي",
     titleA: "لكل عمل اتجاه.",
     titleB: "نبني ما يحرّكه.",
     subtitle:
-      "نبني لشركتك موقعًا يشرح قيمتك ويحوّل الزائر إلى طلب، ومنصات وأنظمة وأتمتة بالذكاء الاصطناعي تُخرج فريقك من العمل اليدوي المتكرر — بالعربية أولًا، وبجودة تنفيذ ترونها في أعمالنا الحية.",
+      "من المواقع والمنصات إلى الأنظمة والأتمتة وحلول الذكاء الاصطناعي — نبني ما يحتاجه عملك أو فكرتك لينتقل من الاحتياج إلى شيء يعمل.",
     ctaPrimary: "ابدأ من احتياجك",
     ctaSecondary: "شاهد ما بنيناه",
-    chips: ["تصميم مواقع", "منصات ومنتجات رقمية", "أنظمة إدارة داخلية", "أتمتة العمليات", "ذكاء اصطناعي تطبيقي"],
+    chips: ["مواقع", "منتجات رقمية", "أنظمة", "أتمتة", "ذكاء اصطناعي تطبيقي"],
     route: {
       point: "احتياج حقيقي",
       gate: "قرار ونطاق واضح",
@@ -75,14 +75,14 @@ const ar = {
   },
   services: {
     label: "الخدمات",
-    heading: "خدمات رقمية للشركات: مواقع ومنصات وأنظمة وأتمتة",
-    sub: "اختر خدمة واحدة أو اجمع أكثر من خدمة. نبني ما يحتاجه عملك فقط، بلا باقات جاهزة تفرض شكلًا قبل أن نفهم المشكلة.",
+    heading: "أربعة أبواب، تُشكَّل حول احتياجك",
+    sub: "خدمات مستقلة قابلة للدمج — لا باقات جاهزة تفرض شكلًا قبل فهم المشكلة. نجمع ما يحتاجه عملك فقط، ونبنيه ليُستخدم فعلًا.",
     needLabel: "متى تحتاجها؟",
     includesLabel: "ماذا تشمل؟",
     items: [
       {
         id: "website",
-        title: "تصميم وتطوير مواقع الشركات",
+        title: "مواقع وحضور رقمي",
         need: "عندما لا يشرح موقعك قيمة عملك، أو لا يحوّل الاهتمام إلى خطوة واضحة.",
         desc: "نعيد بناء التجربة حول ما يحتاج عميلك أن يفهمه ويفعله — بالعربية أولًا، وبإنجليزية موثوقة عند الحاجة.",
         deliverables: [
@@ -95,7 +95,7 @@ const ar = {
       },
       {
         id: "product",
-        title: "تطوير منصات ومنتجات رقمية",
+        title: "منتجات ومنصات رقمية",
         need: "عندما تحتاج رحلة مستخدم كاملة: تسجيل، تعلّم، حجز، عضوية، أو إدارة محتوى.",
         desc: "نصمم وننفذ منتجًا يُستخدم فعلًا — من وضوح الفكرة إلى واجهات تعمل وتُدار بثقة.",
         deliverables: [
@@ -108,7 +108,7 @@ const ar = {
       },
       {
         id: "system",
-        title: "أنظمة إدارة داخلية وأدوات تشغيل",
+        title: "أنظمة أعمال وأدوات داخلية",
         need: "عندما يتباطأ شغلك بسبب جداول ومحادثات وملفات متفرقة لا يثق بها أحد.",
         desc: "نبنِ نظامًا حول طريقة عملكم الفعلية — لا أداة عامة تُجبركم على تغيير طبيعتكم.",
         deliverables: [
@@ -121,9 +121,9 @@ const ar = {
       },
       {
         id: "automation",
-        title: "أتمتة العمليات والذكاء الاصطناعي للشركات",
+        title: "أتمتة وذكاء اصطناعي تطبيقي",
         need: "عندما يتكرر العمل اليدوي، أو يحتاج فريقك وصولًا أسرع للمعرفة والقرار.",
-        desc: "الذكاء الاصطناعي في مُتَّجَه له وظيفة محددة ونقاط موافقة بشرية — لا ميزة ديكورية على الصفحة الرئيسية.",
+        desc: "الذكاء الاصطناعي عنّا بوظيفة محددة ونقاط موافقة بشرية — لا ميزة ديكورية على الصفحة الرئيسية.",
         deliverables: [
           "أتمتة سير العمل عبر أدواتكم الحالية",
           "مساعدات معرفة واسترجاع مستندات",
@@ -135,7 +135,7 @@ const ar = {
     ],
     support: {
       title: "بعد الإطلاق: دعم وتطوير مستمر",
-      desc: "صيانة وتحديثات ومراقبة وتحسينات متكررة — بنطاق واتفاق واضحين. لا نَعِد بدعم غير محدود، ونحدد المسؤولية والاستجابة في كل اتفاق.",
+      desc: "صيانة وتحديثات ومراقبة وتحسينات متكررة — بنطاق واتفاق واضحين. لا نَعِد بدعم غير محدود، ونحدد المسؤولية والاستجابة لكل engagement.",
       cta: "اسأل عن الدعم",
     },
     note: "التقنية تُختار للوظيفة، لا للعرض.",
@@ -244,7 +244,7 @@ const ar = {
   audience: {
     label: "من نخدم",
     heading: "مسار للشركات، ومسار مركّز للمؤسسين",
-    sub: "نعمل مع شركات ومؤسسين في مصر والسعودية، عن بُعد وبالعربية أولًا — ونُنظّم العملاء حسب حاجتهم ومرحلتهم، لا حسب تسميات السوق.",
+    sub: "نُنظّم العملاء حسب حاجتهم ومرحلتهم — لا حسب تسميات السوق.",
     business: {
       title: "للشركات المتنامية والمتوسطة",
       msg1: "بدل ما يظل حضورك وشغلك منفصلين، نبني تجربة تربط ما يراه عميلك بما يحتاجه عملك خلف الكواليس.",
@@ -273,7 +273,7 @@ const ar = {
   why: {
     label: "لماذا مُتَّجَه",
     heading: "مبادئ تتحكم في كل قرار",
-    sub: "نؤمن أن التقنية تستحق أن تُستخدم لا أن تُعرض. لذلك نقيس عملنا بما يخففه من جهد والتباس عند من يشغّلون العمل كل يوم، ونفضّل بناء ما يُحدث فرقًا فعليًا على بناء ما يبدو لافتًا فقط.",
+    sub: "اسمنا مُتَّجَه لأننا نؤمن أن لكل إنسان ولكل عمل اتجاهًا. وما يدفعنا حقًّا هو حب مساعدة الناس — شركات وأفرادًا، مؤسسين ومحترفين — على أن يعرفوا وجهتهم ويصلوا إليها بشيء يعمل فعلًا.",
     quote: "نبدأ بالحركة المطلوبة، لا بالخدمة التي نريد بيعها.",
     items: [
       {
@@ -307,48 +307,44 @@ const ar = {
     heading: "أسئلة تصلح بداية أي محادثة",
     items: [
       {
-        q: "ما الخدمات التي تقدمها مُتَّجَه؟",
-        a: "نقدّم أربع خدمات يمكن الجمع بينها: تصميم وتطوير مواقع الشركات، وبناء منصات ومنتجات رقمية، وتطوير أنظمة إدارة داخلية وأدوات تشغيل، وأتمتة العمليات والذكاء الاصطناعي التطبيقي. وبعد الإطلاق نقدّم صيانة وتطويرًا باتفاق محدد النطاق.",
-      },
-      {
-        q: "هل تعملون مع شركات في مصر والسعودية؟",
-        a: "نعم. نعمل عن بُعد مع شركات ومؤسسين في مصر والمملكة العربية السعودية. التواصل بالعربية، والواجهات عربية أصلية من اليمين إلى اليسار (RTL)، والمتابعة عبر واتساب والبريد الإلكتروني واجتماعات عن بُعد.",
-      },
-      {
-        q: "كيف أبدأ العمل مع مُتَّجَه؟",
+        q: "كيف تبدأ العمل مع مُتَّجَه؟",
         a: "تبدأ من احتياجك. في أول محادثة قصيرة نفهم السياق والمطلوب، ثم نحدد معًا الحركة المطلوبة قبل اقتراح أي شكل تنفيذي. بعد ذلك يصلك نطاق واضح مكتوب قبل بدء أي تنفيذ.",
       },
       {
-        q: "كم تكلفة تصميم موقع أو بناء نظام؟",
-        a: "لا نعرض أسعارًا ثابتة لأن التكلفة تتبع النطاق الفعلي: عدد الصفحات والأدوار والتكاملات ومستوى الأتمتة. بعد محادثة قصيرة نرسل لك نطاقًا مكتوبًا وتقديرًا للتكلفة قبل أي التزام، وتدفع مقابل ما يحتاجه عملك فقط.",
+        q: "ما الخدمات التي تقدمها مُتَّجَه؟",
+        a: "أربع خدمات يمكن الجمع بينها: مواقع وحضور رقمي، ومنتجات ومنصات رقمية، وأنظمة أعمال وأدوات داخلية، وأتمتة وذكاء اصطناعي تطبيقي. وبعد الإطلاق: دعم وتطوير مستمر باتفاق محدد النطاق.",
       },
       {
-        q: "كم تستغرق المدة لإنجاز المشروع؟",
-        a: "تتوقف على النطاق: صفحة هبوط تختلف عن منصة تعليمية أو نظام تشغيل داخلي. بعد جلسة التوضيح نقدّم جدولًا زمنيًا واقعيًا مقسّمًا إلى مراحل، دون وعود مبالغ فيها.",
+        q: "هل تعملون مع الأفراد أم مع الشركات فقط؟",
+        a: "نعمل مع الاثنين. للشركات: موقع أو منصة أو نظام داخلي أو أتمتة. وللأفراد والمؤسسين والمحترفين: موقع شخصي أو بورتفوليو أو MVP أو أداة مركّزة — بجودة التنفيذ نفسها.",
       },
       {
         q: "هل تبيعون باقات جاهزة؟",
         a: "لا. خدماتنا مستقلة وقابلة للدمج: قد تحتاج موقعًا فقط، أو موقعًا مع لوحة إدارة وأتمتة متابعة عملاء. الشكل يتبع الاحتياج، لا العكس.",
       },
       {
+        q: "كم يستغرق المشروع، وكم تكلفته؟",
+        a: "يعتمد على النطاق: صفحة إطلاق تختلف عن منصة تعليمية أو نظام تشغيل داخلي. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود.",
+      },
+      {
+        q: "هل تعملون بالعربية والإنجليزية؟",
+        a: "نعم. نبني تجارب عربية أولًا بواجهات RTL أصلية، وبإنجليزية موثوقة عند الحاجة — مع معالجة منظمة للمحتوى ثنائي اللغة.",
+      },
+      {
         q: "ما المقصود بالذكاء الاصطناعي التطبيقي؟",
-        a: "هو استخدام الذكاء الاصطناعي في مهمة محددة داخل عملك، مثل مساعد يجيب من مستنداتك المعتمدة أو أتمتة تصنيف الطلبات ومتابعتها، مع نقاط موافقة بشرية ومعالجة للأخطاء. نبنيه لوظيفة واضحة، لا كميزة للعرض.",
+        a: "هو استخدام الذكاء الاصطناعي في وظيفة محددة داخل عملك، مثل مساعد معرفة يجيب من مستنداتك المعتمدة، أو أتمتة تمر بنقاط موافقة بشرية ومعالجة للأخطاء. لا نقدّمه كميزة ديكورية للعرض.",
       },
       {
-        q: "هل تبنون مواقع ومنصات بالعربية والإنجليزية؟",
-        a: "نعم. نبني تجارب عربية أولًا بواجهات RTL أصلية، وبإنجليزية موثوقة عند الحاجة، مع معالجة منظمة للمحتوى ثنائي اللغة وروابط مستقلة لكل لغة لتظهر في محركات البحث.",
-      },
-      {
-        q: "ماذا يحدث بعد الإطلاق؟ وهل أملك ما بُني؟",
-        a: "تستلم التسليم والتوثيق وملكية كاملة لما بُني. وعند الحاجة نواصل بصيانة وتحسينات باتفاق محدد النطاق، دون دعم «غير محدود» بلا حدود.",
+        q: "ماذا يحدث بعد الإطلاق؟",
+        a: "تستلم التسليم والتوثيق وملكية كاملة لما بُني. وعند الحاجة نواصل بصيانة وتحسينات باتفاق محدد النطاق — لا دعم «غير محدود» بلا حدود.",
       },
       {
         q: "هل يمكنني طلب شيء صغير ومحدد؟",
-        a: "نعم. مسار المؤسسين والمحترفين مخصص لذلك: بورتفوليو، صفحة إطلاق، MVP، أو أتمتة مركّزة، بجودة التنفيذ نفسها ودون تعقيد تعاقدي.",
+        a: "نعم. مسار المؤسسين والمحترفين مخصص لذلك: بورتفوليو، صفحة إطلاق، MVP، أو أتمتة مركّزة — بجودة التنفيذ نفسها دون تعقيد تعاقدي.",
       },
       {
         q: "ما التقنيات التي تستخدمونها؟",
-        a: "نختار التقنية للوظيفة لا للعرض. هذا الموقع نفسه مبني بـ Next.js وReact وTypeScript وقاعدة بيانات PostgreSQL، وهي تقنيات حديثة ومجرّبة. ونشارك تفاصيل التقنية بشفافية داخل كل مشروع.",
+        a: "نختار التقنية للوظيفة لا للعرض: حديثة وموثوقة ومجرّبة في مشاريع حية. هذا الموقع نفسه مبني بـ Next.js وReact وPostgreSQL. والتقنية تفصيل تنفيذي نشاركه بشفافية داخل كل مشروع.",
       },
     ],
   },
@@ -424,7 +420,7 @@ const ar = {
     servicesTitle: "الأبواب الأربعة",
     contactTitle: "تواصل",
     contactMsg: "أسرع طريقة للوصول إلينا هي نموذج «ابدأ من احتياجك» — يصلنا طلبك منظّمًا وجاهزًا للنقاش.",
-    location: "نعمل عن بُعد مع شركات ومؤسسين في مصر والمملكة العربية السعودية.",
+    location: "نعمل عن بُعد مع فرق وأعمال في كل العالم العربي.",
     rights: "جميع الحقوق محفوظة.",
     crafted: "هذا الموقع صُمّم وبُني داخليًا بواسطة مُتَّجَه — عيّنة مباشرة من مستوى تنفيذنا.",
   },
@@ -456,14 +452,14 @@ const en: Dictionary = {
     closeMenu: "Close menu",
   },
   hero: {
-    eyebrow: "Digital solutions for businesses in Egypt & Saudi Arabia",
+    eyebrow: "Execution-led digital solutions — Arab world",
     titleA: "Every business has a direction.",
     titleB: "We build what moves it forward.",
     subtitle:
-      "We build your company a website that explains your value and turns visitors into enquiries, plus platforms, systems and AI-powered automation that free your team from repetitive manual work — Arabic-first, with execution quality you can see in our live projects.",
+      "From websites and platforms to systems, automation, and applied AI — we build what your business or idea needs to move from intention to something that works.",
     ctaPrimary: "Start from your need",
     ctaSecondary: "See what we built",
-    chips: ["Website design", "Platforms & digital products", "Internal business systems", "Process automation", "Applied AI"],
+    chips: ["Websites", "Digital products", "Systems", "Automation", "Applied AI"],
     route: {
       point: "A real need",
       gate: "Decision & clear scope",
@@ -497,14 +493,14 @@ const en: Dictionary = {
   },
   services: {
     label: "Services",
-    heading: "Digital services for businesses: websites, platforms, systems & automation",
-    sub: "Choose one service or combine several. We build only what your business needs, with no ready-made packages that impose a shape before we understand the problem.",
+    heading: "Four doors, shaped around your need",
+    sub: "Independent, combinable services — not ready-made packages that impose a shape before understanding the problem. We assemble only what your business needs, and build it to be actually used.",
     needLabel: "When do you need it?",
     includesLabel: "What it includes",
     items: [
       {
         id: "website",
-        title: "Business website design & development",
+        title: "Websites & digital presence",
         need: "When your website doesn't explain your value or turn interest into a clear next step.",
         desc: "We rebuild the experience around what your customer needs to understand and do — Arabic-first, with credible English when required.",
         deliverables: [
@@ -517,7 +513,7 @@ const en: Dictionary = {
       },
       {
         id: "product",
-        title: "Digital platforms & products development",
+        title: "Digital products & platforms",
         need: "When you need a complete user journey: sign-up, learning, booking, membership, or content management.",
         desc: "We design and execute products that are actually used — from a clear idea to interfaces that work and can be administered with confidence.",
         deliverables: [
@@ -530,7 +526,7 @@ const en: Dictionary = {
       },
       {
         id: "system",
-        title: "Internal business systems & operations tools",
+        title: "Business systems & internal tools",
         need: "When work slows down because of spreadsheets, chat threads, and files nobody trusts.",
         desc: "We build a system around how your team actually works — not a generic tool that forces you to change your nature.",
         deliverables: [
@@ -543,7 +539,7 @@ const en: Dictionary = {
       },
       {
         id: "automation",
-        title: "Process automation & AI for business",
+        title: "Automation & applied AI",
         need: "When manual work repeats, or your team needs faster access to knowledge and decisions.",
         desc: "AI here has a defined job and human approval points — not a decorative feature on a homepage.",
         deliverables: [
@@ -666,7 +662,7 @@ const en: Dictionary = {
   audience: {
     label: "Who we serve",
     heading: "A path for businesses, and a focused path for founders",
-    sub: "We work with businesses and founders in Egypt and Saudi Arabia, remotely and Arabic-first — and we organize clients by need and stage, not by market labels.",
+    sub: "We organize clients by their need and stage — not by market labels.",
     business: {
       title: "For growing & mid-sized businesses",
       msg1: "Instead of leaving your presence and operations disconnected, we build an experience that links what your customer sees with what your business needs behind the scenes.",
@@ -695,7 +691,7 @@ const en: Dictionary = {
   why: {
     label: "Why MUTJAH",
     heading: "Principles that govern every decision",
-    sub: "We believe technology deserves to be used, not just displayed. So we measure our work by the effort and confusion it removes for the people who run the business every day, and we prefer building what makes a real difference over what merely looks impressive.",
+    sub: "We are called MUTJAH because we believe every person and every business has a direction. What truly drives us is a love of helping people — companies and individuals, founders and professionals — know where they are heading and get there with something that actually works.",
     quote: "We start with the movement that's required — not the service we want to sell.",
     items: [
       {
@@ -729,48 +725,44 @@ const en: Dictionary = {
     heading: "Questions that start any conversation well",
     items: [
       {
-        q: "What services does MUTJAH offer?",
-        a: "Four services you can combine: business website design and development, digital platforms and products, internal business systems and operations tools, and process automation with applied AI. After launch we offer maintenance and improvement under a clearly scoped agreement.",
-      },
-      {
-        q: "Do you work with businesses in Egypt and Saudi Arabia?",
-        a: "Yes. We work remotely with businesses and founders in Egypt and Saudi Arabia. Communication is in Arabic or English, interfaces are native right-to-left (RTL) when Arabic is needed, and we follow up over WhatsApp, email and remote meetings.",
-      },
-      {
         q: "How does working with MUTJAH start?",
         a: "It starts from your need. In a first short conversation we understand the context, then define together the movement required before proposing any deliverable. You then receive clear written scope before execution begins.",
       },
       {
-        q: "How much does a website or business system cost?",
-        a: "We don't publish fixed prices because cost follows the actual scope: the number of pages, roles, integrations and the level of automation. After a short conversation we send you written scope and a cost estimate before any commitment, so you pay only for what your business needs.",
+        q: "What services does MUTJAH offer?",
+        a: "Four services you can combine: websites and digital presence, digital products and platforms, business systems and internal tools, and automation and applied AI. After launch: ongoing support and development under a clearly scoped agreement.",
       },
       {
-        q: "How long does a project take?",
-        a: "It depends on scope: a launch page differs from a learning platform or an internal operating system. After a clarification session we come back with a realistic, phased timeline, without inflated promises.",
+        q: "Do you work with individuals or only with companies?",
+        a: "Both. For companies: a website, platform, internal system or automation. For individuals, founders and professionals: a personal website, portfolio, MVP or focused tool — with the same execution quality.",
       },
       {
         q: "Do you sell ready-made packages?",
         a: "No. Our services are independent and combinable: you may need a website only, or a website with an admin panel and lead-routing automation. The shape follows the need, not the other way around.",
       },
       {
+        q: "How long does a project take, and what does it cost?",
+        a: "It depends on scope: a launch page differs from a learning platform or an internal operating system. After a clarification session we come back with realistic scope and timeline — without inflated promises.",
+      },
+      {
+        q: "Do you work in Arabic and English?",
+        a: "Yes. We build Arabic-first experiences with native RTL layouts, and credible English when required — with structured handling of bilingual content.",
+      },
+      {
         q: "What do you mean by applied AI?",
-        a: "Using AI for a specific job inside your business, such as an assistant that answers from your approved documents, or automation that classifies and follows up requests, with human approval points and failure handling. We build it for a clear function, not as a showcase feature.",
+        a: "Using AI for a defined job inside your business, such as a knowledge assistant that answers from your approved documents, or automation with human-approval points and failure handling. We don't offer it as a decorative feature.",
       },
       {
-        q: "Do you build Arabic and English websites and platforms?",
-        a: "Yes. We build Arabic-first experiences with native RTL layouts, and credible English when required, with structured handling of bilingual content and a separate URL for each language so both can be found in search.",
-      },
-      {
-        q: "What happens after launch, and do I own what was built?",
-        a: "You receive handover, documentation, and full ownership of what was built. When needed we continue with maintenance and improvements under a clearly scoped agreement, not 'unlimited' support.",
+        q: "What happens after launch?",
+        a: "You receive handover, documentation, and full ownership of what was built. When needed we continue with maintenance and improvements under a clearly scoped agreement — not 'unlimited' support.",
       },
       {
         q: "Can I request something small and specific?",
-        a: "Yes. The founders & professionals path exists for exactly that: a portfolio, a launch page, an MVP, or focused automation, with the same execution quality and no contractual complexity.",
+        a: "Yes. The founders & professionals path exists for exactly that: a portfolio, a launch page, an MVP, or focused automation — with the same execution quality and no contractual complexity.",
       },
       {
         q: "What technologies do you use?",
-        a: "We choose technology for the job, not for the pitch. This website itself is built with Next.js, React, TypeScript and a PostgreSQL database, modern technologies proven in production. We share technical details transparently within each project.",
+        a: "We choose technology for the job, not for the pitch: modern, reliable, and proven in live projects. This website itself is built with Next.js, React and PostgreSQL. Technology is an implementation detail we share transparently within each project.",
       },
     ],
   },
@@ -847,7 +839,7 @@ const en: Dictionary = {
     servicesTitle: "The four doors",
     contactTitle: "Contact",
     contactMsg: "The fastest way to reach us is the 'Start from your need' form — your request arrives organized and ready to discuss.",
-    location: "Remote-first — working with businesses and founders in Egypt and Saudi Arabia.",
+    location: "Remote-first — working with teams across the Arab world.",
     rights: "All rights reserved.",
     crafted: "This website was designed and built in-house by MUTJAH — a direct sample of our execution level.",
   },
