@@ -1,11 +1,13 @@
 "use client";
 
-import { AppWindow, Bot, Database, Globe, LayoutGrid, Settings, Sparkles, Workflow } from "lucide-react";
+import { AppWindow, ArrowLeft, ArrowRight, Bot, Database, Globe, LayoutGrid, Settings, Sparkles, Workflow } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-provider";
 import { dictionaries } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
 import { Point, Reveal, SectionHeading } from "./primitives";
 import type { ServiceItemData } from "@/lib/admin/types";
+import Link from "next/link";
+import { servicePath, slugForServiceIcon } from "@/lib/services";
 
 const ICONS: Record<string, React.ElementType> = {
   globe: Globe,
@@ -39,13 +41,15 @@ function servicesFromDictionary(): ServiceItemData[] {
 }
 
 export function Services({ services }: { services?: ServiceItemData[] }) {
-  const { t, locale } = useLanguage();
+  const { t, locale, dir } = useLanguage();
+  const Forward = dir === "rtl" ? ArrowLeft : ArrowRight;
   const items = services && services.length > 0 ? services : servicesFromDictionary();
 
   return (
     <section id="services" data-animate aria-labelledby="services-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
+          id="services-heading"
           label={t.services.label}
           heading={t.services.heading}
           sub={t.services.sub}
@@ -94,6 +98,19 @@ export function Services({ services }: { services?: ServiceItemData[] }) {
                         </li>
                       ))}
                     </ul>
+                    {(() => {
+                      const slug = slugForServiceIcon(service.icon);
+                      return slug ? (
+                        <Link
+                          href={servicePath(locale, slug)}
+                          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-bold text-vector transition-colors hover:text-ink"
+                        >
+                          {t.servicePage.learnMore}
+                          <span className="sr-only"> — {title}</span>
+                          <Forward className="size-4 transition-transform duration-200 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5" aria-hidden />
+                        </Link>
+                      ) : null;
+                    })()}
                   </div>
                 </article>
               </Reveal>

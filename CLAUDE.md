@@ -11,6 +11,7 @@ Site language: Arabic-first (RTL), English secondary.
 - Brand "why": we are MUTJAH (direction) because we love helping people find their direction and reach it with something that works. Copy should explain this honestly, not read as sales copy.
 - Pricing policy: **never show prices or numbers** (no price ranges, no "starting from").
 - Honest-claims policy: no invented metrics, clients or testimonials. Sections without real data stay hidden.
+- No tracking-consent banner (owner's decision) — GA4 and Clarity load as before.
 - AI goal: be discoverable/citable in ChatGPT, Google AI Overviews and similar engines (GEO). No on-site chat assistant.
 - SEO is a priority. Each language has its own URL (`/ar` default/x-default, `/en`); `/` 308-redirects to `/ar`.
 
@@ -25,6 +26,8 @@ Site language: Arabic-first (RTL), English secondary.
 - `src/components/site/*` — public sections; `src/components/admin/*` — admin UI; `src/components/ui/*` — shadcn.
 - `src/app/api/leads` — public lead endpoint (zod, honeypot, DB rate limit, optional webhook).
 - `src/app/api/admin/*` — admin CRUD; every route must call `requireAdmin()` (`src/lib/admin/auth.ts`).
+- `src/app/[locale]/services/[slug]/page.tsx` + `src/components/site/service-detail.tsx` — the four service pages (`websites`, `digital-products`, `business-systems`, `automation-ai`; slugs in `src/lib/services.ts`). Copy lives in `servicePages` in the dictionary; each page lists only portfolio projects that prove that service (ids must exist in `work.projects`). Schema: `Service` + `BreadcrumbList` only (no FAQPage — Google retired FAQ rich results; questions stay as plain page text). Home service cards link to pages via the seeded icon.
+- `src/lib/content.ts` — shared DB loaders (published rows + public contact settings only; retry, then rethrow in production).
 - `public/sw.js` — PWA service worker (bypasses /admin and /api; bump `CACHE_NAME` when precache changes).
 
 ## Commands

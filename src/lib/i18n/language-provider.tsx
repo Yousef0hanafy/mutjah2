@@ -8,8 +8,10 @@ type LanguageContextValue = {
   locale: Locale;
   dir: "rtl" | "ltr";
   t: Dictionary;
-  /** Crawlable URL of the other language's home page (`/en` or `/ar`). */
+  /** Crawlable URL of the same page in the other language (e.g. `/en/services/websites`). */
   switchHref: string;
+  /** Home page of the active locale (`/ar` or `/en`), for links to home sections. */
+  homeHref: string;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -17,9 +19,12 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 /** The locale comes from the URL (`/ar`, `/en`) so each language has its own indexable page. */
 export function LanguageProvider({
   locale,
+  pathSuffix = "",
   children,
 }: {
   locale: Locale;
+  /** Path after the locale segment, e.g. `/services/websites`; "" on the home page. */
+  pathSuffix?: string;
   children: React.ReactNode;
 }) {
   const value = useMemo<LanguageContextValue>(
@@ -27,9 +32,10 @@ export function LanguageProvider({
       locale,
       dir: localeDir(locale),
       t: dictionaries[locale],
-      switchHref: localePath(otherLocale(locale)),
+      switchHref: `${localePath(otherLocale(locale))}${pathSuffix}`,
+      homeHref: localePath(locale),
     }),
-    [locale]
+    [locale, pathSuffix]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

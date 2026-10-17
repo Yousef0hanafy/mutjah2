@@ -7,6 +7,12 @@
 - [Arabic home / الصفحة الرئيسية](https://mutjah.com/ar): services, process, work, FAQ and contact form in Arabic
 - [English home](https://mutjah.com/en): the same content in English
 
+## Service pages
+- [Websites & digital presence](https://mutjah.com/en/services/websites) · [بالعربية](https://mutjah.com/ar/services/websites)
+- [Digital products & platforms](https://mutjah.com/en/services/digital-products) · [بالعربية](https://mutjah.com/ar/services/digital-products)
+- [Business systems & internal tools](https://mutjah.com/en/services/business-systems) · [بالعربية](https://mutjah.com/ar/services/business-systems)
+- [Automation & applied AI](https://mutjah.com/en/services/automation-ai) · [بالعربية](https://mutjah.com/ar/services/automation-ai)
+
 ## What we do
 - Websites & digital presence: corporate and service sites, personal sites and portfolios, landing pages, bilingual RTL/LTR sites
 - Digital products & platforms: MVPs, web apps, learning/membership/booking platforms, customer portals

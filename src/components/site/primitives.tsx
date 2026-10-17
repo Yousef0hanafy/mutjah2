@@ -91,12 +91,15 @@ export function Point({ className }: { className?: string }) {
 
 /** Editorial section header: coral point + meta label, then heading + sub */
 export function SectionHeading({
+  id,
   label,
   heading,
   sub,
   align = "start",
   dark = false,
 }: {
+  /** id of the <h2>, so the section's aria-labelledby resolves */
+  id?: string;
   label: string;
   heading: string;
   sub?: string;
@@ -120,6 +123,7 @@ export function SectionHeading({
         {label}
       </span>
       <h2
+        id={id}
         className={cn(
           "max-w-3xl text-3xl font-extrabold leading-[1.25] sm:text-4xl lg:text-[2.6rem]",
           dark ? "text-canvas" : "text-ink"

@@ -70,6 +70,7 @@ export function RouteLab() {
 
       <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
+          id="route-lab-heading"
           label={t.routeLab.label}
           heading={t.routeLab.heading}
           sub={t.routeLab.sub}

@@ -35,7 +35,8 @@ function Wordmark({ className }: { className?: string }) {
 }
 
 export function Header() {
-  const { t, switchHref, locale } = useLanguage();
+  const { t, switchHref, homeHref, locale } = useLanguage();
+  const sectionHref = (id: string) => (id === "contact" ? "#contact" : `${homeHref}#${id}`);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -57,8 +58,8 @@ export function Header() {
     >
       <div className="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <a
-          href="#top"
-          aria-label="MUTJAH — الرئيسية"
+          href={homeHref}
+          aria-label={locale === "ar" ? "MUTJAH — الرئيسية" : "MUTJAH — Home"}
           className="flex items-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-vector"
         >
           <Wordmark />
@@ -71,7 +72,7 @@ export function Header() {
             .map((s) => (
               <a
                 key={s.id}
-                href={`#${s.id}`}
+                href={sectionHref(s.id)}
                 className="group relative py-2 text-[15px] font-medium text-ink/75 transition-colors hover:text-ink"
               >
                 {t.nav[s.key]}
@@ -136,7 +137,7 @@ export function Header() {
                 {sections.map((s) => (
                   <SheetClose key={s.id} asChild>
                     <a
-                      href={`#${s.id}`}
+                      href={sectionHref(s.id)}
                       className="rounded-xl px-4 py-3 text-lg font-semibold text-ink/80 transition-colors hover:bg-mist-50 hover:text-ink"
                     >
                       {t.nav[s.key]}

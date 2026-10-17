@@ -54,7 +54,17 @@ const INITIAL = {
   website: "", // honeypot
 };
 
-export function ContactWizard({ contact }: { contact?: ContactInfo }) {
+export function ContactWizard({
+  contact,
+  defaultNeed,
+  heading,
+}: {
+  contact?: ContactInfo;
+  /** Service pages preselect their own need so the visitor only confirms it. */
+  defaultNeed?: NeedType;
+  /** Service pages ask their own closing question instead of the generic heading. */
+  heading?: string;
+}) {
   const { t, locale, dir } = useLanguage();
   const prefillAudience = useLeadPrefill((s) => s.audience);
   const prefillNeed = useLeadPrefill((s) => s.need);
@@ -62,7 +72,7 @@ export function ContactWizard({ contact }: { contact?: ContactInfo }) {
 
   const [step, setStep] = useState(0);
   const [audience, setAudience] = useState<AudienceType | null>(null);
-  const [need, setNeed] = useState<NeedType | null>(null);
+  const [need, setNeed] = useState<NeedType | null>(defaultNeed ?? null);
   const [fields, setFields] = useState(INITIAL);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [banner, setBanner] = useState<string | null>(null);
@@ -147,7 +157,7 @@ export function ContactWizard({ contact }: { contact?: ContactInfo }) {
   const reset = () => {
     setStep(0);
     setAudience(null);
-    setNeed(null);
+    setNeed(defaultNeed ?? null);
     setFields(INITIAL);
     setErrors({});
     setBanner(null);
@@ -169,8 +179,9 @@ export function ContactWizard({ contact }: { contact?: ContactInfo }) {
         {/* Left: pitch */}
         <div className="lg:col-span-5">
           <SectionHeading
+          id="contact-heading"
             label={t.contact.label}
-            heading={t.contact.heading}
+            heading={heading ?? t.contact.heading}
             sub={t.contact.sub}
           />
           <Reveal delay={0.1} className="mt-8 flex flex-col gap-3">

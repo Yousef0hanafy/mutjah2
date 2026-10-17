@@ -422,6 +422,144 @@ const ar = {
       rateLimited: "وصلتنا عدة رسائل من جهازك خلال وقت قصير. انتظر قليلًا ثم حاول مرة أخرى.",
     },
   },
+  servicePage: {
+    home: "الرئيسية",
+    services: "الخدمات",
+    startLabel: "من أين تبدأ؟",
+    forCompanies: "للشركات",
+    forIndividuals: "للأفراد",
+    buildLabel: "إلى أين نصل؟",
+    buildHeading: "ما الذي نبنيه في هذه الخدمة",
+    workLabel: "من أعمالنا",
+    workHeading: "أعمال حقيقية بحالتها الفعلية",
+    faqLabel: "أسئلة قبل أن تتحرك",
+    cta: "ابدأ من وجهتك",
+    seeWork: "شاهد أعمالًا مرتبطة",
+    visit: "زيارة المشروع",
+    otherServices: "خدمات أخرى",
+    learnMore: "اعرف المزيد",
+    principlesLabel: "كيف نستخدم الذكاء الاصطناعي",
+  },
+  servicePages: {
+    websites: {
+      seoTitle: "تصميم وتطوير مواقع للشركات والأفراد | مُتَّجَه",
+      seoDescription:
+        "نصمّم ونطوّر مواقع شركات وخدمات، ومواقع شخصية وبورتفوليو، وصفحات هبوط، ومواقع بالعربية والإنجليزية — مبنية لتشرح قيمتك وتقود زائرك إلى خطوة واضحة.",
+      title: "مواقع وحضور رقمي",
+      direction: "من حضور رقمي إلى أصل يعمل لك.",
+      answer:
+        "نبني مواقع تشرح قيمة عملك أو خبرتك بوضوح، وتقود زائرك إلى خطوة محددة: طلب، أو حجز، أو تواصل. بالعربية أولًا بواجهات من اليمين إلى اليسار، وبإنجليزية موثوقة عند الحاجة.",
+      starts: [
+        "موقعك لا يشرح قيمة عملك.",
+        "الزائر يهتم، لكنه لا يعرف خطوته التالية.",
+        "ليس لك حضور رقمي بعد، أو تحتاج موقعًا بلغتين.",
+      ],
+      forCompanies: "موقع شركة أو منصة خدمة.",
+      forIndividuals: "موقع شخصي أو بورتفوليو قوي، أو صفحة إطلاق.",
+      principles: [] as string[],
+      work: [
+        { id: "infeworks", text: "موقع شركة هندسية بالعربية والإنجليزية: لكل لغة رابطها، وأرشيف مشاريع بالأدلة، وخريطة لمواقع المشاريع، ولوحة لإدارة المحتوى." },
+        { id: "performance-gym", text: "صفحة نادٍ رياضي تحوّل الاهتمام إلى طلب حجز، مع تحويل مباشر إلى واتساب." },
+        { id: "qidr", text: "قائمة مطعم رقمية تُفتح عبر QR، بالعربية والإنجليزية." },
+      ],
+      faq: [
+        { q: "هل يكون الموقع بالعربية والإنجليزية؟", a: "نعم عند الحاجة: عربية أولًا بواجهات RTL أصلية، وإنجليزية موثوقة، ولكل لغة رابطها المستقل لتظهر في محركات البحث." },
+        { q: "هل أستطيع تعديل المحتوى بنفسي؟", a: "إذا كان موقعك يحتاج تحديثًا متكررًا، نبني له لوحة بسيطة لإدارة المحتوى." },
+        { q: "هل أملك الموقع بعد التسليم؟", a: "نعم. تستلم التسليم والتوثيق وملكية كاملة لما بُني." },
+        { q: "كم تكلفة الموقع ومدته؟", a: "يعتمد على النطاق. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود." },
+      ],
+      closing: "إلى أين تريد أن يصل موقعك؟",
+    },
+    "digital-products": {
+      seoTitle: "تطوير منصات ومنتجات رقمية وتطبيقات ويب | مُتَّجَه",
+      seoDescription:
+        "نصمّم وننفّذ منصات وتطبيقات ويب ومنتجات MVP برحلة مستخدم كاملة: تسجيل، تعلّم، حجز، عضوية، وإدارة محتوى — من وضوح الفكرة إلى منتج يُستخدم فعلًا.",
+      title: "منتجات ومنصات رقمية",
+      direction: "من فكرة إلى منتج يستخدمه الناس فعلًا.",
+      answer:
+        "نصمّم وننفّذ منصات وتطبيقات ويب برحلة مستخدم كاملة: تسجيل، أو تعلّم، أو حجز، أو عضوية، أو إدارة محتوى. نبدأ من وضوح الفكرة، وننتهي بواجهات تعمل وتُدار بثقة.",
+      starts: [
+        "فكرة تحتاج أن تُختبر مع مستخدمين حقيقيين.",
+        "خدمة تديرها يدويًا وتريد تحويلها إلى منصة.",
+        "منصة تحتاج أدوارًا وصلاحيات وإدارة محتوى.",
+      ],
+      forCompanies: "بوابات عملاء ولوحات تحكم، ومنصات تعليم أو حجز أو عضوية.",
+      forIndividuals: "MVP وصفحة إطلاق، ومسار توسّع دون إعادة بناء.",
+      principles: [] as string[],
+      work: [
+        { id: "hemma", text: "منصة تعليم عربية: مذاكرة بتصحيح فوري، وامتحانات موقوتة، ومراجعة بالتكرار المتباعد، ونقاط ومستويات، ومساعد ذكي، واستوديو محتوى محمي بالأدوار." },
+        { id: "elmorabbi", text: "منصة بثلاثة أدوار: طالب يسجّل التزامه اليومي، ومربٍّ يتابع ويوجّه، وإدارة لمجتمع التعلّم." },
+        { id: "performance-gym", text: "بوابة أعضاء مرتبطة بالاشتراكات." },
+      ],
+      faq: [
+        { q: "ما الـ MVP ولماذا نبدأ به؟", a: "نسخة أولى بأصغر نطاق مسؤول، تكفي لتجربة الفكرة مع مستخدمين حقيقيين قبل التوسّع: ماذا نبني الآن، وماذا لا نبني الآن." },
+        { q: "هل يمكن التوسّع لاحقًا دون إعادة بناء؟", a: "نعم، نبني بمسار توسّع واضح من البداية." },
+        { q: "هل تصمّمون الواجهات أيضًا؟", a: "نعم. التصميم (UX/UI) والتنفيذ الكامل جزء من الخدمة." },
+        { q: "كم تكلفة المنصة ومدتها؟", a: "يعتمد على النطاق. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود." },
+      ],
+      closing: "إلى أين تريد أن تصل فكرتك؟",
+    },
+    "business-systems": {
+      seoTitle: "برمجة أنظمة إدارة وأدوات داخلية مخصّصة | مُتَّجَه",
+      seoDescription:
+        "نبني أنظمة إدارة ولوحات تشغيل وسير عمل وتقارير حول طريقة عملكم الفعلية — بدل الجداول والمحادثات والملفات المتفرقة.",
+      title: "أنظمة أعمال وأدوات داخلية",
+      direction: "من عمل يدوي متكرر إلى سير مُنظَّم.",
+      answer:
+        "نبني أنظمة حول طريقة عملكم الفعلية: لوحات تشغيل، وسير عمل للعملاء والمحتوى والموافقات، وأدوات إدخال ومراجعة وتقارير. بدل الجداول والمحادثات والملفات المتفرقة التي لا يثق بها أحد.",
+      starts: [
+        "بيانات العملاء أو الطلبات موزّعة على أكثر من مكان.",
+        "موافقات وقرارات تضيع داخل المحادثات.",
+        "تقارير تُجمع يدويًا في كل مرة.",
+      ],
+      forCompanies: "لوحات داخلية وسير عمل تشغيلي.",
+      forIndividuals: "أداة مركّزة حول عملية واحدة.",
+      principles: [] as string[],
+      work: [
+        { id: "qidr", text: "لوحة لإدارة فروع المطعم: أصناف وأسعار وتوافر يختلف حسب الفرع، وعروض بمواعيد بداية ونهاية، ومعلومات غذائية، وتقييمات العملاء." },
+        { id: "infeworks", text: "لوحة لإدارة المشاريع والصور وطلبات التواصل، مع سجل لما يتغيّر." },
+        { id: "performance-gym", text: "لوحة للأعضاء والاشتراكات وطلبات الحجز." },
+      ],
+      faq: [
+        { q: "لماذا نظام مخصّص بدل برنامج جاهز؟", a: "لأننا نبني حول طريقة عملكم، لا أداة عامة تجبركم على تغيير طبيعتكم. ونبدأ بالحركة المطلوبة، لا بالخدمة التي نريد بيعها: إن كان الحل أبسط، نقوله." },
+        { q: "هل يمكن البدء بعملية واحدة فقط؟", a: "نعم. يمكن أن نبدأ بنظام خفيف حول عملية محددة، ثم نتوسّع عند الحاجة." },
+        { q: "من يملك البيانات والنظام؟", a: "أنتم. تستلمون التسليم والتوثيق وملكية كاملة لما بُني." },
+        { q: "كم تكلفة النظام ومدته؟", a: "يعتمد على النطاق. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود." },
+      ],
+      closing: "إلى أين تريد أن يصل تشغيلك؟",
+    },
+    "automation-ai": {
+      seoTitle: "أتمتة العمليات والذكاء الاصطناعي التطبيقي | مُتَّجَه",
+      seoDescription:
+        "نستخدم الأتمتة والذكاء الاصطناعي في وظائف محددة داخل عملك: سير عمل عبر أدواتكم الحالية، ومساعدات تجيب من معرفتكم المعتمدة — مع نقاط موافقة بشرية.",
+      title: "أتمتة وذكاء اصطناعي تطبيقي",
+      direction: "من معلومات مبعثرة إلى معرفة قابلة للاستخدام.",
+      answer:
+        "نستخدم الأتمتة والذكاء الاصطناعي في وظائف محددة داخل عملك: سير عمل يربط أدواتكم الحالية، ومساعدات تجيب من معرفتكم المعتمدة. ولكل وظيفة نقاط موافقة بشرية ومعالجة للأخطاء.",
+      starts: [
+        "عمل يدوي يتكرر كل يوم.",
+        "طلبات تصل ولا يتابعها أحد في وقتها.",
+        "أسئلة متكررة إجاباتها موجودة في مستنداتكم.",
+      ],
+      forCompanies: "أتمتة ومساعدات ذكاء اصطناعي.",
+      forIndividuals: "أتمتة مركّزة أو أداة خفيفة.",
+      principles: [
+        "وظيفة محددة، لا ميزة ديكورية.",
+        "معرفة معتمدة: المساعد يجيب مما تعتمدونه أنتم.",
+        "إنسان في القرار: نقاط موافقة بشرية ومعالجة للأخطاء.",
+      ],
+      work: [
+        { id: "hemma", text: "مساعد مذاكرة بالذكاء الاصطناعي يشرح العلاقات اللغوية دون أن يكشف الإجابة، ومعالجة للمحتوى بالذكاء الاصطناعي داخل استوديو محمي بالأدوار." },
+      ],
+      faq: [
+        { q: "ما المقصود بالذكاء الاصطناعي التطبيقي؟", a: "استخدامه في وظيفة محددة داخل عملك، مثل مساعد معرفة يجيب من مستنداتك المعتمدة، أو أتمتة تمر بنقاط موافقة بشرية. لا نقدّمه كميزة للعرض." },
+        { q: "هل يعمل الذكاء الاصطناعي دون رقابة؟", a: "لا. نصمّم نقاط تدخل بشري ومعالجة للأخطاء في كل وظيفة." },
+        { q: "هل نحتاج إلى تغيير أدواتنا الحالية؟", a: "ليس بالضرورة. نبني الأتمتة عبر أدواتكم الحالية حين يكون ذلك ممكنًا." },
+        { q: "كم تكلفة الأتمتة ومدتها؟", a: "يعتمد على النطاق. بعد جلسة التوضيح نصل بنطاق وجدول زمني واقعيين — دون مبالغة في الوعود." },
+      ],
+      closing: "إلى أين تريد أن يصل وقت فريقك؟",
+    },
+  },
   footer: {
     descriptor: "شركة حلول رقمية تنفيذية — نبني مواقع ومنتجات وأنظمة وأتمتة حول ما يحتاجه العمل فعلًا.",
     tagline: "لكل عمل اتجاه. نبني ما يحرّكه.",
@@ -847,6 +985,144 @@ const en: Dictionary = {
       message: "Write a line or two about your need (at least 10 characters)",
       generic: "Something went wrong sending your request. Try again or contact us directly.",
       rateLimited: "Several requests arrived from your device in a short time. Wait a moment and try again.",
+    },
+  },
+  servicePage: {
+    home: "Home",
+    services: "Services",
+    startLabel: "Where do you start?",
+    forCompanies: "For companies",
+    forIndividuals: "For individuals",
+    buildLabel: "Where we arrive",
+    buildHeading: "What we build in this service",
+    workLabel: "From our work",
+    workHeading: "Real projects, shown as they are",
+    faqLabel: "Before you move",
+    cta: "Start from your destination",
+    seeWork: "See related work",
+    visit: "Visit project",
+    otherServices: "Other services",
+    learnMore: "Learn more",
+    principlesLabel: "How we use AI",
+  },
+  servicePages: {
+    websites: {
+      seoTitle: "Website Design & Development for Companies and Individuals | MUTJAH",
+      seoDescription:
+        "We design and build company and service websites, personal sites and portfolios, landing pages, and Arabic–English websites — made to explain your value and lead visitors to a clear next step.",
+      title: "Websites & digital presence",
+      direction: "From a digital presence to an asset that works for you.",
+      answer:
+        "We build websites that explain the value of your business or expertise clearly, and lead visitors to one concrete step: an enquiry, a booking, or a conversation. Arabic-first with native right-to-left layouts, and credible English when you need it.",
+      starts: [
+        "Your website doesn't explain the value of your work.",
+        "Visitors are interested, but don't know their next step.",
+        "You don't have a digital presence yet, or you need one in two languages.",
+      ],
+      forCompanies: "A company website or a service platform.",
+      forIndividuals: "A strong personal website or portfolio, or a launch page.",
+      principles: [] as string[],
+      work: [
+        { id: "infeworks", text: "An Arabic–English website for an engineering company: a separate URL per language, an evidence-led project archive, a map of project locations, and a content admin." },
+        { id: "performance-gym", text: "A gym landing page that turns interest into a booking request, with a direct handoff to WhatsApp." },
+        { id: "qidr", text: "A digital restaurant menu opened by QR code, in Arabic and English." },
+      ],
+      faq: [
+        { q: "Can the website be in Arabic and English?", a: "Yes, when needed: Arabic-first with native RTL layouts, credible English, and a separate URL for each language so both can be found in search." },
+        { q: "Can I edit the content myself?", a: "If your website needs frequent updates, we build it a simple content admin." },
+        { q: "Do I own the website after handover?", a: "Yes. You receive handover, documentation, and full ownership of what was built." },
+        { q: "How much does a website cost, and how long does it take?", a: "It depends on scope. After a clarification session we come back with a realistic scope and timeline — without inflated promises." },
+      ],
+      closing: "Where do you want your website to take you?",
+    },
+    "digital-products": {
+      seoTitle: "Digital Platform, Product & Web App Development | MUTJAH",
+      seoDescription:
+        "We design and build platforms, web apps and MVPs with a complete user journey — sign-up, learning, booking, membership and content management — from a clear idea to a product people actually use.",
+      title: "Digital products & platforms",
+      direction: "From an idea to a product people actually use.",
+      answer:
+        "We design and build platforms and web apps with a complete user journey: sign-up, learning, booking, membership, or content management. We start from a clear idea and finish with interfaces that work and can be run with confidence.",
+      starts: [
+        "An idea that needs testing with real users.",
+        "A service you run by hand and want to turn into a platform.",
+        "A platform that needs roles, permissions and content management.",
+      ],
+      forCompanies: "Customer portals and dashboards; learning, booking or membership platforms.",
+      forIndividuals: "An MVP and a launch page, with a growth path that doesn't require a rebuild.",
+      principles: [] as string[],
+      work: [
+        { id: "hemma", text: "An Arabic learning platform: study with instant feedback, timed exams, spaced-repetition review, points and levels, an AI assistant, and a role-protected content studio." },
+        { id: "elmorabbi", text: "A platform with three roles: students log their daily commitment, mentors follow up and guide, and administrators run the learning community." },
+        { id: "performance-gym", text: "A member portal connected to memberships." },
+      ],
+      faq: [
+        { q: "What is an MVP, and why start with one?", a: "A first version with the smallest responsible scope — enough to test the idea with real users before growing: what we build now, and what we don't build yet." },
+        { q: "Can it grow later without a rebuild?", a: "Yes. We build with a clear growth path from the start." },
+        { q: "Do you design the interfaces too?", a: "Yes. UX/UI design and full implementation are part of the service." },
+        { q: "How much does a platform cost, and how long does it take?", a: "It depends on scope. After a clarification session we come back with a realistic scope and timeline — without inflated promises." },
+      ],
+      closing: "Where do you want your idea to go?",
+    },
+    "business-systems": {
+      seoTitle: "Custom Business Systems & Internal Tools Development | MUTJAH",
+      seoDescription:
+        "We build management systems, operations dashboards, workflows and reporting around how your team actually works — instead of scattered spreadsheets, chats and files.",
+      title: "Business systems & internal tools",
+      direction: "From repetitive manual work to an organized workflow.",
+      answer:
+        "We build systems around how your team actually works: operations dashboards, workflows for clients, content and approvals, and tools for data entry, review and reporting. Instead of the scattered spreadsheets, chats and files nobody trusts.",
+      starts: [
+        "Customer or order data lives in more than one place.",
+        "Approvals and decisions get lost in chat threads.",
+        "Reports are put together by hand every time.",
+      ],
+      forCompanies: "Internal dashboards and operational workflows.",
+      forIndividuals: "A focused tool around a single process.",
+      principles: [] as string[],
+      work: [
+        { id: "qidr", text: "An admin for running restaurant branches: items with branch-specific prices and availability, scheduled promotions with start and end dates, nutrition details, and customer feedback." },
+        { id: "infeworks", text: "An admin for projects, media and contact requests, with a log of what changes." },
+        { id: "performance-gym", text: "An admin for members, memberships and booking requests." },
+      ],
+      faq: [
+        { q: "Why a custom system instead of off-the-shelf software?", a: "Because we build around how you work, not a generic tool that forces you to change. And we start from the movement you need, not the service we want to sell: if a simpler solution fits, we say so." },
+        { q: "Can we start with just one process?", a: "Yes. We can start with a lightweight system around one process, then grow when needed." },
+        { q: "Who owns the data and the system?", a: "You do. You receive handover, documentation, and full ownership of what was built." },
+        { q: "How much does a system cost, and how long does it take?", a: "It depends on scope. After a clarification session we come back with a realistic scope and timeline — without inflated promises." },
+      ],
+      closing: "Where do you want your operations to go?",
+    },
+    "automation-ai": {
+      seoTitle: "Process Automation & Applied AI | MUTJAH",
+      seoDescription:
+        "We use automation and AI for defined jobs inside your business: workflows across the tools you already use, and assistants that answer from your approved knowledge — with human approval points.",
+      title: "Automation & applied AI",
+      direction: "From scattered information to knowledge you can use.",
+      answer:
+        "We use automation and AI for defined jobs inside your business: workflows that connect the tools you already use, and assistants that answer from your approved knowledge. Every job has human approval points and failure handling.",
+      starts: [
+        "Manual work that repeats every day.",
+        "Requests that arrive and aren't followed up in time.",
+        "Recurring questions whose answers already live in your documents.",
+      ],
+      forCompanies: "Automation and AI assistants.",
+      forIndividuals: "Focused automation or a lightweight tool.",
+      principles: [
+        "A defined job, not a decorative feature.",
+        "Approved knowledge: the assistant answers from what you approve.",
+        "A human in the decision: approval points and failure handling.",
+      ],
+      work: [
+        { id: "hemma", text: "An AI study assistant that explains linguistic relationships without giving away the answer, plus AI content processing inside a role-protected studio." },
+      ],
+      faq: [
+        { q: "What do you mean by applied AI?", a: "Using AI for a defined job inside your business, such as a knowledge assistant that answers from your approved documents, or automation that passes through human approval points. We don't offer it as a feature for show." },
+        { q: "Does the AI run without oversight?", a: "No. We design human intervention points and failure handling into every job." },
+        { q: "Do we need to change our current tools?", a: "Not necessarily. We build automation across the tools you already use whenever that's possible." },
+        { q: "How much does automation cost, and how long does it take?", a: "It depends on scope. After a clarification session we come back with a realistic scope and timeline — without inflated promises." },
+      ],
+      closing: "Where do you want your team's time to go?",
     },
   },
   footer: {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/lib/i18n/dictionary";
+import { dictionaries, type Locale } from "@/lib/i18n/dictionary";
+import type { ServiceSlug } from "@/lib/services";
 import { siteConfig } from "@/lib/site-config";
 import { locales, localePath } from "@/lib/i18n/config";
 
@@ -50,11 +51,11 @@ export const seoCopy: Record<Locale, SeoCopy> = {
 
 export const absoluteUrl = (path = "") => `${siteConfig.url}${path}`;
 
-/** hreflang map: each language has its own URL; x-default is the Arabic home. */
-export function languageAlternates(): Record<string, string> {
+/** hreflang map for a page (suffix after the locale, "" = home): each language has its own URL; x-default is Arabic. */
+export function languageAlternates(suffix = ""): Record<string, string> {
   return {
-    ...Object.fromEntries(locales.map((l) => [l, absoluteUrl(localePath(l))])),
-    "x-default": absoluteUrl(localePath("ar")),
+    ...Object.fromEntries(locales.map((l) => [l, absoluteUrl(`${localePath(l)}${suffix}`)])),
+    "x-default": absoluteUrl(`${localePath("ar")}${suffix}`),
   };
 }
 
@@ -120,6 +121,34 @@ export function buildMetadata(locale: Locale): Metadata {
       index: true,
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    },
+  };
+}
+
+/** Metadata for /[locale]/services/[slug]: own title, description, canonical and hreflang. */
+export function buildServiceMetadata(locale: Locale, slug: ServiceSlug): Metadata {
+  const page = dictionaries[locale].servicePages[slug];
+  const suffix = `/services/${slug}`;
+  const url = absoluteUrl(`${localePath(locale)}${suffix}`);
+  const ogImageUrl = absoluteUrl(siteConfig.ogImage);
+  return {
+    title: { absolute: page.seoTitle },
+    description: page.seoDescription,
+    alternates: { canonical: url, languages: languageAlternates(suffix) },
+    openGraph: {
+      type: "website",
+      locale: seoCopy[locale].ogLocale,
+      url,
+      siteName: "MUTJAH | مُتَّجَه",
+      title: page.seoTitle,
+      description: page.seoDescription,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, type: "image/png", alt: page.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.seoTitle,
+      description: page.seoDescription,
+      images: [ogImageUrl],
     },
   };
 }

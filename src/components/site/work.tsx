@@ -166,7 +166,8 @@ export function Work({ projects }: { projects?: WorkProjectData[] }) {
   return (
     <section id="work" data-animate aria-labelledby="work-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <SectionHeading label={t.work.label} heading={t.work.heading} sub={t.work.sub} />
+        <SectionHeading
+          id="work-heading" label={t.work.label} heading={t.work.heading} sub={t.work.sub} />
 
         <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:mt-14">
           {items.map((p, i) => (
