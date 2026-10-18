@@ -27,6 +27,7 @@ Site language: Arabic-first (RTL), English secondary.
 - `src/app/api/leads` — public lead endpoint (zod, honeypot, DB rate limit, optional webhook).
 - `src/app/api/admin/*` — admin CRUD; every route must call `requireAdmin()` (`src/lib/admin/auth.ts`).
 - `src/app/[locale]/services/[slug]/page.tsx` + `src/components/site/service-detail.tsx` — the four service pages (`websites`, `digital-products`, `business-systems`, `automation-ai`; slugs in `src/lib/services.ts`). Copy lives in `servicePages` in the dictionary; each page lists only portfolio projects that prove that service (ids must exist in `work.projects`). Schema: `Service` + `BreadcrumbList` only (no FAQPage — Google retired FAQ rich results; questions stay as plain page text). Home service cards link to pages via the seeded icon.
+- `src/components/site/start-route.tsx` — "Where do you start?" (replaced Movement + RouteLab): the five `movement.items` are the picker; the route runs start → first three process stations → outcome → closest service (`item.need` → service page, `unsure` → clarification session) and its CTA pre-sets the form's need.
 - `src/lib/content.ts` — shared DB loaders (published rows + public contact settings only; retry, then rethrow in production).
 - `public/sw.js` — PWA service worker (bypasses /admin and /api; bump `CACHE_NAME` when precache changes).
 

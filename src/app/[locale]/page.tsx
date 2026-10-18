@@ -16,8 +16,7 @@ import {
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
 import { Assurances } from "@/components/site/assurances";
-import { Movement } from "@/components/site/movement";
-import { RouteLab } from "@/components/site/route-lab";
+import { StartRoute } from "@/components/site/start-route";
 import { Services } from "@/components/site/services";
 import { Process } from "@/components/site/process";
 import { Work } from "@/components/site/work";
@@ -210,8 +209,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <main id="main" className="flex min-h-screen flex-col">
         <Hero />
         <Assurances />
-        <Movement />
-        <RouteLab />
+        <StartRoute />
         <Services services={services} />
         <Process />
         <Work projects={workProjects} />

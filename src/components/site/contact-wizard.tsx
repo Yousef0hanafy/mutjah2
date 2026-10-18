@@ -83,7 +83,8 @@ export function ContactWizard({
     if (prefillNonce === 0) return;
     if (prefillAudience) setAudience(prefillAudience);
     if (prefillNeed) setNeed(prefillNeed);
-    setStep((s) => (s === 3 ? 0 : Math.max(s, 1)));
+    // Jump past "who are you" only when the CTA already answered it
+    setStep((s) => (s === 3 ? 0 : prefillAudience ? Math.max(s, 1) : s));
     setErrors({});
     setBanner(null);
   }, [prefillNonce, prefillAudience, prefillNeed]);
