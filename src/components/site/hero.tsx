@@ -9,7 +9,7 @@ import { DirectionField } from "./direction-field";
  * Hero — the first impression.
  * Editorial type over the Direction Field: a living grid of compass needles
  * that point at the visitor (and roam on their own when idle). The old static
- * route diagram graduated into the interactive RouteLab section below.
+ * route diagram graduated into the interactive StartRoute section below.
  */
 export function Hero() {
   const { t } = useLanguage();

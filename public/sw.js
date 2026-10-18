@@ -1,9 +1,9 @@
 /**
  * Mutjah Progressive Web App (PWA) Service Worker
- * Version: 1.2.0
+ * Version: 1.3.0
  */
 
-const CACHE_NAME = 'mutjah-pwa-v3';
+const CACHE_NAME = 'mutjah-pwa-v4';
 
 // Never cache or intercept private/dynamic areas (admin panel, API, Next data routes).
 const BYPASS_PREFIXES = ['/admin', '/api/', '/_next/data/'];
@@ -11,7 +11,6 @@ const BYPASS_PREFIXES = ['/admin', '/api/', '/_next/data/'];
 const PRECACHE_ASSETS = [
   '/ar',
   '/favicon.ico',
-  '/logo.svg',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/icons/icon-maskable-512.png',

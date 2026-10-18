@@ -7,9 +7,10 @@ import { sections } from "@/lib/i18n/dictionary";
 import { siteConfig } from "@/lib/site-config";
 import type { ContactInfo } from "@/lib/admin/types";
 import { Point } from "./primitives";
+import { servicePath, slugForServiceId } from "@/lib/services";
 
 export function Footer({ contact }: { contact?: ContactInfo }) {
-  const { t, locale } = useLanguage();
+  const { t, locale, homeHref } = useLanguage();
   const year = new Date().getFullYear();
   const email = contact?.email ?? siteConfig.email;
   const whatsapp = contact?.whatsapp ?? siteConfig.whatsapp;
@@ -69,7 +70,7 @@ export function Footer({ contact }: { contact?: ContactInfo }) {
               {sections.map((s) => (
                 <li key={s.id}>
                   <a
-                    href={`#${s.id}`}
+                    href={s.id === "contact" ? "#contact" : `${homeHref}#${s.id}`}
                     className="text-sm text-canvas/70 transition-colors hover:text-canvas"
                   >
                     {t.nav[s.key]}
@@ -83,16 +84,19 @@ export function Footer({ contact }: { contact?: ContactInfo }) {
           <div className="md:col-span-2">
             <h3 className="text-sm font-bold text-canvas/40">{t.footer.servicesTitle}</h3>
             <ul className="mt-4 flex flex-col gap-2.5">
-              {t.services.items.map((s) => (
+              {t.services.items.map((s) => {
+                const slug = slugForServiceId(s.id);
+                return (
                 <li key={s.id}>
                   <a
-                    href="#services"
+                    href={slug ? servicePath(locale, slug) : `${homeHref}#services`}
                     className="text-sm text-canvas/70 transition-colors hover:text-canvas"
                   >
                     {s.title}
                   </a>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
 

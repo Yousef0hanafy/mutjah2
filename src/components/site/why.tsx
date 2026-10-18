@@ -9,7 +9,8 @@ export function Why() {
   return (
     <section id="why" data-animate aria-labelledby="why-heading" className="bg-canvas">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <SectionHeading label={t.why.label} heading={t.why.heading} sub={t.why.sub} />
+        <SectionHeading
+          id="why-heading" label={t.why.label} heading={t.why.heading} sub={t.why.sub} />
 
         {/* Differentiation pull-quote */}
         <Reveal className="mt-10 lg:mt-12">

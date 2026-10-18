@@ -25,6 +25,7 @@ export function Process() {
       />
       <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
+          id="process-heading"
           label={t.process.label}
           heading={t.process.heading}
           sub={t.process.sub}

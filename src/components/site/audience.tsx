@@ -18,6 +18,7 @@ export function Audience() {
     <section id="audience" data-animate aria-labelledby="audience-heading" className="border-y border-sandline/70 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeading
+          id="audience-heading"
           label={t.audience.label}
           heading={t.audience.heading}
           sub={t.audience.sub}
